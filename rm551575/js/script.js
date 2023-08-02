@@ -24,73 +24,91 @@
 
 // ======================================================================
 
-// DECLARAR ARRAYS DE ALUNOS
-let alunos = ["João","Carlos","Maria"];
-alunos.forEach(aluno=>(
-    console.log(`O nome do aluno é: ${aluno}`)
-));
+// // DECLARAR ARRAYS DE ALUNOS
+// let alunos = ["João","Carlos","Maria"];
+// alunos.forEach(aluno=>(
+//     console.log(`O nome do aluno é: ${aluno}`)
+// ));
 
-console.log("\n")
+// console.log("\n")
 
-// ADICIONANDO UM NOVO ALUNO AO FINAL DO ARRAY COM push();
-console.log("\n");
-alunos.push("Pedro");
-alunos.forEach(aluno=>(
-    console.log(`O nome do aluno é: ${aluno}`)
-));
+// // ADICIONANDO UM NOVO ALUNO AO FINAL DO ARRAY COM push();
+// console.log("\n");
+// alunos.push("Pedro");
+// alunos.forEach(aluno=>(
+//     console.log(`O nome do aluno é: ${aluno}`)
+// ));
 
-console.log("\n")
+// console.log("\n")
 
-// UTILIZANDO O MÉTODO sort PARA ORGANIZAR O ARRAY EM ORDEM ALFABÉTICA
-alunos.sort();
-alunos.forEach(aluno=>(
-    console.log(`O nome do aluno é: ${aluno}`)
-));
+// // UTILIZANDO O MÉTODO sort PARA ORGANIZAR O ARRAY EM ORDEM ALFABÉTICA
+// alunos.sort();
+// alunos.forEach(aluno=>(
+//     console.log(`O nome do aluno é: ${aluno}`)
+// ));
 
-console.log("\n")
+// console.log("\n")
 
-// UTILIZANDO O reverse PARA REVERTER A ORDEM QUE SE APRESENTA
-alunos.reverse();
-alunos.forEach(aluno=>(
-    console.log(`O nome do aluno é: ${aluno}`)
-));
+// // UTILIZANDO O reverse PARA REVERTER A ORDEM QUE SE APRESENTA
+// alunos.reverse();
+// alunos.forEach(aluno=>(
+//     console.log(`O nome do aluno é: ${aluno}`)
+// ));
 
-console.log("\n")
+// console.log("\n")
 
-// UTILIZANDO O pop PARA REMOVER O ÚLTIMO ELEMENTO DO ARRAY
-alunos.pop();
-alunos.forEach(aluno=>(
-    console.log(`O nome do aluno é: ${aluno}`)
-));
+// // UTILIZANDO O pop PARA REMOVER O ÚLTIMO ELEMENTO DO ARRAY
+// alunos.pop();
+// alunos.forEach(aluno=>(
+//     console.log(`O nome do aluno é: ${aluno}`)
+// ));
 
-console.log("\n")
+// console.log("\n")
 
-// UTILIZANDO O unshift PARA ADICIONAR UM ELEMENTO NO COMEÇO DO ARRAY
-alunos.unshift("José");
-alunos.forEach(aluno=>(
-    console.log(`O nome do aluno é: ${aluno}`)
-));
+// // UTILIZANDO O unshift PARA ADICIONAR UM ELEMENTO NO COMEÇO DO ARRAY
+// alunos.unshift("José");
+// alunos.forEach(aluno=>(
+//     console.log(`O nome do aluno é: ${aluno}`)
+// ));
 
-console.log("\n")
+// console.log("\n")
 
-// UTILIZANDO O shift PARA REMOVER O PRIMEIRO ELEMENTO DO ARRAY
-alunos.shift();
-alunos.forEach(aluno=>(
-    console.log(`O nome do aluno é: ${aluno}`)
-));
+// // UTILIZANDO O shift PARA REMOVER O PRIMEIRO ELEMENTO DO ARRAY
+// alunos.shift();
+// alunos.forEach(aluno=>(
+//     console.log(`O nome do aluno é: ${aluno}`)
+// ));
 
-console.log("\n")
+// console.log("\n")
 
-// UTILIZANDO O MÉTODO splice PARA ALTERAR UM ELEMENTO DE UMA POSIÇÃO ESPECÍFICA DO ARRAY
-alunos.splice(1,1,"Jorge");
-alunos.forEach(aluno=>(
-    console.log(`O nome do aluno é: ${aluno}`)
-));
+// // UTILIZANDO O MÉTODO splice PARA ALTERAR UM ELEMENTO DE UMA POSIÇÃO ESPECÍFICA DO ARRAY
+// alunos.splice(1,1,"Jorge");
+// alunos.forEach(aluno=>(
+//     console.log(`O nome do aluno é: ${aluno}`)
+// ));
 
-console.log("\n")
+// console.log("\n")
 
-// UTILIZANDO O splice PARA REMOVER UM ELEMENTO DE UMA POSIÇÃO ESPECÍFICA
-alunos.splice(1,1);
-alunos.forEach(aluno=>(
-    console.log(`O nome do aluno é: ${aluno}`)
+// // UTILIZANDO O splice PARA REMOVER UM ELEMENTO DE UMA POSIÇÃO ESPECÍFICA
+// alunos.splice(1,1);
+// alunos.forEach(aluno=>(
+//     console.log(`O nome do aluno é: ${aluno}`)
+// ));
+
+// ======================================================================
+
+const cursos = [
+    {"nome":"HTML-5","duracao":"3 meses"},
+    {"nome":"CSS-3","duracao":"4 meses"},
+    {"nome":"Javascript","duracao":"5 meses"},
+    {"nome":"React","duracao":"5 meses"}
+]
+
+console.log(cursos);
+
+// IMPRIMINDO CADA UM DOS OBJETOS E APENAS UMA DAS PROPRIEDADES
+const nomeCursos = cursos.map( (curso,key) => (
+
+    console.log(`${key+1} - ${curso.nome} - ${curso["duracao"]}`)
+
 ));
