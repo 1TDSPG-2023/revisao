@@ -10,18 +10,31 @@
 //     console.log(aluno);
 // });
 
-let alunos = ["João", "Carlos", "Maria"];
+// let alunos = ["João", "Carlos", "Maria"];
 
-alunos.push("Ana");
+// alunos.push("Ana");
 
-// alunos.forEach(aluno => {
-//     console.log(`${aluno} é aluno(a) da FIAP.`)
-// })
+// // alunos.forEach(aluno => {
+// //     console.log(`${aluno} é aluno(a) da FIAP.`)
+// // })
 
-alunos.sort()
+// alunos.sort()
 
-console.log(alunos);
+// console.log(alunos);
 
-alunos.splice(1,2,"Adrian");
+// alunos.splice(1,2,"Adrian");
 
-console.log(alunos);
+// console.log(alunos);
+
+const cursos = [
+    {'nome': "Programação", 'duracao':"3 meses"},
+    {'nome': "DevOps", 'duracao':"2 meses"},
+    {'nome': "Negócios", 'duracao':"6 meses"},
+    {"nome": "React", 'duracao': "4 meses"}
+];
+
+const nomeCursos = cursos.map(curso => (
+    console.log(curso.nome)
+))
+
+console.log(nomeCursos);
