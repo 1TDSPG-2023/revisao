@@ -34,7 +34,7 @@ function atualizarLista() {
         listaImpressa.appendChild(novaTarefa);
 
         let botaoExcluir = document.createElement("button");
-        botaoExcluir.textContent = "Excluir tarefa";
+        botaoExcluir.textContent = "Excluir";
         botaoExcluir.addEventListener("click", function() {
             listaTarefas.splice(i, 1);
             atualizarLista();

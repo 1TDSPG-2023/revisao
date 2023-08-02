@@ -1,0 +1,41 @@
+body {
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 3rem;
+    padding: 2rem;
+    color: #8a2be2;
+}
+
+#formularioTarefas {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+}
+
+#formularioTarefas input {
+    width: 55%;
+    padding: 0.5rem;
+}
+
+button {
+    padding: 0.25rem;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+   margin: 1rem 0; 
+}
+
+li button {
+    margin-left: 1rem;
+}
