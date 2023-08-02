@@ -7,7 +7,6 @@ const removeItself = (task) => {
         tasks.findIndex((obj) => obj.id == task.id),
         1
     )
-    console.log(task)
     list.removeChild(task)
     populateList(tasks, list)
 }
@@ -21,10 +20,13 @@ const populateList = (tasksArray, tasksElement) => {
         tasksElement.appendChild(taskElement)
     })
 }
+const pushNewTask = (taskValue) => {
+    const task = { id: Date.now(), value: taskValue }
+    tasks.push(task)
+}
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()
-    const task = { id: Date.now(), value: task }
-    tasks.push(task)
+    pushNewTask(input.value)
     populateList(tasks, list)
 })
