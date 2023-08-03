@@ -1,8 +1,9 @@
-let info = document.getElementById("enviar");
-let tarefas = [''];
+let listaTarefas = []
+let tarefa = document.getElementById(txt-tarefa)
+let botaoAdicionar = document.getElementById(btn-adicionar)
 
-array.forEach(info => {
-    tarefas.push(info)
-    console.log(info)
-});
+botaoAdicionar.addEventListener("click")
 
+function adicionarTarefa() {
+    listaTarefas.push(tarefa.value)
+}
