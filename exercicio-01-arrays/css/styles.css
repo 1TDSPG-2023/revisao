@@ -3,7 +3,6 @@
 * {
     margin: 0;
 	padding: 0;
-	border: 0;
 	font-family: 'Nunito', sans-serif;
 }
 
@@ -11,9 +10,38 @@ section {
 	display: flex;
 	justify-content: center;
 	margin-top: 6rem;
+	width: 100vw;
 }
 
 form {
 	display: flex;
 	flex-direction: column;
+}
+
+label {
+	font-size: 2.5rem;
+}
+
+input {
+	display: block;
+	margin-bottom: 0.5rem;
+	padding: 0.2rem;
+	width: auto;
+	font-size: 1rem;
+	border: 1px, solid, black;border-radius: 0.4rem;
+}
+
+button {
+	background-color: black;
+	color: whitesmoke;
+	font-size: 1rem;
+	border: 0;
+	border-radius: 0.4rem;
+	padding: 0.2rem;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: gray;
+	transition: 400ms;
 }

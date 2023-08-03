@@ -1,9 +1,18 @@
 let listaTarefas = []
-let tarefa = document.getElementById(txt-tarefa)
-let botaoAdicionar = document.getElementById(btn-adicionar)
+let listaImpressaTarefas = document.getElementById("lista-tarefas")
+let nomeTarefa = document.getElementById("nome-tarefa")
+let botaoAdicionar = document.getElementById("btn-adicionar")
 
-botaoAdicionar.addEventListener("click")
+botaoAdicionar.addEventListener("click", adicionarTarefa)
 
 function adicionarTarefa() {
-    listaTarefas.push(tarefa.value)
+    listaTarefas.push(nomeTarefa)
+    imprimirTarefa()
 }
+
+function imprimirTarefa() {
+    let novaTarefa = document.createElement("li")
+    novaTarefa.textContent = nomeTarefa.value
+    listaImpressaTarefas.appendChild(novaTarefa)
+}
+
