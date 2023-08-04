@@ -4,6 +4,23 @@
     box-sizing: border-box;
 }
 
-#div-img{
-    background-image: url("../img/img-1.png");
+
+/* 
+    Estilizando os botões
+*/
+
+.btnExcluir{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 1px;
+    font-size: 0.5rem;
+    padding: 0.01rem 0.01rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ff0000;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    bottom: 10px;
 }
