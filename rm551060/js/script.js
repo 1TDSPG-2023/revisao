@@ -109,3 +109,19 @@ cursos.forEach(curso =>{
     li.textContent = `${curso.nome} - ${curso.duracao}`;
     ul.appendChild(li);
 });
+
+function cadastrar(nomeCurso,duracaoCurso){
+   
+    //Recebendo os valores que o usuário digitou
+    const novoCurso = {"nome":nomeCurso,"duracao":duracaoCurso};
+    //Adicionando o novo curso ao array de cursos
+    cursos.push(novoCurso);
+    //Adicionando o novo curso a lista de cursos
+    const li = document.createElement("li");
+    //Adicionando o id ao li
+    li.id = `curso-${cursos.length}`;
+    //Adicionando o texto ao li
+    li.textContent = `${nomeCurso} - ${duracaoCurso}`;
+    //Adicionando o li a ul
+    ul.appendChild(li);
+}

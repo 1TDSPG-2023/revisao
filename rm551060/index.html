@@ -9,9 +9,26 @@
 </head>
 <body>
     <h1>Revisando manipulação de arrays</h1>
+
+        <div>
+            <form action="#" method="get" onsubmit="return false">
+                <div>
+                    <label for="nome">Nome do curso:</label>
+                    <input type="text" name="nomeCurso" id="idNmCurso">
+                </div>
+                <div>
+                    <label for="nome">Duração do curso:</label>
+                    <input type="text" name="duracaoCurso" id="idDuracaoCurso">
+                </div>
+                <div>
+                    <input type="submit" value="Enviar" id="btnAddCurso" onclick="cadastrar(idNmCurso.value,idDuracaoCurso.value)">
+                </div>
+            </form>
+        </div>
         <div id="box-cursos">
             <h2>Cursos</h2>
         </div>
+
 
 </body>
 </html>
