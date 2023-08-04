@@ -80,6 +80,16 @@
 //     console.log(`O nome do aluno é : ${aluno}`)
 // ));
 
+// // Imprimindo cada um dos objetos e apenas uma das propriedades
+// const nomeCursos = cursos.map(curso =>(
+//     console.log(`${curso.nome} - ${curso["duracao"]}`)
+// ));
+
+// Este é um array de objetos de cursos onde ele vai popular uma lista ul com os cursos e suas durações.
+// Vamos criar novos elemenstos com o creatElemnt e adicionar ao html com o appendChild
+// Precisamos saber quem é o pai do elemento que vamos adicionar, no caso é a ul. Porem não temos uma ul ainda. Mas temos o elemnto pai que é a div com id cursos.
+// Agora que temos a ul, vamos criar as li e adicionar a ul.
+
 const cursos = [
     {"nome" : "HTML-5", "duracao" : "3 meses"},
     {"nome" : "CSS-3", "duracao" : "4 meses"},
@@ -87,9 +97,36 @@ const cursos = [
     {"nome" : "React", "duracao" : "5 meses"},
 ];
 
-console.log(cursos);
+// Criando a ul
+const ul = document.createElement("ul");
 
-// Imprimindo cada um dos objetos e apenas uma das propriedades
-const nomeCursos = cursos.map(curso =>(
-    console.log(`${curso.nome} - ${curso("duracao")}`)
-));
+// Adicionando a ul a div com id box-cursos
+const boxCrusos = document.getElementById("box-cursos");
+
+// Adicionando a ul a div com id box-cursos
+boxCrusos.appendChild(ul);
+
+// Criando os elemento li e adiconando a ul
+let indiceClassCurso = 0;
+cursos.forEach(curso =>{
+    indiceClassCurso++;
+    const li = document.createElement("li");
+    li.id = `curso-${indiceClassCurso}`;
+    li.textContent = `${curso.nome} - ${curso.duracao}`;
+    ul.appendChild(li);
+});
+
+function cadastrar(nomeCurso, duracaoCurso){
+    //Recebendo os valores que o usuario digitou
+    const novoCurso = {"nome":nomeCurso, "durcao":duracaoCurso};
+    //Adicionando o novo curso ao array de cursos
+    cursos.push(novoCurso);
+    //Adcionando o novo curso a lista de cursos
+    const li = document.createElement("li");
+    //Adicionando o id ao li
+    li.id = `curso-${cursos.length}`;
+    //Adcionando o text ao li
+    li.textContent = `${nomeCurso} - ${duracaoCurso}`;
+    //Adicionando o li a ul
+    ul.appendChild(li);
+};
