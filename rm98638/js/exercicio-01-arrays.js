@@ -15,8 +15,14 @@ const populateList = (tasksArray, tasksElement) => {
     tasksArray.forEach((task) => {
         const taskElement = document.createElement('li')
         taskElement.id = task.id
+        const deleteButton = document.createElement('button')
         taskElement.innerText = task.value
-        taskElement.addEventListener('dblclick', (e) => removeItself(e.target))
+        deleteButton.innerText = 'X'
+        deleteButton.addEventListener('click', (e) => removeItself(taskElement))
+        taskElement.addEventListener('dblclick', (e) =>
+            removeItself(taskElement)
+        )
+        taskElement.appendChild(deleteButton)
         tasksElement.appendChild(taskElement)
     })
 }
@@ -24,7 +30,6 @@ const pushNewTask = (taskValue) => {
     const task = { id: Date.now(), value: taskValue }
     tasks.push(task)
 }
-
 form.addEventListener('submit', (e) => {
     e.preventDefault()
     pushNewTask(input.value)
