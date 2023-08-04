@@ -125,3 +125,4 @@ function cadastrar(nomeCurso,duracaoCurso){
     //Adicionando o li a ul
     ul.appendChild(li);
 }
+
