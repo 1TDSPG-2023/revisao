@@ -64,7 +64,8 @@ li {
     background-color: #dc3545;
     color: white;
     border: none;
-    border-radius: 4px 8px;
+    border-radius: 4px;
+    padding: 4px 8px;
     cursor: pointer;
 }
 
