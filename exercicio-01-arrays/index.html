@@ -1,11 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <title>RM93364</title>
 </head>
+
 <body>
-    
+    <div>
+        <div class="notepad">
+            <img src="img/notepad.png" alt="img" height="500" width="">
+            <h1> Tarefas</h1>
+            <form id="tarefa-form">
+                <input type="text" id="tarefa-input" placeholder="Nova Tarefa" required>
+                <button type="submit">Adicionar</button>
+            </form>
+            <div class="tarefa-container">
+                <ul id="tarefa-lista"></ul>
+            </div>
+        </div>
+    </div>
+    <script src="js/java.js"></script>
 </body>
+
 </html>

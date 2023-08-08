@@ -1,0 +1,19 @@
+body{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: black;
+}
+
+.notepad {
+    text-align: center;
+    position: relative;
+}
+
+.notepad img {
+    max-width: 50%;
+    height: auto;
+    width: 1100px;
+}
