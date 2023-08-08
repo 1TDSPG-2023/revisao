@@ -4,21 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RM551060</title>
-    <script src="./js/exercicio.js"></script>
+    <script src="./js/exercicio.js" defer></script>
 </head>
 <body>
-    <form action="" method="get">
-        <fieldset>
-            <legend>Tarefas</legend>
-            <div>
-                <label for="adicionar">Adicionar tarefa</label>
-                <input type="text" name="txtTarefa" id="idTarefa" placeholder="Nome da tarefa">
-            </div>
-            <div>
-                <button type="submit" value="Tarefa" id="botaoTarefa">Adicionar tarefa</button>
-            </div>
-        </fieldset>
-    </form>
+    <div>
+        <form action="#" method="get" onsubmit="return false">
+            <fieldset>
+                <legend>Tarefas</legend>
+                <div>
+                    <label for="nome">Adicionar tarefa</label>
+                    <input type="text" name="txtTarefa" id="idTarefa" placeholder="Nome da tarefa">
+                </div>
+                <div>
+                    <input type="submit" value="Adicionar" id="btnAddTarefa"onclick="cadastrar(idTarefa.value)">
+                </div>
+            </fieldset>        
+        </form>
+    </div>
+    <div id="box-tarefas">
+        <h2>Tarefas</h2>
+    </div>
+    
     
 </body>
 </html>
