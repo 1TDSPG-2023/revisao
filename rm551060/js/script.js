@@ -86,11 +86,11 @@
 //Então vamos criar a ul e adicionar a div com id cursos.
 
 const cursos = [
-    {'nome' : 'HTML-5', 'duracao' : '3 meses'},
-    {'nome' : 'CSS-3', 'duracao' : '4 meses'},
-    {'nome' : 'Javascript', 'duracao' : '5 meses'},
-    {'nome' : 'React', 'duracao' : '5 meses'}
-]
+    {"nome" : "HTML-5", "duracao":"3 meses"},
+    {"nome" : "CSS-3", "duracao":"4 meses"},
+    {"nome" : "Javascript", "duracao":"5 meses"},
+    {"nome" : "React", "duracao":"5 meses"}
+] 
 
 //Criando a ul
 const ul = document.createElement("ul");
@@ -98,31 +98,125 @@ const ul = document.createElement("ul");
 //Adicionando a ul a div com id box-cursos
 const boxCursos = document.getElementById("box-cursos");
 
+//Adicionando a ul a div com id box-cursos
 boxCursos.appendChild(ul);
 
 //Criando os elementos li e adicionando a ul
-let indiceClassCurso = 0;
-cursos.forEach(curso =>{
-    indiceClassCurso++;
-    const li = document.createElement("li");
-    li.id = `curso-${indiceClassCurso}`;
-    li.textContent = `${curso.nome} - ${curso.duracao}`;
-    ul.appendChild(li);
-});
-
-function cadastrar(nomeCurso,duracaoCurso){
+cursos.forEach(curso=>{
    
-    //Recebendo os valores que o usuário digitou
-    const novoCurso = {"nome":nomeCurso,"duracao":duracaoCurso};
-    //Adicionando o novo curso ao array de cursos
-    cursos.push(novoCurso);
-    //Adicionando o novo curso a lista de cursos
+    //Criando o elemento li
     const li = document.createElement("li");
+    //Criando o botão excluir
+    const btnExcluir = document.createElement("button");
+    //Adicionando o texto ao botão excluir
+    btnExcluir.textContent = "x";
+    //Adicionando a classe btnExcluir ao botao
+    btnExcluir.setAttribute("class","btnExcluir");
     //Adicionando o id ao li
     li.id = `curso-${cursos.length}`;
+    //Adicionando as propriedades concatenadas ao li
+    li.textContent = `${curso.nome} - ${curso.duracao}`;
+    //Adicionando o botão excluir ao li
+    ul.appendChild(li);
+    
+     //Adicionando o botão excluir ao li - Deve ser adicionado após o li ser adicionado a ul.
+     li.appendChild(btnExcluir);
+
+        //Adicionando um evento ao botão excluir para remover da lista e do array o curso que foi clicado utilizando arrow function e event.target
+        btnExcluir.addEventListener("click",(evt)=>{
+            //Removendo o elemento do array
+    
+            cursos.forEach((curso,index)=>{
+                if(curso.nome === evt.target.parentNode.textContent.split("-")[0]){
+                    cursos.splice(index,1);
+                    ul.removeChild(evt.target.parentNode);
+                }
+            });
+    
+            //Removendo o elemento do html
+            ul.removeChild(evt.target.parentNode);
+        });
+});
+
+//Código engessado porque foi utilizado o onclick no html
+// function cadastrar(nomeCurso,duracaoCurso){
+   
+//     //Recebendo os valores que o usuário digitou
+//     const novoCurso = {"nome":nomeCurso,"duracao":duracaoCurso};
+//     //Adicionando o novo curso ao array de cursos
+//     cursos.push(novoCurso);
+//     //Adicionando o novo curso a lista de cursos
+//     const li = document.createElement("li");
+//     //Adicionando o id ao li
+//     li.id = `curso-${cursos.length}`;
+//     //Adicionando o texto ao li
+//     li.textContent = `${nomeCurso} - ${duracaoCurso}`;
+//     //Adicionando o li a ul
+//     ul.appendChild(li);
+// }
+
+//Código dinâmico porque foi utilizado o addEventListener no js
+ function cadastrar(){ 
+
+    //Recebendo os valores que o usuário digitou
+    const nomeCurso = document.getElementById("idNmCurso").value;
+    const duracaoCurso = document.getElementById("idDuracaoCurso").value;
+    const novoCurso = {"nome":nomeCurso,"duracao":duracaoCurso};
+
+    //Adicionando o novo curso ao array de cursos
+    cursos.push(novoCurso);
+
+    //Adicionando o novo curso a lista de cursos
+    const li = document.createElement("li");
+
+    //Criando o botão excluir
+    const btnExcluir = document.createElement("button");
+
+    //Adicionando o texto ao botão excluir
+    btnExcluir.textContent = "x";
+
+    //Adicionando a classe btnExcluir ao botao
+    btnExcluir.setAttribute("class","btnExcluir");
+
+    //Adicionando o id ao li
+    li.id = `curso-${cursos.length}`;
+
     //Adicionando o texto ao li
     li.textContent = `${nomeCurso} - ${duracaoCurso}`;
+
     //Adicionando o li a ul
     ul.appendChild(li);
+
+     //Adicionando a classe ao li
+     li.setAttribute("class","curso");
+
+     //Adicionando o botão excluir ao li - Deve ser adicionado após o li ser adicionado a ul.
+     li.appendChild(btnExcluir);
+
+    //Adicionando um evento ao botão excluir para remover da lista e do array o curso que foi clicado utilizando arrow function e event.target
+    btnExcluir.addEventListener("click",(evt)=>{
+        //Removendo o elemento do array
+
+        cursos.forEach((curso,index)=>{
+            if(curso.nome === evt.target.parentNode.textContent.split("-")[0]){
+                cursos.splice(index,1);
+                ul.removeChild(evt.target.parentNode);
+            }
+        });
+
+        //Removendo o elemento do html
+        ul.removeChild(evt.target.parentNode);
+    });
+
+
+
+    
+    
 }
+
+
+
+//Criando um evento para o botão btnAddCurso
+const btnAddCurso = document.getElementById("btnAddCurso");
+btnAddCurso.addEventListener("click",cadastrar);
 
