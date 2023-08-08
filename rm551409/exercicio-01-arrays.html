@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,18 +8,25 @@
     <title>rm551409</title>
 </head>
 <body>
+
+    <h2>Pedro Antunes Ferreira - RM551409</h2>
     
-    <form action="" method="get" value="tarefas"> 
+    <form action="#" method="get" onsubmit="return false"> 
         <fieldset> 
             <legend>Tarefas</legend> 
             <div> 
-                <label for="idTarefa">Adicionar</label> 
+                <label for="adicionar">Adicionar Tarefas</label> 
                 <input type="text" name="txtTarefa" id="idTarefa" placeholder="Tarefas">
-                <div>
-                    <button id="botao-tarefa" type="submit" value="Tarefa">Adicionar</button>
-                </div>
             </div> 
+            <div>
+                <input type="submit" value="Adicionar" id="btnAddTarefa" onclick="cadastrar(idTarefa.value)">
+            </div>
         </fieldset> 
+    </form>
+
+    <div id="box-tarefas">
+        <h2>Tarefas</h2>
+    </div>
 
 </body>
 </html>
