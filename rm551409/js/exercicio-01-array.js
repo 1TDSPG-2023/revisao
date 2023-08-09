@@ -24,7 +24,6 @@ function cadastrar(){
         tarefas.forEach((tarefas,index)=>{
             if(tarefas.nome === evt.target.parentNode.textContent.split("-")[0]){
                 tarefas.splice(index,1);
-                ul.removeChild(evt.target.parentNode);
             }
         });
 
