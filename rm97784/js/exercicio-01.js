@@ -20,10 +20,14 @@ function imprimirTarefa() {
 }
 
 function adicionarTarefa() {
-    listaTarefas.push(entradaDeTarefa.value);
-    atualizarLista();
-    entradaDeTarefa.value = "";
-    entradaDeTarefa.focus();
+    if (entradaDeTarefa.value != "") {
+        listaTarefas.push(entradaDeTarefa.value);
+        atualizarLista();
+        entradaDeTarefa.value = "";
+        entradaDeTarefa.focus();
+    } else {
+        alert("Por favor, insira uma tarefa para ser adicionada")
+    }
 }
 
 function atualizarLista() {
@@ -41,4 +45,5 @@ function atualizarLista() {
         });
         novaTarefa.appendChild(botaoExcluir);
     })
+    console.log(listaTarefas);
 }
