@@ -3,3 +3,18 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+#formulario {
+    display: grid;
+    width: 250px;
+}
+
+#formulario > div{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 5px;
+}
+
+#formulario > div > label {
+    margin-right: 20px;
+}
