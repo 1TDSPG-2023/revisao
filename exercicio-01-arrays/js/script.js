@@ -1,10 +1,12 @@
 const vivos = [];
-vivos.push("Napoleão Bonaparte");
-vivos.push("Gregório de Matos");
-vivos.push("Ricardo Coração de Leão");
-vivos.unshift("Camponês Comum");
+const array1 = [];
 
-console.log(vivos);
+function reviverPessoal(){
+  vivos.push("Napoleão Bonaparte");
+  vivos.push("Gregório de Matos");
+  vivos.push("Ricardo Coração de Leão");
+  vivos.unshift("Camponês Comum");
+}
 
 const flechaArabeNaGuerra = (condição) =>
   condição ? vivos.pop() : vivos.shift();
@@ -12,6 +14,9 @@ const flechaArabeNaGuerra = (condição) =>
 function naoParticiparCruzada() {
   vivos.splice(0, 2);
 }
+
+reviverPessoal()
+console.log(vivos);
 
 flechaArabeNaGuerra(true);
 console.log(vivos);
@@ -21,6 +26,8 @@ console.log(vivos);
 
 naoParticiparCruzada();
 console.log(vivos);
+
+
 
 /* Modificação de dom :) */
 
@@ -35,6 +42,9 @@ const criarListinha = () => {
   botao.className = "deletar";
   botao.innerText = "X";
   let input = document.getElementById("input").value;
+  array1.push(input);
+  console.log(`Foi adicionado ${input}`);
+  console.log(`Lista atual: ${array1}`)
   if (input === "") return null;
   li.innerText = input;
   li.appendChild(botao);
@@ -44,7 +54,6 @@ const criarListinha = () => {
 function adicionarListinha() {
   const lista = criarListinha();
   ul.appendChild(lista);
-  console.log(`adicionando ${lista.innerText}`);
   document.getElementById("input").value = "";
 }
 
@@ -53,7 +62,6 @@ document.addEventListener("click", (event) => {
     let pai = event.target.parentNode;
     ul.removeChild(pai);
   }
-  console.log(`Não é o botão de deletar`);
 });
 
 document.addEventListener("click", (event) => {
