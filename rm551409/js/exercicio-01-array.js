@@ -1,13 +1,13 @@
 const tarefas = [];
 
 const ul = document.createElement("ul");
-const boxCursos = document.getElementById("box-tarefas");
+const boxCursos = document.getElementById("tarefas");
 boxCursos.appendChild(ul);
 
 function cadastrar(){ 
     
     const nomeTarefa = document.getElementById("idTarefa").value;
-    const novaTarefa = {"nome":nomeTarefa};
+    const novaTarefa = {"Tarefa":nomeTarefa};
 
     tarefas.push(novaTarefa);
     const li = document.createElement("li");
