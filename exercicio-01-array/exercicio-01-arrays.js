@@ -25,28 +25,10 @@ function atualizarListaTarefas() {
     listaTarefas.appendChild(item);
   }
 
-  const removerPrimeiroBotao = document.createElement("button");
-  removerPrimeiroBotao.textContent = "Remover Primeira";
-  removerPrimeiroBotao.addEventListener("click", () => removerPrimeiroTarefa());
-
-  const removerUltimoBotao = document.createElement("button");
-  removerUltimoBotao.textContent = "Remover Última";
-  removerUltimoBotao.addEventListener("click", () => removerUltimoTarefa());
-  
 }
 
 function removerTarefa(index) {
   tarefas.splice(index, 1);
-  atualizarListaTarefas();
-}
-
-function removerPrimeiroTarefa() {
-  tarefas.shift();
-  atualizarListaTarefas();
-}
-
-function removerUltimoTarefa() {
-  tarefas.pop();
   atualizarListaTarefas();
 }
 
@@ -59,3 +41,4 @@ function verificarTecla(event) {
   
   document.getElementById("tarefaInput").addEventListener("keydown", verificarTecla);
 
+console.log(tarefas)
