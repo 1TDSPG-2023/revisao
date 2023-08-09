@@ -1,8 +1,8 @@
 const tarefas = [];
 
 const ul = document.createElement("ul");
-const boxCursos = document.getElementById("tarefas");
-boxCursos.appendChild(ul);
+const boxTarefas = document.getElementById("tarefas");
+boxTarefas.appendChild(ul);
 
 function cadastrar(){ 
     
