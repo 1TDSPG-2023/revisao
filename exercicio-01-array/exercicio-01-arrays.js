@@ -32,9 +32,7 @@ function atualizarListaTarefas() {
   const removerUltimoBotao = document.createElement("button");
   removerUltimoBotao.textContent = "Remover Última";
   removerUltimoBotao.addEventListener("click", () => removerUltimoTarefa());
-
-  listaTarefas.prepend(removerPrimeiroBotao);
-  listaTarefas.appendChild(removerUltimoBotao);
+  
 }
 
 function removerTarefa(index) {
