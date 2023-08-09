@@ -23,7 +23,7 @@
 // console.log(alunos[1])
 
 // // ======================================================================
-
+/*
 // // DECLARAR ARRAYS DE ALUNOS
 let alunos = ["João","Carlos","Maria"];
 alunos.forEach(aluno=>(
@@ -94,7 +94,7 @@ alunos.splice(1,1);
 alunos.forEach(aluno=>(
     console.log(`O nome do aluno é: ${aluno}`)
 ));
-
+*/
 // // UTILIZANDO MAP 
 
 const cursos = [
