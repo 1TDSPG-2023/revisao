@@ -2,13 +2,17 @@ let listaVazia = [];
 
 function adicionarTarefa() {
     let tarefaInput = document.getElementById('tarefaInput');
-    let tarefa = tarefaInput.value.trim();
 
-    if (tarefa !== '') {
-        listaVazia.push(tarefa);
+    if (tarefaInput.value !== '') {
+        listaVazia.push(tarefaInput.value);
         tarefaInput.value = '';
         atualizarListaTarefas();
     }
+}
+
+function removerTarefa(index) {
+    listaVazia.splice(index, 1);
+    atualizarListaTarefas();
 }
 
 function atualizarListaTarefas() {
@@ -19,6 +23,14 @@ function atualizarListaTarefas() {
         let tarefa = listaVazia[i];
         let itemLista = document.createElement('li');
         itemLista.textContent = tarefa;
+
+        let botaoRemover = document.createElement('button');
+        botaoRemover.textContent = 'Apagar';
+        botaoRemover.addEventListener('click', function() {
+            removerTarefa(i);
+        });
+
+        itemLista.appendChild(botaoRemover);
         listaTarefas.appendChild(itemLista);
     }
 }
