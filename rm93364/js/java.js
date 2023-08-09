@@ -37,5 +37,7 @@ function addDeleteEventListeners() {
             updateTarefaLista();
         });
     });
+
+    console.log(tarefas)
 }
 updateTarefaLista();
