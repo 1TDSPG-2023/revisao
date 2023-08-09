@@ -29,6 +29,7 @@ const populateList = (tasksArray, tasksElement) => {
 const pushNewTask = (taskValue) => {
     const task = { id: Date.now(), value: taskValue }
     tasks.push(task)
+    console.log(tasks)
 }
 form.addEventListener('submit', (e) => {
     e.preventDefault()
