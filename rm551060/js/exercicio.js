@@ -31,5 +31,6 @@ function cadastrar(){
         ul.removeChild(evt.target.parentNode);
     });
 }
+console.log(tarefas)
 
 
