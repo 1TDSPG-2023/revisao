@@ -218,7 +218,7 @@ function removerTarefa(index) {
 }
 
 function atualizarListaTarefas() {
-    tarefaLista.innerHTML = '';
+    tarefaLista.innerHTML = '<h2>Lista de Tarefas</h2>';
     for (let i = 0; i < tarefas.length; i++) {
         const tarefa = tarefas[i];
         const item = document.createElement('li');
