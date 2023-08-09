@@ -17,8 +17,8 @@ function atualizarListaTarefas() {
     item.textContent = tarefa;
 
     const removerBotao = document.createElement("button");
-    removerBotao.textContent = "Remover";
-    removerBotao.classList.add("remover");
+    removerBotao.textContent = "X";
+    removerBotao.classList.add("X");
     removerBotao.addEventListener("click", () => removerTarefa(i));
 
     item.appendChild(removerBotao);
@@ -30,6 +30,7 @@ function atualizarListaTarefas() {
 function removerTarefa(index) {
   tarefas.splice(index, 1);
   atualizarListaTarefas();
+  console.log(tarefas);
 }
 
 function verificarTecla(event) {
@@ -41,4 +42,4 @@ function verificarTecla(event) {
   
   document.getElementById("tarefaInput").addEventListener("keydown", verificarTecla);
 
-console.log(tarefas)
+  console.log(tarefas);
