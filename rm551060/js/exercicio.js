@@ -1,12 +1,10 @@
 const tarefas = [];
 
 const ul = document.createElement("ul");
-
 const boxTarefas = document.getElementById("box-tarefas");
-
 boxTarefas.appendChild(ul);
 
-function cadastrar(){ 
+function adicionar(){ 
 
     const nomeTarefa = document.getElementById("idTarefa").value;
     const novaTarefa = {"nome":nomeTarefa};
