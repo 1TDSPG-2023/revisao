@@ -40,11 +40,10 @@ const criarListinha = () => {
   const li = document.createElement("li");
   const botao = document.createElement("button");
   botao.className = "deletar";
-  botao.innerText = "X";
   let input = document.getElementById("input").value;
   array1.push(input);
   console.log(`Foi adicionado ${input}`);
-  console.log(`Lista atual: ${array1}`)
+  console.log(`Lista atual: ${array1} \n `)
   if (input === "") return null;
   li.innerText = input;
   li.appendChild(botao);
@@ -52,7 +51,7 @@ const criarListinha = () => {
 };
 
 function adicionarListinha() {
-  const lista = criarListinha();
+  const lista = criarListinha(); 
   ul.appendChild(lista);
   document.getElementById("input").value = "";
 }
@@ -60,7 +59,10 @@ function adicionarListinha() {
 document.addEventListener("click", (event) => {
   if (event.target.classList.contains("deletar")) {
     let pai = event.target.parentNode;
+    let indexArray = array1.indexOf(pai.innerText);
+    array1.splice(indexArray, 1);
     ul.removeChild(pai);
+    console.log(`Sobraram os elementos  ${array1} \n `)
   }
 });
 

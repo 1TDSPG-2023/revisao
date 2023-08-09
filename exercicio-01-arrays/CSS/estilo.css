@@ -140,3 +140,9 @@
       background-position: 0 0;
     }
   }
+  
+  .deletar{
+    width: 10px;
+    height: 10px;
+    color: red;
+  }
