@@ -18,7 +18,7 @@ function atualizarLista() {
         li.textContent = listaTarefas[i];
 
         const botaoExcluir = document.createElement("button");
-        botaoExcluir.textContent = "X";
+        botaoExcluir.textContent = "Remover";
 
         li.appendChild(botaoExcluir);
         ul.appendChild(li);
@@ -27,10 +27,12 @@ function atualizarLista() {
             listaTarefas.splice(i, 1);
             atualizarLista();
         });
+
+        console.log(listaTarefas)
     }
 
-    document.getElementById("nometarefas").value = '';
-    document.getElementById("nometarefas").focus();
+    document.getElementById("nomedetarefas").value = '';
+    document.getElementById("nomedetarefas").focus();
 }
 
 botaoAdicionar.addEventListener("click", adicionarTarefa);
