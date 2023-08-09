@@ -20,7 +20,8 @@ function cadastrar(){
     li.setAttribute("class","tarefas");
     li.appendChild(btnExcluir);
     btnExcluir.addEventListener("click",(evt)=>{
-    ul.removeChild(evt.target.parentNode);
+
+        ul.removeChild(evt.target.parentNode);
 
     });
     

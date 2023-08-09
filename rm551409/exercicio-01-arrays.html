@@ -9,17 +9,15 @@
 </head>
 <body>
     
-    <form action="#" method="get" onsubmit="return false"> 
-        <fieldset> 
-            <legend>Tarefas</legend> 
-            <div> 
-                <label for="adicionar">Adicionar Tarefas</label> 
-                <input type="text" name="txtTarefa" id="idTarefa" placeholder="Tarefas">
-            </div> 
-            <div>
-                <input type="submit" value="Adicionar" id="btnAddTarefa" onclick="cadastrar(idTarefa.value)">
-            </div>
-        </fieldset> 
+    <form action="#" method="get" onsubmit="return false">  
+        <legend>Tarefas</legend> 
+        <div> 
+            <label for="adicionar">Adicionar Tarefas</label> 
+            <input type="text" name="txtTarefa" id="idTarefa" placeholder="Tarefas">
+        </div> 
+        <div>
+            <input type="submit" value="Adicionar" id="btnAddTarefa" onclick="cadastrar(idTarefa.value)">
+        </div>
     </form>
 
     <div id="tarefas">
