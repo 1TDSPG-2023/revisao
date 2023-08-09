@@ -1,16 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jaci - RM99627</title>
-    <script src="./js/script.js"></script>
+    <script src="./js/script.js" defer></script>
 </head>
-<body>
-    <div> 
-        <label for="idUser">Nome do Aluno:</label> 
-        <input type="text" name="txtName" id="idName" placeholder="Digite o nome..."> 
-        <button id="meu-btn"> <span>ADD</span></button>
-    </div> 
+<body> 
+    <header>
+        <h2>Lista de Tarefas</h2>
+    </header>
+    
+    <div class="pai" id="div-pai">
+        <form id="formularioTarefa" action="">
+           <label for="inputTarefa">Tarefa:</label> 
+            <input type="text" name="txtName" id="inputTarefa" placeholder="Digite a tarefa..."> 
+            <button type="button" id="btnAddTarefa" onclick="adicionarTarefa()">Adicionar</button> 
+        </form>
+        <ul id="listTarefas"> </ul>
+    </div><!--pai-->
+
 </body>
 </html>
