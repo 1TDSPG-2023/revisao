@@ -46,3 +46,11 @@ button {
 button:hover {
     background-color: #11589b;
 }
+
+#btn-remover {
+    background-color: #c92222;
+    border: 1px solid #940f0f;
+    width: 30px;
+    height: 30px;
+
+}

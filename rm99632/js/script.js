@@ -225,7 +225,7 @@ function atualizarListaTarefas() {
         item.innerHTML = `
             Descrição: ${tarefa.descricao} | Autor: ${tarefa.autor} | Departamento: ${tarefa.departamento} | Importância: ${tarefa.importancia}
             ${tarefa.valor ? '| Valor: ' + tarefa.valor : ''} ${tarefa.duracao ? '| Duração: ' + tarefa.duracao : ''}
-            <button onclick="removerTarefa(${i})">Remover</button>
+            <button id="btn-remover" onclick="removerTarefa(${i})"><strong>x</strong></button>
         `;
         tarefaLista.appendChild(item);
     }
