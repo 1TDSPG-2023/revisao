@@ -96,7 +96,7 @@ alunos.forEach(aluno=>(
 ));
 */
 // // UTILIZANDO MAP 
-
+/*
 const cursos = [
     {"nome" : "HTML-5", "duracao":"3 meses"},
     {"nome" : "CSS-3", "duracao":"4 meses"},
@@ -151,7 +151,7 @@ function cadastrar(nomeCurso,duracaoCurso){
     //Adicionando o li a ul
     ul.appendChild(li);
 }
-
+*/
 /*
 EXERCICIO 01
 Agora que já sabemos manipular objetos, vamos melhorar a nossa lista de tarefas. Nossa nova
@@ -170,3 +170,88 @@ Nossa lista de tarefas deverá ter os seguintes controles:
  - Opção para criação de uma lista das tarefas por ordem de importância contendo apenas a
 descrição.
 */
+
+const tarefaForm = document.getElementById('formulario');
+const tarefaLista = document.getElementById('lista-de-tarefas');
+
+const tarefas = [];
+
+
+function adicionarTarefa() {
+    const descricao = document.getElementById('id-descricao-tarefa').value;
+    const autor = document.getElementById('id-autor-tarefa').value;
+    const departamento = document.getElementById('id-departamento-tarefa').value;
+    const importancia = document.getElementById('id-importancia-tarefa').value;
+    
+    if (descricao && autor && departamento && importancia) {
+        const novaTarefa = {
+            descricao,
+            autor,
+            departamento,
+            importancia
+        };
+        
+        const valor = document.getElementById('id-valor-tarefa').value;
+        if (valor) {
+            novaTarefa.valor = valor;
+        }
+        
+        const duracao = document.getElementById('id-duracao-tarefa').value;
+        if (duracao) {
+            novaTarefa.duracao = duracao;
+        }
+        
+        tarefas.push(novaTarefa);
+        atualizarListaTarefas();
+    } else {
+        alert('Preencha todos os campos obrigatórios!');
+    }
+}
+
+function removerTarefa(index) {
+    if (index >= 0 && index < tarefas.length) {
+        tarefas.splice(index, 1);
+        atualizarListaTarefas();
+    } else {
+        alert('Tarefa não encontrada!');
+    }
+}
+
+function atualizarListaTarefas() {
+    tarefaLista.innerHTML = '';
+    for (let i = 0; i < tarefas.length; i++) {
+        const tarefa = tarefas[i];
+        const item = document.createElement('li');
+        item.innerHTML = `
+            Descrição: ${tarefa.descricao} | Autor: ${tarefa.autor} | Departamento: ${tarefa.departamento} | Importância: ${tarefa.importancia}
+            ${tarefa.valor ? '| Valor: ' + tarefa.valor : ''} ${tarefa.duracao ? '| Duração: ' + tarefa.duracao : ''}
+            <button onclick="removerTarefa(${i})">Remover</button>
+        `;
+        tarefaLista.appendChild(item);
+    }
+}
+
+function filtrarTarefas() {
+    const ordemImportancia = [
+        'alta',
+        'media',
+        'baixa'
+    ];
+    
+    const tarefasOrdenadas = tarefas.slice().sort((a, b) => {
+        const indexA = ordemImportancia.indexOf(a.importancia);
+        const indexB = ordemImportancia.indexOf(b.importancia);
+        return indexA - indexB;
+    });
+    
+    const descricaoTarefasOrdenadas = tarefasOrdenadas.map(tarefa => tarefa.descricao);
+    
+    tarefaLista.innerHTML = '';
+    for (let i = 0; i < descricaoTarefasOrdenadas.length; i++) {
+        const item = document.createElement('li');
+        item.textContent = descricaoTarefasOrdenadas[i];
+        tarefaLista.appendChild(item);
+    }
+}
+
+console.log(tarefaLista);
