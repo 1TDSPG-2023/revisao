@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    display: flex;
+}
+
 #formulario {
     display: grid;
     width: 250px;
@@ -17,4 +21,24 @@
 
 #formulario > div > label {
     margin-right: 20px;
+}
+
+#criador-de-tarefas, #lista-de-tarefas {
+    padding: 0 10px;
+    width: 300px;
+    height: 400px;
+    border: 2px solid #d0d0d0;
+    background-color: #f9f9f9;
+}
+
+button {
+    color: #fff;
+    background-color: #257aca;
+    border: 1px solid #11589b;
+    margin: 2px;
+    padding: 5px;
+}
+
+button:hover {
+    background-color: #11589b;
 }
