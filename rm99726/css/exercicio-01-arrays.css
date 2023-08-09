@@ -1,0 +1,27 @@
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#formulariotarefas {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#listatarefas li button {
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#listatarefas li {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
