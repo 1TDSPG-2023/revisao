@@ -25,6 +25,7 @@ const populateList = (tasksArray, tasksElement) => {
         taskElement.appendChild(deleteButton)
         tasksElement.appendChild(taskElement)
     })
+    console.log(tasksArray)
 }
 const pushNewTask = (taskValue) => {
     const task = { id: Date.now(), value: taskValue }
