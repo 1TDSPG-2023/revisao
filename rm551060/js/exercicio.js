@@ -4,7 +4,7 @@ const ul = document.createElement("ul");
 
 const boxTarefas = document.getElementById("box-tarefas");
 
-boxTursos.appendChild(ul);
+boxTarefas.appendChild(ul);
 
 function cadastrar(){ 
 
