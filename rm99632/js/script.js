@@ -190,6 +190,12 @@ function adicionarTarefa() {
             departamento,
             importancia
         };
+
+        tarefas.forEach(tarefa=>(
+            console.log(`O nome do aluno é: ${tarefa}`)
+        ));
+
+        console.log(`Adcionando nova tarefa a lista: ${novaTarefa}`);
         
         const valor = document.getElementById('id-valor-tarefa').value;
         if (valor) {
@@ -253,5 +259,3 @@ function filtrarTarefas() {
         tarefaLista.appendChild(item);
     }
 }
-
-console.log(tarefaLista);
