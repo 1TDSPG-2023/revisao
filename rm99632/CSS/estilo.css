@@ -31,6 +31,10 @@ body {
     background-color: #f9f9f9;
 }
 
+#lista-de-tarefas {
+    width: 500px;
+}
+
 button {
     color: #fff;
     background-color: #257aca;
