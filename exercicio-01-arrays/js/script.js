@@ -1,14 +1,10 @@
 let listaTarefas = [];
-let listaImpressa = document.getElementById("listaDeTarefas");
 const inputDeTarefa = document.getElementById("inputTarefa");
 const botaoAdicionar = document.getElementById("botaoAdicionarTarefa");
 
-
 botaoAdicionar.addEventListener("click",adicionarTarefa);
 
-
-
-function imprimirTarefa() {
+function imprimirTarefa() { 
     var novaTarefa = document.createElement("li");
     novaTarefa.textContent = `${inputDeTarefa.value}`;
     console.log(novaTarefa.textContent);
@@ -24,6 +20,7 @@ function adicionarTarefa() {
 }
 
 function atualizarLista() {
+    let listaImpressa = document.getElementById("listaDeTarefas");
     listaImpressa.innerHTML = "";
     listaTarefas.forEach((tarefaAdicionada, index) => {
         let novaTarefa = document.createElement("li");
