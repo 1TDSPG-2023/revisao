@@ -1,30 +1,25 @@
 let listaTarefas = [];
-let listaImpressa = document.getElementById("lista");
-const nmTarefa = document.getElementById("txtTarefa");
-const botaoAdicionar = document.getElementById("btnAdicionar");
-const formTarefas = document.getElementById("formTarefas");
 
-botaoAdicionar.addEventListener("click",adicionarTarefa);
+let botaoAdicionar = document.getElementById("btnAdicionar");
+botaoAdicionar.addEventListener("click", function(){
+    let nmTarefa = document.getElementById("txtTarefa");
+    if (nmTarefa.value != ""){
+        listaTarefas.push(nmTarefa.value);
+        atualizarLista();
+        nmTarefa.value = "";
+        console.log(listaTarefas);
+    }else{
+        alert("Nenhum valor foi adicionado");
+    }
+});
 
-function imprimirTarefa() {
-    var novaTarefa = document.createElement("li");
-    novaTarefa.textContent = `${nmTarefa.value}`;
-    listaImpressa.appendChild(novaTarefa);
-}
-
-function adicionarTarefa() {
-    listaTarefas.push(nmTarefa.value);
-    atualizarLista();
-    nmTarefa.value = "";
-    nmTarefa.focus();
-}
-
+let lista = document.getElementById("lista");
 function atualizarLista() {
-    listaImpressa.innerHTML = "";
+    lista.innerHTML = "";
     listaTarefas.forEach((tarefa, i) => {
         let novaTarefa = document.createElement("li");
         novaTarefa.textContent = `${tarefa}`;
-        listaImpressa.appendChild(novaTarefa);
+        lista.appendChild(novaTarefa);
 
         let btnExcluir = document.createElement("button");
         btnExcluir.textContent = "X";
