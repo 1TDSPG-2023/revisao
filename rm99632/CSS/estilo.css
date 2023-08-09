@@ -5,12 +5,13 @@
 }
 
 body {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #formulario {
     display: grid;
-    width: 250px;
 }
 
 #formulario > div{
@@ -25,14 +26,9 @@ body {
 
 #criador-de-tarefas, #lista-de-tarefas {
     padding: 0 10px;
-    width: 300px;
-    height: 400px;
+    height: 100vh;
     border: 2px solid #d0d0d0;
     background-color: #f9f9f9;
-}
-
-#lista-de-tarefas {
-    width: 500px;
 }
 
 button {
@@ -41,6 +37,7 @@ button {
     border: 1px solid #11589b;
     margin: 2px;
     padding: 5px;
+    cursor: pointer;
 }
 
 button:hover {
@@ -53,4 +50,8 @@ button:hover {
     width: 30px;
     height: 30px;
 
+}
+
+li {
+    list-style: none;
 }
