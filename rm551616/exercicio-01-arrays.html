@@ -1,27 +1,56 @@
 <!DOCTYPE html>
-<html lang="pt/br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rm551616</title>
-    <script> src="./js/script.js"</script>
-    <link rel="stylesheet" href="./css/estilo.css">
+    <title>rm99632</title>
+    <script src="./js/script.js" defer></script>
+    <link rel="stylesheet" href="./CSS/estilo.css">
 </head>
 <body>
-    <h1>Lista de Tarefas</h1>
+    <h1>Exercicio 01</h1>
+    <h2>Lista de Tarefas</h2>
 
     <!-- Formulário para adicionar novas tarefas -->
-    <form id="formTarefa">
-        <input type="text" id="tarefaInput" placeholder="Digite a nova tarefa">
-        <button type="button" onclick="adicionarTarefa()">Adicionar</button>
-    </form>
-
+    <div id="lista-de-tarefas">
+        <form id='formulario' action="#" method="get" onsubmit="return false">
+            <div>
+                <label for="idDescricaoTarefa">Descrição:</label>
+                <input type="text" name="descricaoTarefa" id="idDescricaoTarefa">
+            </div>
+            <div>
+                <label for="idAutorTarefa">Autor:</label>
+                <input type="text" name="autorTarefa" id="idAutorTarefa">
+            </div>
+            <div>
+                <label for="idDepartamentoTarefa">Departamento:</label>
+                <input type="text" name="departamentoTarefa" id="idDepartamentoTarefa">
+            </div>
+            <div>
+                <label for="idImportanciaTarefa">Importancia:</label>
+                <input type="text" name="importanciaTarefa" id="idImportanciaTarefa">
+            </div>
+            <div>
+                <label for="idValorTarefa">Valor:</label>
+                <input type="text" name="valorTarefa" id="idValorTarefa">
+            </div>
+            <div>
+                <label for="idDuracaoTarefa">Duração:</label>
+                <input type="text" name="duracaoTarefa" id="idDuracaoTarefa">
+            </div>
+            <div>
+                <button type="button" onclick="adicionarTarefa()">Adicionar</button>
+                <button type="button" onclick="removerTarefa()">Remover</button>
+                <button type="button" onclick="filtrarBtn()" class="filtrarBtn">Filtrar por Importancia</button>
+            </div>
+        </form>
+    </div>
     <!-- Lista de tarefas adicionadas -->
     <ul id="listaTarefas">
         <!-- As tarefas adicionadas serão exibidas aqui -->
     </ul>
-    
-    
-    
+
+
+
 </body>
 </html>
