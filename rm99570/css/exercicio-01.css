@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+body{
+    background-color:rgb(100, 100, 100);
+}
+h1 {
+    font-size: 3rem;
+    padding: 3rem;
+    color: #0a0a0a;
+}
+
+div{
+    display: inline-flex;
+    border: solid #ececec 1px;
+}
+#formTarefas {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 5% 5% 0% 5%;
+    color: #ececec;
+}
+
+#formTarefas input {
+    width: 80%;
+    padding: 0.3rem;
+    margin: 5% 0% 5% 0%;
+}
+
+button {
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+#btnAdicionar{
+    margin-bottom: 10%;
+}
+
+#btnExcluir{
+    color: white;
+    background-color: rgb(255 0 0);
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+   margin: 1rem 0; 
+}
+
+li button {
+    margin-left: 1rem;
+}

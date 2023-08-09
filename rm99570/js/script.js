@@ -78,6 +78,11 @@
 //     console.log(`O nome do aluno é : ${aluno}`)
 // ))
 
+// Este é um array de objetos de cursos onde ele vai popular uma lista ul com cursos e suas durações.
+// Vamos criar novos elementos com o createElement e adicionar ao html com o appendChild
+// Precisamos saber quem é o pai do elemento que vamos adicionar, no caso é a ul. Porém não temos uma ul ainda. Mas temos o elemento pai que é a div com id cursos.
+// Então vamos criar a ul e adicionar a div com id cursos.
+
 const cursos = [
     {"nome" : "HTML-5", "duracao" : "3 meses"},
     {"nome" : "CSS-3", "duracao" : "4 meses"},
@@ -85,9 +90,29 @@ const cursos = [
     {"nome" : "React", "duracao" : "5 meses"}
 ]
 
-console.log(cursos);
+// Criando a ul
+const ul = document.createElement("ul");
 
-// Imprimindo cada um dos objetos e apenas uma das propriedades.
-const nomeCursos = cursos.map( (curso,key) =>(
-    console.log(`${key+1} - ${curso.nome} - ${curso["duracao"]}`) 
-));
+// Adicionando a ul a div com id box-cursos
+const boxCursos = document.getElementById("box-cursos");
+
+boxCursos.appendChild(ul);
+
+// Criando os elementos li e adicionando a ul
+let indiceClassCurso = 0
+cursos.forEach(curso=>{
+    indiceClassCurso++;
+    const li = document.createElement("li");
+    li.id = `Curso-${indiceClassCurso}`;
+    li.textContent = `${curso.nome} - ${curso.duracao}`;
+    ul.appendChild(li);
+})
+
+function cadastrar(nomeCurso, duracaoCurso){
+    const novoCurso = {"nome":nomeCurso,"duracao":duracaoCurso};
+    cursos.push(novoCurso);
+    const li = document.createElement("li");
+    li.id = `curso-${cursos.length}`;
+    li.textContent = `${nomeCurso} - ${duracaoCurso}`;
+    ul.appendChild(li);
+}
