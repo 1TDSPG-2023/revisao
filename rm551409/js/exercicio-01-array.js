@@ -55,13 +55,22 @@ let cursos = [
         {nome: "Curso de Python", duracao: 70}
 ];
 
-// Imprimindo o array de objetos no console com o método map:
-let cursosNomes = cursos.map(((curso, indice, lista) => {
-    console.log(`Este é o elemento ${curso.nome} e está na posição [${indice}] em uma lista de tamanho ${lista.length}.`);
-    return curso.nome;
-}));
+// // Imprimindo o array de objetos no console com o método map:
+// // A ordem do map sempre sera essa map(nome do quero buscar na lista, indice, lista)
+// let cursosNomes = cursos.map(((curso, indice, lista) => {
+//     console.log(`Este é o elemento ${curso.nome} e está na posição [${indice}] em uma lista de tamanho ${lista.length}.`);
+//     return curso.nome;
+// }));
+// //Quebrando linha no console:
+// console.log("\n");
+
+// // Imprimindo o array de nomes de cursos no console:
+// console.log(cursosNomes);
+
+
+// Exemplificando o .filter
+let cursosComDuracaoMaiorQue50 = cursos.filter((curso) => curso.duracao >= 50);
+// Imprimindo o array de cusos com duração maior que 50 horas:
+console.log(cursosComDuracaoMaiorQue50);
 //Quebrando linha no console:
 console.log("\n");
-
-// Imprimindo o array de nomes de cursos no console:
-console.log(cursosNomes);
