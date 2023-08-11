@@ -62,13 +62,13 @@ function verificarTecla(event) {
 document.getElementById("tarefaInput").addEventListener("keydown", verificarTecla);
 
 
-let cursos = [
-  {nome: "HTML", duracao: 40},
-  {nome: "CSS", duracao: 50},
-  {nome: "JavaScript", duracao: 60},
-  {nome: "React", duracao: 70},
-  {nome: "Node", duracao: 80}
-];
+// let cursos = [
+//   {nome: "HTML", duracao: 40},
+//   {nome: "CSS", duracao: 50},
+//   {nome: "JavaScript", duracao: 60},
+//   {nome: "React", duracao: 70},
+//   {nome: "Node", duracao: 80}
+// ];
 
 
 // let cursosNomes = cursos.map((curso,indice,lista) => {
@@ -130,8 +130,45 @@ let cursos = [
 
 // // =========================================================================
 
-let cursosBuscados = cursos.filter((curso) => curso.nome.includes("CSS"));
+// let cursosBuscados = cursos.filter((curso) => curso.nome.includes("CSS"));
 
-console.log(cursosBuscados);
+// console.log(cursosBuscados);
 
+// console.log("\n");
+
+// // =========================================================================
+
+let pessoa = {
+  nome: "João",
+  idade: 20,
+  altura: 1.80,
+  genero: "M",
+  peso: 80,
+  andar: function() {
+    console.log("Andando");
+  },
+  getNome: function() {
+    return this.nome;
+  },
+  setNome: function(novoNome) {
+    this.nome = novoNome;
+  }
+};
+
+// console.log(pessoa);
+// console.log("\n");
+
+// // Criando um novo objeto Pessoa com o Spread Operator
+// let pessoa2 = {...pessoa, nome: "Maria", genero: "F"};
+// console.log(pessoa2);
+// console.log("\n");
+
+// // Criando um novo objeto Pessoa com o Rest Operator
+// let pessoa3 = {nome,altura,peso, ...resto} = pessoa2;
+// console.log(nome,altura,peso,resto);
+// console.log("\n");
+
+// Exemplo de desestruturação de objeto
+const{nome,idade,genero,altura,peso} = pessoa;
+console.log(nome,idade,genero,altura,peso);
 console.log("\n");
