@@ -1,49 +1,3 @@
-//Criar a lista de Tarefas array
-let listaTarefasArray = [];
-
-const botaoAddtarefa = document.getElementById("btnAddTarefa");
-
-botaoAddtarefa.addEventListener("click", (evento)=>{
-
-    evento.preventDefault();
-
-    const inputTarefa = document.getElementById("idTarefa");
-
-    listaTarefasArray.push(inputTarefa.value);
-
-    const listaTarefasUL = document.getElementById("lista-tarefas");
-
-    let li = document.createElement("li");
-
-    li.textContent = inputTarefa.value;
-
-    listaTarefasUL.appendChild(li);
-    
-    let botaoExcluir = document.createElement("button");
-
-    botaoExcluir.textContent = " x ";
-
-    li.appendChild(botaoExcluir);
-
-    botaoExcluir.addEventListener("click",(evt)=>{
-
-        let conteudoDoLi = evt.target.parentNode.textContent.split(" ");
-        console.log(conteudoDoLi);
-
-        let index = listaTarefasArray.indexOf(conteudoDoLi[0]);
-
-        listaTarefasArray.splice(index,1);
-
-        evt.target.parentNode.remove();
-
-        console.log(listaTarefasArray);
-
-    })
-
-    inputTarefa.value = "";
-    console.log(listaTarefasArray);
-});
-
 // Criando um array de objetos de cursos de tecnologia: 
 // let cursos = [
 
@@ -177,44 +131,95 @@ botaoAddtarefa.addEventListener("click", (evento)=>{
 
 
 
-// Criando um objeto Pessoa:
-let pessoa = {
-    nome: "Pedro",
-    idade: 21,
-    genero: "M",
-    altura: 1.84,
-    peso: 70,
-    andar: function(){
-        console.log("Andando...");
-    },
-    getNome: function(){
-        return this.nome;
-    },
-    setNome: function(novoNome){
-        this.nome = novoNome;
-    }
-};
+// // Criando um objeto Pessoa:
+// let pessoa = {
+//     nome: "Pedro",
+//     idade: 21,
+//     genero: "M",
+//     altura: 1.84,
+//     peso: 70,
+//     andar: function(){
+//         console.log("Andando...");
+//     },
+//     getNome: function(){
+//         return this.nome;
+//     },
+//     setNome: function(novoNome){
+//         this.nome = novoNome;
+//     }
+// };
 
-// console.log(pessoa.getNome());
-// pessoa.setNome("Joao");
-// console.log(pessoa.getNome());
+// // console.log(pessoa.getNome());
+// // pessoa.setNome("Joao");
+// // console.log(pessoa.getNome());
 
-// Imprimindo o objeto pessoa
-console.log(pessoa);
-console.log("\n");
+// // Imprimindo o objeto pessoa
+// console.log(pessoa);
+// console.log("\n");
 
-// Criando um novo objeto Pessoa com Spread Operator( ... ): usado para alterar dados de um objeto
-let pessoa2 = {...pessoa, nome: "Maria", idade: 30, genero: "F"};
-console.log(pessoa2);
-
-
-// // Criando um novo objeto Pessoa com Rest Operator:
-// const{nome, altura, peso, ...resto} = pessoa;
-// //imprimindo o objeto:
-// console.log(nome, altura, peso, resto);
+// // Criando um novo objeto Pessoa com Spread Operator( ... ): usado para alterar dados de um objeto
+// let pessoa2 = {...pessoa, nome: "Maria", idade: 30, genero: "F"};
+// console.log(pessoa2);
 
 
-// Exemplo de desestruturação do objeto:
-const{nome, idade, genero, altura, peso} = pessoa;
-//Imprimindo o objeto:
-console.log(nome, idade, genero, altura, peso);
+// // // Criando um novo objeto Pessoa com Rest Operator:
+// // const{nome, altura, peso, ...resto} = pessoa;
+// // //imprimindo o objeto:
+// // console.log(nome, altura, peso, resto);
+
+
+// // Exemplo de desestruturação do objeto:
+// const{nome, idade, genero, altura, peso} = pessoa;
+// //Imprimindo o objeto:
+// console.log(nome, idade, genero, altura, peso);
+
+
+
+
+
+
+//Criar a lista de Tarefas array
+let listaTarefasArray = [];
+
+const botaoAddtarefa = document.getElementById("btnAddTarefa");
+
+botaoAddtarefa.addEventListener("click", (evento)=>{
+
+    evento.preventDefault();
+
+    const inputTarefa = document.getElementById("idTarefa");
+
+    listaTarefasArray.push(inputTarefa.value);
+
+    const listaTarefasUL = document.getElementById("lista-tarefas");
+
+    let li = document.createElement("li");
+
+    li.textContent = inputTarefa.value;
+
+    listaTarefasUL.appendChild(li);
+    
+    let botaoExcluir = document.createElement("button");
+
+    botaoExcluir.textContent = " x ";
+
+    li.appendChild(botaoExcluir);
+
+    botaoExcluir.addEventListener("click",(evt)=>{
+
+        let conteudoDoLi = evt.target.parentNode.textContent.split(" ");
+        console.log(conteudoDoLi);
+
+        let index = listaTarefasArray.indexOf(conteudoDoLi[0]);
+
+        listaTarefasArray.splice(index,1);
+
+        evt.target.parentNode.remove();
+
+        console.log(listaTarefasArray);
+
+    })
+
+    inputTarefa.value = "";
+    console.log(listaTarefasArray);
+});
