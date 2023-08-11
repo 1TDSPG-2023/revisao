@@ -1,3 +1,25 @@
+// //Criando um array de objetos de cursos de tecnologia:
+// let cursos = [
+//     { nome: "Curso de JavaScript", duracao: 40},
+//     {nome: "Curso de HTML", duracao: 20},
+//     {nome: "Curso de CSS", duracao: 30},
+//     {nome: "Curso de React", duracao: 50},
+//     {nome: "Curso de Node", duracao: 60},
+//     {nome: "Curso de Python", duracao: 70}
+// ];
+
+// //Imprimindo o array de objetos no console com o método map:
+// let cursosNomes = cursos.map((curso,indice,lista) => {
+
+//     console.log(`O elemento ${curso.nome} está na posição ${indice} de uma lista de tamanho  ${lista.length}.`);
+//     return curso.nome;
+// });
+// //Quebrando linha no console:
+// console.log("\n");
+
+// //Imprimindo o array de nomes de cursos no console:
+// console.log(cursosNomes);
+
 //Criando um array de objetos de cursos de tecnologia:
 let cursos = [
     { nome: "Curso de JavaScript", duracao: 40},
@@ -8,17 +30,15 @@ let cursos = [
     {nome: "Curso de Python", duracao: 70}
 ];
 
-//Imprimindo o array de objetos no console com o método map:
-let cursosNomes = cursos.map((curso,indice,lista) => {
-
-    console.log(`O elemento ${curso.nome} está na posição ${indice} de uma lista de tamanho  ${lista.length}.`);
-    return curso.nome;
-});
+let cursosComDuracaoMaiorQue50 = cursos.filter((curso) => curso.duracao <= 50);
+//Imprimindo o array de cursos com duração maior que 50 horas:
+console.log(cursosComDuracaoMaiorQue50);
 //Quebrando linha no console:
 console.log("\n");
 
-//Imprimindo o array de nomes de cursos no console:
-console.log(cursosNomes);
+
+
+
 
 //Criar a lista de Tarefas array
 let listaTarefasArray = [];
