@@ -137,6 +137,24 @@ botaoAddtarefa.addEventListener("click", (evento)=>{
 // //Quebrando linha no console
 // console.log("\n")
 
+// let cursos = [
+
+//     {nome: "Curso de JavaScript", duracao: 40},
+//     {nome: "Curso de HTML", duracao: 20},
+//     {nome: "Curso de CSS", duracao: 30},
+//     {nome: "Curso de React", duracao: 50},
+//     {nome: "Curso de Node", duracao: 60},
+//     {nome: "Curso de Python", duracao: 70}
+
+// ];
+
+// // Buscando ocorrencia de curso com duraçao maior que 50 horas com find:
+// let cursoComDuracaoMaiorQue50 = cursos.find((curso) => curso.duracao > 50); // Ele para no primeiro que encontrar
+// // Imprimindo o resultado
+// console.log(cursoComDuracaoMaiorQue50);
+// //Quebrando linha no console
+// console.log("\n")
+
 let cursos = [
 
     {nome: "Curso de JavaScript", duracao: 40},
@@ -148,9 +166,9 @@ let cursos = [
 
 ];
 
-// Buscando ocorrencia de curso com duraçao maior que 50 horas com find:
-let cursoComDuracaoMaiorQue50 = cursos.find((curso) => curso.duracao > 50); // Ele para no primeiro que encontrar
+// Buscando ocorrencias de cursos com includes utilizando o filter:
+let cursosBuscados = cursos.filter((curso) => curso.nome.includes("t")); // ele busca exatamente oque esta entre as aspas - é case sensitive
 // Imprimindo o resultado
-console.log(cursoComDuracaoMaiorQue50);
+console.log(cursosBuscados);
 //Quebrando linha no console
 console.log("\n")
