@@ -61,8 +61,6 @@ function verificarTecla(event) {
 
 document.getElementById("tarefaInput").addEventListener("keydown", verificarTecla);
 
-console.log(tarefas);
-
 
 let cursos = [
   {nome: "HTML", duracao: 40},
@@ -100,8 +98,40 @@ let cursos = [
 
 // // =========================================================================
 
-let totalHorasMaiorQue50 = cursos.filter((curso) => curso.duracao > 50).reduce((total, curso) => total + curso.duracao, 0);
+// let totalHorasMaiorQue50 = cursos.filter((curso) => curso.duracao > 50).reduce((total, curso) => total + curso.duracao, 0);
 
-console.log(totalHorasMaiorQue50);
+// console.log(totalHorasMaiorQue50);
+
+// console.log("\n");
+
+// // =========================================================================
+
+// let todosTemQueSerMaiorQue50 = cursos.every((curso) => curso.duracao >= 50);
+
+// console.log(todosTemQueSerMaiorQue50);
+
+// console.log("\n");
+
+// // =========================================================================
+
+// let algumTemQueSerMaiorQue50 = cursos.some((curso) => curso.duracao >= 50);
+
+// console.log(algumTemQueSerMaiorQue50);
+
+// console.log("\n");
+
+// // =========================================================================
+
+// let cursoComDuracaoMaiorQue50 = cursos.find((curso) => curso.duracao > 50);
+
+// console.log(cursoComDuracaoMaiorQue50);
+
+// console.log("\n");
+
+// // =========================================================================
+
+let cursosBuscados = cursos.filter((curso) => curso.nome.includes("CSS"));
+
+console.log(cursosBuscados);
 
 console.log("\n");
