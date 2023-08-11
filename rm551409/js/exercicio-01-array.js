@@ -1,32 +1,45 @@
-const tarefas = [];
+//Criar a lista de Tarefas array
+let listaTarefasArray = [];
 
-const ul = document.createElement("ul");
-const boxTarefas = document.getElementById("tarefas");
-boxTarefas.appendChild(ul);
+const botaoAddtarefa = document.getElementById("btnAddTarefa");
 
-function cadastrarTarefa(){ 
+botaoAddtarefa.addEventListener("click", (evento)=>{
+
+    evento.preventDefault();
+
+    const inputTarefa = document.getElementById("idTarefa");
+
+    listaTarefasArray.push(inputTarefa.value);
+
+    const listaTarefasUL = document.getElementById("lista-tarefas");
+
+    let li = document.createElement("li");
+
+    li.textContent = inputTarefa.value;
+
+    listaTarefasUL.appendChild(li);
     
-    const nomeTarefa = document.getElementById("idTarefa").value;
-    const novaTarefa = {"Tarefa":nomeTarefa};
+    let botaoExcluir = document.createElement("button");
 
-    tarefas.push(novaTarefa);
-    const li = document.createElement("li");
+    botaoExcluir.textContent = " x ";
 
-    const btnExcluir = document.createElement("button");
-    btnExcluir.textContent = "x";
-    btnExcluir.setAttribute("class","btnExcluir");
+    li.appendChild(botaoExcluir);
 
-    li.id = `tarefas-${tarefas.length}`;
-    li.textContent = `${nomeTarefa}`;
-    ul.appendChild(li);
-    li.setAttribute("class","tarefas");
-    
-    li.appendChild(btnExcluir);
-    btnExcluir.addEventListener("click",(evt)=>{
+    botaoExcluir.addEventListener("click",(evt)=>{
 
-        ul.removeChild(evt.target.parentNode);
+        let conteudoDoLi = evt.target.parentNode.textContent.split(" ");
+        console.log(conteudoDoLi);
 
-    });
-    
-    console.log(tarefas);
-}
+        let index = listaTarefasArray.indexOf(conteudoDoLi[0]);
+
+        listaTarefasArray.splice(index,1);
+
+        evt.target.parentNode.remove();
+
+        console.log(listaTarefasArray);
+
+    })
+
+    inputTarefa.value = "";
+    console.log(listaTarefasArray);
+});
