@@ -70,7 +70,32 @@
 // console.log("\n");
 
 
-//Criando um array de objetos de cursos de tecnologia:
+// //Criando um array de objetos de cursos de tecnologia:
+// let cursos = [
+//     { nome: "Curso de JavaScript", duracao: 40},
+//     {nome: "Curso de HTML", duracao: 20},
+//     {nome: "Curso de CSS", duracao: 30},
+//     {nome: "Curso de React", duracao: 50},
+//     {nome: "Curso de Node", duracao: 60},
+//     {nome: "Curso de Python", duracao: 70}
+// ];
+
+// //Verificando se existe algum curso com duração menor que 30 horas:
+// let todosTemQueSerMaiorOuIgualQue30 = cursos.every((curso) => curso.duracao >= 30);
+// //Imprimindo o resultado:
+// console.log(todosTemQueSerMaiorOuIgualQue30);
+// //Quebrando linha no console:
+// console.log("\n");
+
+// //Verificando se existe algum curso com duração maior que 30 horas:
+// let algumTemQueSerMaiorQue30 = cursos.some((curso) => curso.duracao > 30);
+// //Imprimindo o resultado:
+// console.log(algumTemQueSerMaiorQue30);
+// //Quebrando linha no console:
+// console.log("\n");
+
+
+// //Criando um array de objetos de cursos de tecnologia:
 let cursos = [
     { nome: "Curso de JavaScript", duracao: 40},
     {nome: "Curso de HTML", duracao: 20},
@@ -79,6 +104,10 @@ let cursos = [
     {nome: "Curso de Node", duracao: 60},
     {nome: "Curso de Python", duracao: 70}
 ];
+
+
+
+
 
 
 //Criar a lista de Tarefas array
