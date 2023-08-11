@@ -155,20 +155,66 @@ botaoAddtarefa.addEventListener("click", (evento)=>{
 // //Quebrando linha no console
 // console.log("\n")
 
-let cursos = [
+// let cursos = [
 
-    {nome: "Curso de JavaScript", duracao: 40},
-    {nome: "Curso de HTML", duracao: 20},
-    {nome: "Curso de CSS", duracao: 30},
-    {nome: "Curso de React", duracao: 50},
-    {nome: "Curso de Node", duracao: 60},
-    {nome: "Curso de Python", duracao: 70}
+//     {nome: "Curso de JavaScript", duracao: 40},
+//     {nome: "Curso de HTML", duracao: 20},
+//     {nome: "Curso de CSS", duracao: 30},
+//     {nome: "Curso de React", duracao: 50},
+//     {nome: "Curso de Node", duracao: 60},
+//     {nome: "Curso de Python", duracao: 70}
 
-];
+// ];
 
-// Buscando ocorrencias de cursos com includes utilizando o filter:
-let cursosBuscados = cursos.filter((curso) => curso.nome.includes("t")); // ele busca exatamente oque esta entre as aspas - é case sensitive
-// Imprimindo o resultado
-console.log(cursosBuscados);
-//Quebrando linha no console
-console.log("\n")
+// // Buscando ocorrencias de cursos com includes utilizando o filter:
+// let cursosBuscados = cursos.filter((curso) => curso.nome.includes("t")); // ele busca exatamente oque esta entre as aspas - é case sensitive
+// // Imprimindo o resultado
+// console.log(cursosBuscados);
+// //Quebrando linha no console
+// console.log("\n")
+
+
+
+
+
+// Criando um objeto Pessoa:
+let pessoa = {
+    nome: "Pedro",
+    idade: 21,
+    genero: "M",
+    altura: 1.84,
+    peso: 70,
+    andar: function(){
+        console.log("Andando...");
+    },
+    getNome: function(){
+        return this.nome;
+    },
+    setNome: function(novoNome){
+        this.nome = novoNome;
+    }
+};
+
+// console.log(pessoa.getNome());
+// pessoa.setNome("Joao");
+// console.log(pessoa.getNome());
+
+// Imprimindo o objeto pessoa
+console.log(pessoa);
+console.log("\n");
+
+// Criando um novo objeto Pessoa com Spread Operator( ... ): usado para alterar dados de um objeto
+let pessoa2 = {...pessoa, nome: "Maria", idade: 30, genero: "F"};
+console.log(pessoa2);
+
+
+// // Criando um novo objeto Pessoa com Rest Operator:
+// const{nome, altura, peso, ...resto} = pessoa;
+// //imprimindo o objeto:
+// console.log(nome, altura, peso, resto);
+
+
+// Exemplo de desestruturação do objeto:
+const{nome, idade, genero, altura, peso} = pessoa;
+//Imprimindo o objeto:
+console.log(nome, idade, genero, altura, peso);
