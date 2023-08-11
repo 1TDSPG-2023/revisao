@@ -112,6 +112,31 @@ botaoAddtarefa.addEventListener("click", (evento)=>{
 // let totalHorasMaiorQue50 = cursos.filter((curso) => curso.duracao > 50).reduce((total, curso) => total + curso.duracao, 0);
 // console.log(totalHorasMaiorQue50);
 
+// let cursos = [
+
+//     {nome: "Curso de JavaScript", duracao: 40},
+//     {nome: "Curso de HTML", duracao: 20},
+//     {nome: "Curso de CSS", duracao: 30},
+//     {nome: "Curso de React", duracao: 50},
+//     {nome: "Curso de Node", duracao: 60},
+//     {nome: "Curso de Python", duracao: 70}
+
+// ];
+
+// // Verificando se existe algum curso com duração menor que 30 horas:
+// let existeCursoComDuracaoMenorQue30 = cursos.every((curso) => curso.duracao >= 30); // se alguma for falsa o retorno dele é false, ou seja todos tem que ser verdadeiros
+// // Imprimindo o resultado
+// console.log(existeCursoComDuracaoMenorQue30);
+// //Quebrando linha no console
+// console.log("\n")
+
+// // Verificando se existe algum curso com duração menor que 30 horas:
+// let algumCursoComDuracaoMenorQue30 = cursos.some((curso) => curso.duracao >= 30); // se alguma for verdadeiro o retorno dele é verdadeiro, ou seja apenas um precisa ser verdadeiro
+// // Imprimindo o resultado
+// console.log(algumCursoComDuracaoMenorQue30);
+// //Quebrando linha no console
+// console.log("\n")
+
 let cursos = [
 
     {nome: "Curso de JavaScript", duracao: 40},
@@ -123,16 +148,9 @@ let cursos = [
 
 ];
 
-// Verificando se existe algum curso com duração menor que 30 horas:
-let existeCursoComDuracaoMenorQue30 = cursos.every((curso) => curso.duracao >= 30); // se alguma for falsa o retorno dele é false, ou seja todos tem que ser verdadeiros
+// Buscando ocorrencia de curso com duraçao maior que 50 horas com find:
+let cursoComDuracaoMaiorQue50 = cursos.find((curso) => curso.duracao > 50); // Ele para no primeiro que encontrar
 // Imprimindo o resultado
-console.log(existeCursoComDuracaoMenorQue30);
-//Quebrando linha no console
-console.log("\n")
-
-// Verificando se existe algum curso com duração menor que 30 horas:
-let algumCursoComDuracaoMenorQue30 = cursos.some((curso) => curso.duracao >= 30); // se alguma for verdadeiro o retorno dele é verdadeiro, ou seja apenas um precisa ser verdadeiro
-// Imprimindo o resultado
-console.log(algumCursoComDuracaoMenorQue30);
+console.log(cursoComDuracaoMaiorQue50);
 //Quebrando linha no console
 console.log("\n")
