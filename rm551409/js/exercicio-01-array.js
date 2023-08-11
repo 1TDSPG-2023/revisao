@@ -45,15 +45,15 @@ botaoAddtarefa.addEventListener("click", (evento)=>{
 });
 
 // Criando um array de objetos de cursos de tecnologia: 
-let cursos = [
+// let cursos = [
 
-        {nome: "Curso de JavaScript", duracao: 40},
-        {nome: "Curso de HTML", duracao: 20},
-        {nome: "Curso de CSS", duracao: 30},
-        {nome: "Curso de React", duracao: 50},
-        {nome: "Curso de Node", duracao: 60},
-        {nome: "Curso de Python", duracao: 70}
-];
+//         {nome: "Curso de JavaScript", duracao: 40},
+//         {nome: "Curso de HTML", duracao: 20},
+//         {nome: "Curso de CSS", duracao: 30},
+//         {nome: "Curso de React", duracao: 50},
+//         {nome: "Curso de Node", duracao: 60},
+//         {nome: "Curso de Python", duracao: 70}
+// ];
 
 // // Imprimindo o array de objetos no console com o método map:
 // // A ordem do map sempre sera essa map(nome do quero buscar na lista, indice, lista)
@@ -67,10 +67,47 @@ let cursos = [
 // // Imprimindo o array de nomes de cursos no console:
 // console.log(cursosNomes);
 
+// let cursos = [
 
-// Exemplificando o .filter
-let cursosComDuracaoMaiorQue50 = cursos.filter((curso) => curso.duracao >= 50);
-// Imprimindo o array de cusos com duração maior que 50 horas:
-console.log(cursosComDuracaoMaiorQue50);
+//     {nome: "Curso de JavaScript", duracao: 40},
+//     {nome: "Curso de HTML", duracao: 20},
+//     {nome: "Curso de CSS", duracao: 30},
+//     {nome: "Curso de React", duracao: 50},
+//     {nome: "Curso de Node", duracao: 60},
+//     {nome: "Curso de Python", duracao: 70}
+// ];
+
+
+// // Exemplificando o .filter -> filtra alguma informaçao do array
+// let cursosComDuracaoMaiorQue50 = cursos.filter((curso) => curso.duracao >= 50);
+// // Imprimindo o array de cusos com duração maior que 50 horas:
+// console.log(cursosComDuracaoMaiorQue50);
+// //Quebrando linha no console:
+// console.log("\n");
+
+
+let cursos = [
+
+    {nome: "Curso de JavaScript", duracao: 40},
+    {nome: "Curso de HTML", duracao: 20},
+    {nome: "Curso de CSS", duracao: 30},
+    {nome: "Curso de React", duracao: 50},
+    {nome: "Curso de Node", duracao: 60},
+    {nome: "Curso de Python", duracao: 70}
+
+];
+
+// Quero saber a quantidade total de horas de todos os cursos
+// Exemplificando o reduce
+let totalHoras = cursos.reduce((total,curso) => total + curso.duracao, 0);
+// Imprimindo o total de Horas
+console.log(totalHoras);
 //Quebrando linha no console:
 console.log("\n");
+
+// Quero saber a quantidade total de horas de todos os cursos com duração maior que 50 horas
+// let cursosComDuracaoMaiorQue50 = cursos.filter((curso) => curso.duracao > 50);
+// let totalHorasMaiorQue50 = cursosComDuracaoMaiorQue50.reduce((total,curso) => total + curso.duracao, 0);
+// console.log(totalHorasMaiorQue50);
+let totalHorasMaiorQue50 = cursos.filter((curso) => curso.duracao > 50).reduce((total, curso) => total + curso.duracao, 0);
+console.log(totalHorasMaiorQue50);
