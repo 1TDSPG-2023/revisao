@@ -86,6 +86,32 @@ botaoAddtarefa.addEventListener("click", (evento)=>{
 // console.log("\n");
 
 
+// let cursos = [
+
+//     {nome: "Curso de JavaScript", duracao: 40},
+//     {nome: "Curso de HTML", duracao: 20},
+//     {nome: "Curso de CSS", duracao: 30},
+//     {nome: "Curso de React", duracao: 50},
+//     {nome: "Curso de Node", duracao: 60},
+//     {nome: "Curso de Python", duracao: 70}
+
+// ];
+
+// // Quero saber a quantidade total de horas de todos os cursos
+// // Exemplificando o reduce
+// let totalHoras = cursos.reduce((total,curso) => total + curso.duracao, 0);
+// // Imprimindo o total de Horas
+// console.log(totalHoras);
+// //Quebrando linha no console:
+// console.log("\n");
+
+// // Quero saber a quantidade total de horas de todos os cursos com duração maior que 50 horas
+// // let cursosComDuracaoMaiorQue50 = cursos.filter((curso) => curso.duracao > 50);
+// // let totalHorasMaiorQue50 = cursosComDuracaoMaiorQue50.reduce((total,curso) => total + curso.duracao, 0);
+// // console.log(totalHorasMaiorQue50);
+// let totalHorasMaiorQue50 = cursos.filter((curso) => curso.duracao > 50).reduce((total, curso) => total + curso.duracao, 0);
+// console.log(totalHorasMaiorQue50);
+
 let cursos = [
 
     {nome: "Curso de JavaScript", duracao: 40},
@@ -97,17 +123,16 @@ let cursos = [
 
 ];
 
-// Quero saber a quantidade total de horas de todos os cursos
-// Exemplificando o reduce
-let totalHoras = cursos.reduce((total,curso) => total + curso.duracao, 0);
-// Imprimindo o total de Horas
-console.log(totalHoras);
-//Quebrando linha no console:
-console.log("\n");
+// Verificando se existe algum curso com duração menor que 30 horas:
+let existeCursoComDuracaoMenorQue30 = cursos.every((curso) => curso.duracao >= 30); // se alguma for falsa o retorno dele é false, ou seja todos tem que ser verdadeiros
+// Imprimindo o resultado
+console.log(existeCursoComDuracaoMenorQue30);
+//Quebrando linha no console
+console.log("\n")
 
-// Quero saber a quantidade total de horas de todos os cursos com duração maior que 50 horas
-// let cursosComDuracaoMaiorQue50 = cursos.filter((curso) => curso.duracao > 50);
-// let totalHorasMaiorQue50 = cursosComDuracaoMaiorQue50.reduce((total,curso) => total + curso.duracao, 0);
-// console.log(totalHorasMaiorQue50);
-let totalHorasMaiorQue50 = cursos.filter((curso) => curso.duracao > 50).reduce((total, curso) => total + curso.duracao, 0);
-console.log(totalHorasMaiorQue50);
+// Verificando se existe algum curso com duração menor que 30 horas:
+let algumCursoComDuracaoMenorQue30 = cursos.some((curso) => curso.duracao >= 30); // se alguma for verdadeiro o retorno dele é verdadeiro, ou seja apenas um precisa ser verdadeiro
+// Imprimindo o resultado
+console.log(algumCursoComDuracaoMenorQue30);
+//Quebrando linha no console
+console.log("\n")
