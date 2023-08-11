@@ -96,14 +96,14 @@
 
 
 // //Criando um array de objetos de cursos de tecnologia:
-let cursos = [
-    { nome: "Curso de JavaScript", duracao: 40},
-    {nome: "Curso de HTML", duracao: 20},
-    {nome: "Curso de CSS", duracao: 30},
-    {nome: "Curso de React", duracao: 50},
-    {nome: "Curso de Node", duracao: 60},
-    {nome: "Curso de Python", duracao: 70}
-];
+// let cursos = [
+//     { nome: "Curso de JavaScript", duracao: 40},
+//     {nome: "Curso de HTML", duracao: 20},
+//     {nome: "Curso de CSS", duracao: 30},
+//     {nome: "Curso de React", duracao: 50},
+//     {nome: "Curso de Node", duracao: 60},
+//     {nome: "Curso de Python", duracao: 70}
+// ];
 
 // //Buscando ocorrências de cursos com duração maior que 50 horas com find:
 // let cursoComDuracaoMaiorQue50 = cursos.find((curso) => curso.duracao > 50);
@@ -120,6 +120,47 @@ let cursos = [
 // console.log("\n");
 
 
+//Criando um objeto Pessoa:
+let pessoa = {
+    nome: "João",
+    idade: 25,
+    genero: "M",
+    altura: 1.75,
+    peso: 80,
+    andar: function(){
+        console.log("Andando...");
+    },
+    getNome: function(){
+        return this.nome;
+    },
+    setNome: function(novoNome){
+        this.nome = novoNome;
+    }
+};
+
+//Imprimindo o objeto:
+console.log(pessoa);
+//Quebrando linha no console:
+console.log("\n");  
+
+// //Criando um novo objeto Pessoa com Spread Operator:
+// let pessoa2 = {...pessoa,nome: "Maria", idade: 30, genero: "F"};
+// //Imprimindo o objeto:
+// console.log(pessoa2);
+// //Quebrando linha no console:
+// console.log("\n");
+
+//Criando um novo objeto Pessoa com Rest Operator:
+// const{nome, altura, peso, ...resto} = pessoa;
+// //Imprimindo o objeto:
+// console.log(nome, altura, peso, resto);
+
+//Exemplo de desestruturação de objeto:
+ const{nome, idade, genero, altura, peso} = pessoa;
+//Imprimindo o objeto:
+console.log(nome, idade, genero, altura, peso);
+//Quebrando linha no console:
+console.log("\n");
 
 
 //Criar a lista de Tarefas array
