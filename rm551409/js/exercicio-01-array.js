@@ -43,3 +43,25 @@ botaoAddtarefa.addEventListener("click", (evento)=>{
     inputTarefa.value = "";
     console.log(listaTarefasArray);
 });
+
+// Criando um array de objetos de cursos de tecnologia: 
+let cursos = [
+
+        {nome: "Curso de JavaScript", duracao: 40},
+        {nome: "Curso de HTML", duracao: 20},
+        {nome: "Curso de CSS", duracao: 30},
+        {nome: "Curso de React", duracao: 50},
+        {nome: "Curso de Node", duracao: 60},
+        {nome: "Curso de Python", duracao: 70}
+];
+
+// Imprimindo o array de objetos no console com o método map:
+let cursosNomes = cursos.map(((curso, indice, lista) => {
+    console.log(`Este é o elemento ${curso.nome} e está na posição [${indice}] em uma lista de tamanho ${lista.length}.`);
+    return curso.nome;
+}));
+//Quebrando linha no console:
+console.log("\n");
+
+// Imprimindo o array de nomes de cursos no console:
+console.log(cursosNomes);
