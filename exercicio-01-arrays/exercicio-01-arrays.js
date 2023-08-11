@@ -1,10 +1,10 @@
 const tarefas = [];
 
 function adicionarTarefa() {
-    const novaTarefa = document.getElementById("tarefaInput").value;
-    tarefas.push(novaTarefa);
-    atualizarListaTarefas();
-    document.getElementById("tarefaInput").value = "";
+  const novaTarefa = document.getElementById("tarefaInput").value;
+  tarefas.push(novaTarefa);
+  atualizarListaTarefas();
+  document.getElementById("tarefaInput").value = "";
 }
 
 function atualizarListaTarefas() {
@@ -53,11 +53,55 @@ function removerUltimoTarefa() {
 }
 
 function verificarTecla(event) {
-    if (event.key === "Enter") {
-      adicionarTarefa();
-      event.preventDefault();
-    }
+  if (event.key === "Enter") {
+    adicionarTarefa();
+    event.preventDefault();
   }
-  
-  document.getElementById("tarefaInput").addEventListener("keydown", verificarTecla);
+}
 
+document.getElementById("tarefaInput").addEventListener("keydown", verificarTecla);
+
+console.log(tarefas);
+
+
+let cursos = [
+  {nome: "HTML", duracao: 40},
+  {nome: "CSS", duracao: 50},
+  {nome: "JavaScript", duracao: 60},
+  {nome: "React", duracao: 70},
+  {nome: "Node", duracao: 80}
+];
+
+
+// let cursosNomes = cursos.map((curso,indice,lista) => {
+//   console.log(`O elemento curso de ${curso.nome} está na posição ${indice} de uma lista com tamanho ${lista.length}`);
+//   return curso.nome;
+// });
+
+// console.log("\n");
+
+// console.log(cursosNomes);
+
+// // =========================================================================
+
+// let cursosComDuracaoMaiorQue50 = cursos.filter((curso) => curso.duracao > 50);
+
+// console.log(cursosComDuracaoMaiorQue50);
+
+// console.log("\n");
+
+// // =========================================================================
+
+// let totalHoras = cursos.reduce((total, curso) => total + curso.duracao, 0);
+
+// console.log(totalHoras);
+
+// console.log("\n");
+
+// // =========================================================================
+
+let totalHorasMaiorQue50 = cursos.filter((curso) => curso.duracao > 50).reduce((total, curso) => total + curso.duracao, 0);
+
+console.log(totalHorasMaiorQue50);
+
+console.log("\n");
