@@ -105,7 +105,19 @@ let cursos = [
     {nome: "Curso de Python", duracao: 70}
 ];
 
+// //Buscando ocorrências de cursos com duração maior que 50 horas com find:
+// let cursoComDuracaoMaiorQue50 = cursos.find((curso) => curso.duracao > 50);
+// //Imprimindo o resultado:
+// console.log(cursoComDuracaoMaiorQue50);
+// //Quebrando linha no console:
+// console.log("\n");
 
+// //Buscando ocorrências de cursos com includes utilizando o filter:
+// let cursosBuscados = cursos.filter((curso) => curso.nome.includes("c"));
+// //Imprimindo o resultado:
+// console.log(cursosBuscados);
+// //Quebrando linha no console:
+// console.log("\n");
 
 
 
