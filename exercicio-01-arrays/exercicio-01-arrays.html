@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jaci - RM99627</title>
     <script src="./js/exercicio-01-arrays.js" defer></script>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body> 
     <header>
@@ -12,17 +13,46 @@
     </header>
     
     <div class="pai" id="div-pai">
-        <form id="formulario" action="">
+        <div class="exercicio1">
+            <form id="formularioTarefa" action="">
+                <fieldset>
+                    <div id="form_exercicio1">
+                        <label for="inputTarefa">Insira uma tarefa</label>
+                        <input type="text" id="inputTarefa" placeholder="Digite a tarefa...">
+                        <label for="textareaTarefa">Descrição</label>
+                        <textarea name="" id="textareaTarefa" placeholder="Descrição" cols="20" rows="5"></textarea>
+                        <label for="inputAutorTarefa">Autor</label>
+                        <input type="text" id="inputAutorTarefa" placeholder="Autor">
+                        <label for="inputDepartamento">Departamento</label>
+                        <input type="text" id="inputDepartamento">
+                        <label for="inputImportancia">Importancia</label>
+                        <input type="text" id="importancia" placeholder="Importancia da tarefa">
+                        <button type="button" id="botaoAdicionarTarefa">Adicionar</button>
+                    </div>
+                    
+                </fieldset>
+            </form>
+            <ul id="listaDeTarefas">
+
+            </ul>
+        </div><!-- exercicio1 -->
+
+        <div class="exercicio2">
             <fieldset>
-                <label for="inputTarefa">Insira uma tarefa</label>
-                <input type="text" id="inputTarefa" placeholder="Digite a tarefa...">
-
-                <button type="button" id="botaoAdicionarTarefa">Adicionar</button>
+                <form action="" class="salarios" id="salarios">
+                    <h2>Salarios</h2>
+                    <input style="display: none;" type="text" id="inputSalario">
+                    <label for="inputSalario"></label>
+                    <button style="display:none;" id="adicionarSalario">Adicionar</button>
+                </form>
+                <button style="margin-top:5px;" type="button"  id="reajustar">Reajustar salarios</button>
+                <ul id="listaDeSalarios">
+                    
+                </ul>
             </fieldset>
-        </form>
-        <ul id="listaDeTarefas">
-
-        </ul>
+            
+        </div>
+        
     </div><!--pai-->
 
 </body>
