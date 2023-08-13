@@ -4,21 +4,38 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script src="./js/exercicio-03-arrays.js" defer></script>
-        <link rel="stylesheet" href="./css/exercicio-01-arrays.css" />
+        <link rel="stylesheet" href="./css/exercicio-03-arrays.css" />
         <title>Cauã Rojas - rm98638</title>
     </head>
     <body>
         <main>
             <form>
-                <label for="txtTarefa">Insira sua tarefa:</label>
-                <input name="txtTarefa" id="txtTarefa" type="text" />
-                <button type="submit">Enviar</button>
+                <fieldset>
+                    <legend>Tarefas</legend>
+                    <label for="txtTarefa">Insira sua tarefa:</label>
+                    <input name="txtTarefa" id="txtTarefa" type="text" required />
+                    <label for="txtDescricao">Descrição: </label>
+                    <!-- cspeLL:ignore Descricao -->
+                    <textarea name="txtDescricao" id="txtDescricao" cols="30" rows="3" required></textarea>
+                    <label for="txtAutor">Autor: </label>
+                    <input name="txtAutor" id="txtAutor" type="text" required/>
+                    <label for="txtDepartamento">Departamento: </label>
+                    <input name="txtDepartamento" id="txtDepartamento" type="text" required />
+                    <label for="txtImportancia">Nível de Importância: </label>
+                    <!-- cspeLL:ignore Importancia -->
+                    <input name="txtImportancia" id="txtImportancia" type="number" required />
+                    <label for="txtValor">Valor: </label>
+                    <input name="txtValor" id="txtValor" type="number" />
+                    <label for="txtDuracao">Duração (Dias): </label>
+                    <!-- cspell:ignore Duracao -->
+                    <input name="txtDuracao" id="txtDuracao" type="number" />
+                    <button type="submit">Enviar</button>
+                </fieldset>
             </form>
             <div class="tarefas">
                 <h2>Tarefas:</h2>
                 <ul class="lista-tarefas"></ul>
             </div>
-            <span>Dica: Clique duas vezes na tarefa para excluir-la</span>
         </main>
     </body>
 </html>

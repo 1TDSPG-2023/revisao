@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-family: monospace;
+}
+main {
+    padding: 0.25rem;
+}
+label:has(+ input:required)::after,
+label:has(+ textarea:required)::after {
+    content: " *";
+    color: red;
+}
+fieldset {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-gap: 0.25rem;
+}
+
+button[type="submit"] {
+    grid-column: 1 / -1;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+label {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+}
