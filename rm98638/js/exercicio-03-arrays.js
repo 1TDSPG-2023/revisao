@@ -86,24 +86,18 @@ const changeForm = () => {
     }
 }
 form.addEventListener('submit', e => {
-    let requiredFieldsNotFilled = false
-    ;[...form[0].children].forEach(child => {
-        if (
-            child.required === true &&
-            child.value === '' &&
-            child.classList.contains('hidden') === false
-        ) {
-            requiredFieldsNotFilled = true
-            child.classList.add('error')
-        } else {
-            child.classList.remove('error')
+    e.preventDefault()
+    for (const child of [...form[0].children]) {
+        if (child.tagName == 'INPUT' || child.tagName == 'TEXTAREA') {
+            if (!child.classList.contains('hidden')) {
+                if (!child.checkValidity()) {
+                    child.reportValidity()
+                    return
+                }
+            }
         }
-    })
-    if (requiredFieldsNotFilled) {
-        e.preventDefault()
-        alert('Preencha todos os campos obrigatórios')
-        return
     }
+
     const formData = new FormData(e.target)
     const task = {}
     for (const key of formData.keys()) {
@@ -126,7 +120,6 @@ form.addEventListener('submit', e => {
         populateList(priorityTasks)
     }
     form.reset()
-    e.preventDefault()
 })
 for (const radioButton of radioButtons) {
     radioButton.addEventListener('click', () => {
