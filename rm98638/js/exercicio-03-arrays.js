@@ -1,8 +1,12 @@
-const form = document.querySelector("form");
-const input = document.querySelector("input");
-const list = document.querySelector("ul");
-let tasks = [];
-let backupTasks = [];
+const form = document.querySelector('form')
+const input = document.querySelector('input')
+const list = document.querySelector('ul')
+const radioButtons = document.querySelectorAll('input[type=radio]')
+let formHtml = ''
+let tasks = []
+let priorityTasks = []
+let listaNormal = false
+
 // cspell:ignore duracao, importancia, descricao, concluida
 /*
 Tasks Keys:
@@ -15,45 +19,123 @@ Tasks Keys:
     concluida
     valor (opcional)
 */
-const createTask = (taskData) => {
-    const task = document.createElement("li");
+
+const createTask = taskData => {
+    const task = document.createElement('li')
     const taskString = `Autor: ${taskData.autor} - Tarefa: ${
         taskData.tarefa
     } - Importância Nível ${taskData.importancia} - Departamento: ${
         taskData.departamento
     } - Descrição: ${taskData.descricao}
-    ${taskData.duracao ? ` - ${taskData.duracao} Dias` : ""}${
-        taskData.valor ? ` - ${taskData.valor}R$` : ""
-    }`;
-    task.textContent = taskString;
-    task.addEventListener("dblclick", () => {
-        task.classList.toggle("concluida");
-    });
-    const removeButton = document.createElement("button");
-    removeButton.textContent = "Remover";
+    ${taskData.duracao ? ` - ${taskData.duracao} Dias` : ''}${
+        taskData.valor ? ` - ${taskData.valor}R$` : ''
+    }`
+    task.textContent = taskString
+    task.addEventListener('dblclick', () => {
+        task.classList.toggle('concluida')
+    })
+    const removeButton = document.createElement('button')
+    removeButton.textContent = 'Remover'
     const removeEvent = () => {
-        tasks = tasks.filter((task) => task !== taskData);
-        populateList(tasks);
-    };
-    removeButton.addEventListener("click", removeEvent);
-    task.appendChild(removeButton);
-    return task;
-};
-const populateList = (tasks) => {
-    list.innerHTML = "";
-    tasks.forEach((task) => {
-        list.appendChild(createTask(task));
-    });
-};
-form.addEventListener("submit", (e) => {
-    const formData = new FormData(e.target);
-    const task = {};
-    for (const key of formData.keys()) {
-        let keyName = key.replace("txt", "").toLowerCase();
-        task[keyName] = formData.get(key);
+        tasks = tasks.filter(task => task !== taskData)
+        populateList(tasks)
     }
-    task["concluida"] = false;
-    tasks.push(task);
-    populateList(tasks);
-    e.preventDefault();
-});
+    removeButton.addEventListener('click', removeEvent)
+    task.appendChild(removeButton)
+    return task
+}
+const createPriorityTask = taskData => {
+    const task = document.createElement('li')
+    const taskString = `${taskData.importancia} - ${taskData.descricao}`
+    task.textContent = taskString
+    task.addEventListener('dblclick', () => {
+        task.classList.toggle('concluida')
+    })
+    const removeButton = document.createElement('button')
+    removeButton.textContent = 'Remover'
+    const removeEvent = () => {
+        priorityTasks = priorityTasks.filter(task => task !== taskData)
+        populateList(priorityTasks)
+    }
+    removeButton.addEventListener('click', removeEvent)
+    task.appendChild(removeButton)
+    return task
+}
+const populateList = tasks => {
+    list.innerHTML = ''
+    tasks.forEach(task => {
+        list.appendChild(
+            listaNormal ? createTask(task) : createPriorityTask(task)
+        )
+    })
+}
+const changeForm = () => {
+    const fieldset = form[0]
+    if (listaNormal) {
+        fieldset.children[0].textContent = 'Lista Normal'
+        ;[...fieldset.children].forEach(child => {
+            child.classList.remove('hidden')
+        })
+    } else {
+        fieldset.children[0].textContent = 'Lista de Prioridades'
+        ;[...fieldset.children].forEach(child => {
+            if (!(child.dataset.priority === '')) {
+                child.classList.add('hidden')
+            }
+        })
+    }
+}
+form.addEventListener('submit', e => {
+    let requiredFieldsNotFilled = false
+    ;[...form[0].children].forEach(child => {
+        if (
+            child.required === true &&
+            child.value === '' &&
+            child.classList.contains('hidden') === false
+        ) {
+            requiredFieldsNotFilled = true
+            child.classList.add('error')
+        } else {
+            child.classList.remove('error')
+        }
+    })
+    if (requiredFieldsNotFilled) {
+        e.preventDefault()
+        alert('Preencha todos os campos obrigatórios')
+        return
+    }
+    const formData = new FormData(e.target)
+    const task = {}
+    for (const key of formData.keys()) {
+        let keyName = key.replace('txt', '').toLowerCase()
+        if (keyName === 'lista') {
+            listaNormal = formData.get(key) === 'normal'
+            continue
+        }
+        task[keyName] = formData.get(key)
+    }
+    task['concluida'] = false
+    if (listaNormal) {
+        tasks.push(task)
+        populateList(tasks)
+    } else {
+        priorityTasks.push(task)
+        priorityTasks.sort((a, b) => {
+            return a.importancia - b.importancia
+        })
+        populateList(priorityTasks)
+    }
+    form.reset()
+    e.preventDefault()
+})
+for (const radioButton of radioButtons) {
+    radioButton.addEventListener('click', () => {
+        listaNormal = radioButton.value === 'normal'
+        if (listaNormal) {
+            populateList(tasks)
+        } else {
+            populateList(priorityTasks)
+        }
+        changeForm()
+    })
+}

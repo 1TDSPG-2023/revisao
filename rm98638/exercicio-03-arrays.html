@@ -9,29 +9,72 @@
     </head>
     <body>
         <main>
-            <form>
+            <form novalidate>
                 <fieldset>
-                    <legend>Tarefas</legend>
+                    <legend data-priority>Lista Normal</legend>
                     <label for="txtTarefa">Insira sua tarefa:</label>
-                    <input name="txtTarefa" id="txtTarefa" type="text" required />
-                    <label for="txtDescricao">Descrição: </label>
+                    <input
+                        name="txtTarefa"
+                        id="txtTarefa"
+                        type="text"
+                        required
+                    />
+                    <label for="txtDescricao" data-priority>Descrição: </label>
                     <!-- cspeLL:ignore Descricao -->
-                    <textarea name="txtDescricao" id="txtDescricao" cols="30" rows="3" required></textarea>
+                    <textarea
+                        name="txtDescricao"
+                        id="txtDescricao"
+                        cols="30"
+                        rows="3"
+                        required
+                        data-priority
+                    ></textarea>
                     <label for="txtAutor">Autor: </label>
-                    <input name="txtAutor" id="txtAutor" type="text" required/>
+                    <input name="txtAutor" id="txtAutor" type="text" required />
                     <label for="txtDepartamento">Departamento: </label>
-                    <input name="txtDepartamento" id="txtDepartamento" type="text" required />
-                    <label for="txtImportancia">Nível de Importância: </label>
+                    <input
+                        name="txtDepartamento"
+                        id="txtDepartamento"
+                        type="text"
+                        required
+                    />
+                    <label for="txtImportancia" data-priority
+                        >Nível de Importância:
+                    </label>
                     <!-- cspeLL:ignore Importancia -->
-                    <input name="txtImportancia" id="txtImportancia" type="number" required />
+                    <input
+                        name="txtImportancia"
+                        id="txtImportancia"
+                        type="number"
+                        required
+                        data-priority
+                    />
                     <label for="txtValor">Valor (R$): </label>
                     <input name="txtValor" id="txtValor" type="number" />
                     <label for="txtDuracao">Duração (Dias): </label>
                     <!-- cspell:ignore Duracao -->
                     <input name="txtDuracao" id="txtDuracao" type="number" />
-                    <button type="submit">Enviar</button>
+                    <button type="submit" data-priority>Enviar</button>
                 </fieldset>
             </form>
+            <label for="normal" data-priority>Lista Normal</label>
+            <input
+                type="radio"
+                name="lista"
+                id="normal"
+                value="normal"
+                checked
+                data-priority
+            />
+            <label for="prioritaria" data-priority>Lista Prioritária</label>
+            <!-- cspell:ignore prioritaria -->
+            <input
+                type="radio"
+                name="lista"
+                id="prioritaria"
+                value="prioritaria"
+                data-priority
+            />
             <div class="tarefas">
                 <h2>Tarefas:</h2>
                 <ul class="lista-tarefas"></ul>

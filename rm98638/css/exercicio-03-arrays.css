@@ -11,7 +11,7 @@ main {
 }
 label:has(+ input:required)::after,
 label:has(+ textarea:required)::after {
-    content: " *";
+    content: ' *';
     color: red;
 }
 fieldset {
@@ -20,7 +20,7 @@ fieldset {
     grid-gap: 0.25rem;
 }
 
-button[type="submit"] {
+button[type='submit'] {
     grid-column: 1 / -1;
     padding: 0.5rem;
     border-radius: 0.25rem;
@@ -41,3 +41,14 @@ ul {
     padding: 0;
     margin-bottom: 40px;
 }
+li:not(.concluida) > button {
+    display: none;
+}
+.hidden {
+    display: none;
+}
+input.error,
+textarea.error {
+    border: 1px solid red;
+}
+```
