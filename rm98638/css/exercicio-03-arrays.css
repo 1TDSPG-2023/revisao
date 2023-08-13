@@ -31,3 +31,13 @@ label {
     align-items: center;
     font-size: 1.1rem;
 }
+/* cspell:ignore concluida */
+.concluida {
+    text-decoration: line-through;
+    color: #ccc;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 40px;
+}
