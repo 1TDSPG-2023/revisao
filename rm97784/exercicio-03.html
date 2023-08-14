@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adrian - Exercício 3</title>
+    <link rel="stylesheet" href="./css/estilo.css">
+    <link rel="stylesheet" href="./css/exercicio-03.css">
+    <script src="./js/exercicio-03.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>OrganizaPRO</h1>
+        <h2>Cadastre aqui as tarefas que precisam ser feitas, passando as informações abaixo.</h2>
+    </header>
+    <main>
+        <form id="formularioTarefas" action="">
+            <div class="campoDeEntrada">
+                <label for="inputDescricaoTarefa">Descrição da tarefa</label>
+                <input type="text" name="descricaoTarefa" id="inputDescricaoTarefa" placeholder="Descreva a tarefa de forma sucinta">
+            </div>
+            <div class="campoDeEntrada">
+                <label for="inputAutorTarefa">Autor</label>
+                <input type="text" name="autorTarefa" id="inputAutorTarefa" placeholder="Digite o nome do funcionário responsável">
+            </div>
+            <div class="campoDeEntrada">
+                <label for="inputDepartamentoTarefa">Departamento</label>
+                <input type="text" name="departamentoTarefa" id="inputDepartamentoTarefa" placeholder="Digite o nome do departamento responsável">
+            </div>
+            <div class="campoDeEntrada">
+                <label for="inputImportanciaTarefa">Importância</label>
+                <input type="text" name="importanciaTarefa" id="inputImportanciaTarefa" placeholder="Determine um valor de importância de 1 a 10">
+            </div>
+
+            <button type="button" id="botaoAdicionarTarefa">Adicionar tarefa</button>
+        </form>
+        <table id="listaDeTarefas">
+            <caption>Lista de Tarefas</caption>
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Autor</th>
+                    <th>Departamento</th>
+                    <th>Importância</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Comprar Suco</td>
+                    <td>Adrian</td>
+                    <td>Logística</td>
+                    <td>10</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
+
+<!-- -Descrição,-Autor,-Departamento,-Importância. -->
