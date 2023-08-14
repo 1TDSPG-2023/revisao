@@ -3,28 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RM551060</title>
+    <title>Coded by rm551060</title>
     <script src="./js/exercicio.js" defer></script>
 </head>
 <body>
+
+    <h1>MINHAS TAREFAS</h1>
+
     <div>
-        <form action="#" method="get" onsubmit="return false">
+        <form action="#" method="get">
             <fieldset>
-                <legend>Tarefas</legend>
+                <legend>Cadastro de Tarefas</legend>
                 <div>
-                    <label for="nome">Adicionar tarefa</label>
-                    <input type="text" name="txtTarefa" id="idTarefa" placeholder="Nome da tarefa">
+                    <label for="">Nova Tarefa</label>
+                    <input type="text" name="tarefa" id="idTarefa" placeholder="Digite o nome da tarefa...">
                 </div>
                 <div>
-                    <input type="submit" value="Adicionar" id="btnAddTarefa"onclick="adicionar(idTarefa.value)">
+                    <button type="submit" id="btnAddTarefa">Adicionar</button>
                 </div>
-            </fieldset>        
+            </fieldset>
         </form>
     </div>
-    <div id="box-tarefas">
-        <h2>Tarefas</h2>
+
+    <div>
+        <ul id="lista-tarefas">
+
+        </ul>
     </div>
-    
-    
+
 </body>
 </html>
