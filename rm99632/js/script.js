@@ -183,19 +183,16 @@ function adicionarTarefa() {
     const departamento = document.getElementById('id-departamento-tarefa').value;
     const importancia = document.getElementById('id-importancia-tarefa').value;
     
-    if (descricao && autor && departamento && importancia) {
+    if (descricao && autor && departamento && (
+        importancia.toLowerCase() == 'alta' || 
+        importancia.toLowerCase() == 'media' || 
+        importancia.toLowerCase() == 'baixa')) {
         const novaTarefa = {
             descricao,
             autor,
             departamento,
             importancia
         };
-
-        tarefas.forEach(tarefa=>(
-            console.log(`O nome do aluno é: ${tarefa}`)
-        ));
-
-        console.log(`Adcionando nova tarefa a lista: ${novaTarefa}`);
         
         const valor = document.getElementById('id-valor-tarefa').value;
         if (valor) {
