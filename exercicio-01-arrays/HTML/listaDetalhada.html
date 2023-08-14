@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../JS/exercicio3.js" defer></script>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <title>RM99632</title>
+</head>
+<body>
+    <a href="../HTML/index.html">Voltar para lista antiga (Exercicio 1 e 2)</a>
+    <form id="formularioTarefas" action="#">
+        <div id="descricaoGroup">
+            <input id="idDescricao" type="text" placeholder="Descrição">
+        </div>
+
+        <div id="autorGroup">
+            <input id="idAutor" type="text" placeholder="Autor">
+        </div>
+
+        <div id="departamentoGroup">
+            <input id="idDepartamento" type="text" placeholder="Departamento">
+        </div>
+
+        <div id="importanciaGroup">
+            <input id="idImportancia" type="text" placeholder="Importância (alta/media/baixa)">
+        </div>
+
+        <div id="valorGroup">
+            <input id="idValor" type="text" placeholder="Valor">
+        </div>
+
+        <div id="duracaoGroup">
+            <input id="idDuracao" type="text" placeholder="Duração">
+        </div>
+
+        <div id="optionsGroup">
+            <button id="btnAdcionarTarefa" onclick="adcionarTarefa()">adcionar</button>
+            <button id="btnFiltrarTarefas" onclick="filtrarTarefas()">filtrar p/importancia</button>
+        </div>
+
+    </form>
+
+    <h2 id="tituloTarefas">Lista de Tarefas</h2>
+    <ul id="listaTarefas"></ul>
+</body>
+</html>

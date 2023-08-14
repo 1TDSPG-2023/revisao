@@ -1,15 +1,15 @@
 /* EXERCICIO 1
 Para exercitarmos nosso conhecimento vamos trabalhar com uma página de tarefas
 pessoais.
-- Crie um projeto HTML/CSS/JS de nome exercicio-01-arrays
-- Crie uma página HTML de nome index e adicione os seguintes elementos:
-- Título da página com identificação do aluno.
-- Formulário com um input e um botão para adicionar novas tarefas.
+- Crie um projeto HTML/CSS/JS de nome exercicio-01-arrays (CONCLUÍDO)
+- Crie uma página HTML de nome index e adicione os seguintes elementos: 
+- Título da página com identificação do aluno. (CONCLUÍDO)
+- Formulário com um input e um botão para adicionar novas tarefas. (CONCLUÍDO)
 - Uma lista não ordenada para receber as tarefas inseridas no array, através do
-formulário(esta lista deve ser preenchida dinamicamente por um loop for).
+formulário(esta lista deve ser preenchida dinamicamente por um loop for). (CONCLUÍDO)
 - É obrigatório a utilização dos métodos de manipulação de array necessários para
 incluir novas tarefas e excluir as tarefas desejadas. Ex: PUSH, POP, SHIFT, UNSHIFT e
-SPLICE. 
+SPLICE. (CONCLUÍDO)
 */
 
 /* ANOTAÇÕES:
@@ -32,7 +32,7 @@ const tarefas = [];
 
 function adcionarTarefa() {
     // Obtendo o input do usuario
-    tarefaInput = document.getElementById('tarefaInput');
+    tarefaInput = document.getElementById('idTarefaInput');
     console.log(`Tarefa: ${tarefaInput.value}`);
 
     // Adcionando tarefa inserida na lista de tarefas
