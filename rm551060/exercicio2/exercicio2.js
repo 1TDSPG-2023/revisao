@@ -26,4 +26,5 @@ console.log(valorSalarios)
 let valorSalariosMaior2500 = valorSalarios.filter(salarios => salarios >2500);
 console.log(valorSalariosMaior2500)
 
-
+let somaValorSalariosMaior2500 = valorSalariosMaior2500.reduce((soma,salarios) => soma + salarios, 0);
+console.log(somaValorSalariosMaior2500)
