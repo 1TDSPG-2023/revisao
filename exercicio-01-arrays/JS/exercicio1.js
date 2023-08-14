@@ -23,16 +23,16 @@ array.splice(index, deleteCount, item1, ..., itemN); = Adcionar/Atualizar itens 
 */
 
 // Obtendo Id's e adcionado-as a variaveis
-btnAddTarefa = document.getElementById('btnAdcionarTarefa');
-formTarefas = document.getElementById('formularioTarefas');
-listaTarefas = document.getElementById('listaTarefas');
+let btnAddTarefa = document.getElementById('btnAdcionarTarefa');
+let formTarefas = document.getElementById('formularioTarefas');
+let listaTarefas = document.getElementById('listaTarefas');
+let tarefaInput = document.getElementById('idTarefaInput');
 
-// Criação da variavel que armazena tarefas
+// Criação da variavel que armazena-ra tarefas
 const tarefas = [];
 
 function adcionarTarefa() {
     // Obtendo o input do usuario
-    tarefaInput = document.getElementById('idTarefaInput');
     console.log(`Tarefa: ${tarefaInput.value}`);
 
     // Adcionando tarefa inserida na lista de tarefas
@@ -67,10 +67,8 @@ function atualizarListaTarefas() {
         const item = document.createElement('li');
 
         // Adcionando as informações da tarefa atual para o item
-        item.innerHTML = `
-            Tarefa: ${tarefa}
-            <button id="btn-remover" onclick="removerTarefa(${i})"><strong>x</strong></button>
-        `;
+        item.innerHTML = `Tarefa: ${tarefa}
+            <button id="btn-remover" onclick="removerTarefa(${i})"><strong>x</strong></button>`;
 
         // Readcionando o item a lista de tarefas
         listaTarefas.appendChild(item);
