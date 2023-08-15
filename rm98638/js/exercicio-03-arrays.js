@@ -1,11 +1,10 @@
 const form = document.querySelector('form')
 const input = document.querySelector('input')
-const list = document.querySelector('ul')
+const table = document.querySelector('tbody')
 const radioButtons = document.querySelectorAll('input[type=radio]')
-let formHtml = ''
 let tasks = []
 let priorityTasks = []
-let listaNormal = true
+let listaNormal = radioButtons[0].checked
 
 // cspell:ignore duracao, importancia, descricao, concluida
 /*
@@ -19,7 +18,7 @@ Tasks Keys:
     concluida
     valor (opcional)
 */
-const createAddButton = (propertyName, task) => {
+const createAddButton = (propertyName, task, td) => {
     const valueButton = document.createElement('button')
     valueButton.textContent = `Adicionar ${propertyName}`
     const dialog = document.createElement('dialog')
@@ -39,142 +38,140 @@ const createAddButton = (propertyName, task) => {
     valueButton.addEventListener('click', () => {
         dialog.showModal()
     })
-    document.body.appendChild(dialog)
+    td.appendChild(dialog)
     dialogForm.addEventListener('submit', e => {
         e.preventDefault()
         task[propertyName] = dialogInput.value
         dialog.close()
-        populateList(tasks)
-        document.body.removeChild(dialog)
+        td.removeChild(dialog)
+        populateTable(tasks)
     })
-    return [valueButton, dialog]
+    return valueButton
 }
 const createTask = taskData => {
-    const task = document.createElement('li')
-    const taskString = `Autor: ${taskData.autor} - Tarefa: ${
-        taskData.tarefa
-    } - Importância Nível ${taskData.importancia} - Departamento: ${
+    const task = document.createElement('tr')
+    task.appendChild(document.createElement('td')).textContent =
+        taskData.importancia
+    task.appendChild(document.createElement('td')).textContent = taskData.tarefa
+    task.appendChild(document.createElement('td')).textContent =
+        taskData.descricao
+    task.appendChild(document.createElement('td')).textContent = taskData.autor
+    task.appendChild(document.createElement('td')).textContent =
         taskData.departamento
-    } - Descrição: ${taskData.descricao}
-    ${taskData.duracao ? ` - ${taskData.duracao} Dias` : ''}${
-        taskData.valor ? ` - ${taskData.valor}R$` : ''
-    }`
-    const taskStringUsingTable = `
-    <table>
-        <tr>
-            <td>Autor:</td>
-            <td>${taskData.autor}</td>
-        </tr>
-        <tr>
-            <td>Tarefa:</td>
-            <td>${taskData.tarefa}</td>
-        </tr>
-        <tr>
-            <td>Importância:</td>
-            <td>Nível ${taskData.importancia}</td>
-        </tr>
-        <tr>
-            <td>Departamento:</td>
-            <td>${taskData.departamento}</td>
-        </tr>
-        <tr>
-            <td>Descrição:</td>
-            <td>${taskData.descricao}</td>
-        </tr>
-        ${
-            taskData.duracao
-                ? `
-        <tr>
-            <td>Duração:</td>
-            <td>${taskData.duracao} Dias</td>
-        </tr>`
-                : ''
-        }
-        ${
-            taskData.valor
-                ? `
-        <tr>
-            <td>Valor:</td>
-            <td>${taskData.valor}R$</td>
-        </tr>`
-                : ''
-        }
-    </table>
-    `
-    task.innerHTML = taskStringUsingTable
+
+    const taskCellValue = document.createElement('td')
+    const taskCellDuration = document.createElement('td')
+
+    if (taskData.valor) {
+        taskCellValue.textContent = taskData.valor + ' R$'
+    } else {
+        const valueButton = createAddButton('valor', taskData, task)
+        taskCellValue.appendChild(valueButton)
+    }
+    if (taskData.duracao) {
+        taskCellDuration.textContent = taskData.duracao + ' dias'
+    } else {
+        const durationButton = createAddButton('duracao', taskData, task)
+        taskCellDuration.appendChild(durationButton)
+    }
+    task.appendChild(taskCellValue)
+    task.appendChild(taskCellDuration)
     task.addEventListener('dblclick', () => {
-        task.classList.toggle('concluida')
+        taskData.concluida = !taskData.concluida
+        populateTable(tasks)
     })
     const removeButton = document.createElement('button')
     removeButton.textContent = 'Remover'
     const removeEvent = () => {
         tasks = tasks.filter(task => task !== taskData)
-        populateList(tasks)
+        populateTable(tasks)
     }
     removeButton.addEventListener('click', removeEvent)
     removeButton.classList.add('remove-button')
-    task.appendChild(removeButton)
-
-    if (!taskData.valor) {
-        const [valueButton, dialog] = createAddButton('valor', taskData)
-        removeButton.addEventListener('click', () => {
-            if (document.body.contains(dialog))
-                document.body.removeChild(dialog)
-        })
-        task.appendChild(valueButton)
-    }
-    if (!taskData.duracao) {
-        const [durationButton, dialog] = createAddButton('duracao', taskData)
-        removeButton.addEventListener('click', () => {
-            if (document.body.contains(dialog))
-                document.body.removeChild(dialog)
-        })
-        task.appendChild(durationButton)
-    }
+    const concludeButton = document.createElement('button')
+    concludeButton.textContent = 'Concluir'
+    concludeButton.addEventListener('click', () => {
+        taskData.concluida = true
+        populateTable(tasks)
+    })
+    const concludeButtonCell = document.createElement('td')
+    concludeButtonCell.appendChild(
+        taskData.concluida ? removeButton : concludeButton
+    )
+    task.appendChild(concludeButtonCell)
+    task.classList.toggle('concluida', taskData.concluida)
     return task
 }
 const createPriorityTask = taskData => {
-    const task = document.createElement('li')
-    const taskString = `${taskData.importancia} - ${taskData.descricao}`
-    task.textContent = taskString
+    const task = document.createElement('tr')
+    // const taskString = `${taskData.importancia} - ${taskData.descricao}`
+    // task.textContent = taskString
+    task.appendChild(document.createElement('td')).textContent =
+        taskData.importancia
+    task.appendChild(document.createElement('td')).textContent =
+        taskData.descricao
+
     task.addEventListener('dblclick', () => {
-        task.classList.toggle('concluida')
+        taskData.concluida = !taskData.concluida
+        populateTable(priorityTasks)
     })
     const removeButton = document.createElement('button')
     removeButton.textContent = 'Remover'
+    removeButton.classList.add('remove-button')
     const removeEvent = () => {
         priorityTasks = priorityTasks.filter(task => task !== taskData)
-        populateList(priorityTasks)
+        populateTable(priorityTasks)
     }
     removeButton.addEventListener('click', removeEvent)
-    task.appendChild(removeButton)
-
+    const concludeButton = document.createElement('button')
+    concludeButton.textContent = 'Concluir'
+    concludeButton.addEventListener('click', () => {
+        taskData.concluida = true
+        populateTable(priorityTasks)
+    })
+    const concludeButtonCell = document.createElement('td')
+    concludeButtonCell.appendChild(
+        taskData.concluida ? removeButton : concludeButton
+    )
+    task.appendChild(concludeButtonCell)
+    task.classList.toggle('concluida', taskData.concluida)
     return task
 }
-const populateList = tasks => {
-    list.innerHTML = ''
+const populateTable = tasks => {
+    table.innerHTML = ''
     tasks.forEach(task => {
-        list.appendChild(
+        table.appendChild(
             listaNormal ? createTask(task) : createPriorityTask(task)
         )
     })
 }
 const changeForm = () => {
     const fieldset = form[0]
+    const theadLine = document.querySelector('thead').children[0]
+    const hasPriority = dataset => dataset.priority === ''
     if (listaNormal) {
         fieldset.children[0].textContent = 'Lista Normal'
         ;[...fieldset.children].forEach(child => {
             child.classList.remove('hidden')
         })
+        ;[...theadLine.children].forEach(child => {
+            child.classList.remove('hidden')
+        })
     } else {
         fieldset.children[0].textContent = 'Lista de Prioridades'
         ;[...fieldset.children].forEach(child => {
-            if (!(child.dataset.priority === '')) {
+            if (!hasPriority(child.dataset)) {
+                child.classList.add('hidden')
+            }
+        })
+        ;[...theadLine.children].forEach(child => {
+            if (!hasPriority(child.dataset)) {
                 child.classList.add('hidden')
             }
         })
     }
 }
+changeForm() // Quando a página carrega, a função é chamada para atualizar o formulário caso necessário
 form.addEventListener('submit', e => {
     e.preventDefault()
     for (const child of [...form[0].children]) {
@@ -201,13 +198,13 @@ form.addEventListener('submit', e => {
     task['concluida'] = false
     if (listaNormal) {
         tasks.push(task)
-        populateList(tasks)
+        populateTable(tasks)
     } else {
         priorityTasks.push(task)
         priorityTasks.sort((a, b) => {
             return a.importancia - b.importancia
         })
-        populateList(priorityTasks)
+        populateTable(priorityTasks)
     }
     form.reset()
 })
@@ -215,9 +212,9 @@ for (const radioButton of radioButtons) {
     radioButton.addEventListener('click', () => {
         listaNormal = radioButton.value === 'normal'
         if (listaNormal) {
-            populateList(tasks)
+            populateTable(tasks)
         } else {
-            populateList(priorityTasks)
+            populateTable(priorityTasks)
         }
         changeForm()
     })

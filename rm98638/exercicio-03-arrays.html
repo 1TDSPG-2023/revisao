@@ -77,29 +77,51 @@
                     <button type="submit" data-priority>Enviar</button>
                 </fieldset>
             </form>
-            <label for="normal" data-priority>Lista Normal</label>
-            <input
-                type="radio"
-                name="lista"
-                id="normal"
-                value="normal"
-                checked
-                data-priority
-            />
-            <label for="prioritaria" data-priority>Lista Prioritária</label>
-            <!-- cspell:ignore prioritaria -->
-            <input
-                type="radio"
-                name="lista"
-                id="prioritaria"
-                value="prioritaria"
-                data-priority
-            />
+            <div class="radios">
+                <div class="radio">
+                    <label for="normal" data-priority>Lista Normal</label>
+                    <input
+                        type="radio"
+                        name="lista"
+                        id="normal"
+                        value="normal"
+                        checked
+                        data-priority
+                    />
+                </div>
+                <div class="radio">
+                    <label for="prioritaria" data-priority
+                        >Lista Prioritária</label
+                    >
+                    <!-- cspell:ignore prioritaria -->
+                    <input
+                        type="radio"
+                        name="lista"
+                        id="prioritaria"
+                        value="prioritaria"
+                        data-priority
+                    />
+                </div>
+            </div>
             <div class="tarefas">
                 <h2>Tarefas:</h2>
-                <ul class="lista-tarefas"></ul>
+                <table class="lista-tarefas">
+                    <thead>
+                        <tr>
+                            <th data-priority>Importância</th>
+                            <th>Tarefa</th>
+                            <th data-priority>Descrição</th>
+                            <th>Autor</th>
+                            <th>Departamento</th>
+                            <th>Valor</th>
+                            <th>Duração</th>
+                            <th data-priority>Concluir</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
-            <span>Dica: Clique duas vezes na tarefa para concluir-la</span>
         </main>
+        <span>Dica: Clique duas vezes na tarefa para concluir-la</span>
     </body>
 </html>
