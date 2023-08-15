@@ -36,6 +36,14 @@ function atualizarListaTarefas() {
 
     listaTarefas.prepend(removerPrimeiroBotao);
     listaTarefas.appendChild(removerUltimoBotao);
+
+    if (tarefas.length === 0) {
+        removerPrimeiroBotao.style.display = "none";
+        removerUltimoBotao.style.display = "none";
+    } else {
+        removerPrimeiroBotao.style.display = "block";
+        removerUltimoBotao.style.display = "block";
+    }
 }
 
 function removerTarefa(index) {
@@ -55,7 +63,7 @@ function removerUltimaTarefa() {
 
 function verificarTecla(event) {
     if (event.key === "Enter") {
-        adcionarTarefa();
+        adicionarTarefa();
         event.preventDefault();
     }
 }
@@ -177,6 +185,7 @@ document.getElementById("tarefaInput").addEventListener("keydown", verificarTecl
 
 // // ======================================================================================================
 
+
 let salarios = [1500, 2200, 1800, 2500, 1900, 2800, 2100, 1700, 2300, 2000];
 
 // O MÉTODO MAP PERCORRE CADA ITEM DO ARRAY E APLICA A LÓGICA DE AUMENTO PERCENTUAL NO SALÁRIO
@@ -197,3 +206,8 @@ console.log(salariosSuperiores2500);
 // O MÉTODO REDUCE PERCORRE CADA ITEM DO ARRAY E ACUMULA O VALOR DA SOMA COMEÇANDO COM 0
 let somaSalarios = salariosSuperiores2500.reduce((total, salario) => total + salario, 0);
 console.log(`Soma dos salários: ${somaSalarios}`);
+
+
+// // ======================================================================================================
+
+
