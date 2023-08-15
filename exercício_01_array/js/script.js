@@ -3,13 +3,14 @@ const task = []
 
 function addTarefa(){
     let novaTarefa = document.getElementById("barra_tarefas").value;
-    let novoAutor = document.getElementById("autorInput").value
-    let novoDept = document.getElementById("deptInput").value
-    let novoImportancia = document.getElementById("importanciaSelect").value
-    let novaDescricao = document.getElementById("descriInput").value
+    let novoAutor = document.getElementById("autorInput").value;
+    let novoDept = document.getElementById("deptInput").value;
+    let novoImportancia = document.getElementById("importanciaSelect").value;
+    let novaDescricao = document.getElementById("descriInput").value;
     task.push({tarefa: novaTarefa, Autor: novoAutor, Dept: novoDept, importancia: novoImportancia,
-    Descricao: novaDescricao});
+    Descricao: novaDescricao, valor: null});
     ColocarTarefaLista();
+
 }
 
 
@@ -35,8 +36,13 @@ function ColocarTarefaLista(){
         removerTarefa(index);
     });
 
+
+
+
+
     pegarItem.appendChild(deletarBotao);
-    listaTarefas.appendChild(pegarItem);
+    listaTarefas.appendChild(pegarItem)
+
 
     });
 
@@ -44,7 +50,27 @@ function ColocarTarefaLista(){
         task.splice(index,1);
         ColocarTarefaLista()
     }
+
+
 }
+
+function listarDescricoes() {
+    const listaDescricoes = document.getElementById("lista_descricoes");
+    listaDescricoes.innerHTML = '';
+
+    const descricoes = task.map(item => item.Descricao);
+    descricoes.forEach(descricao => {
+        const itemDescricao = document.createElement('li');
+        itemDescricao.textContent = descricao;
+        listaDescricoes.appendChild(itemDescricao);
+    });
+    
+}
+
+
+
+
+
 
 
 
