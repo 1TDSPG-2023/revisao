@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/styleexc.css">
+    <title>Lista de Tarefas</title>
+</head>
+
+<body>
+    <div class="notepad">
+        <div class="content">
+            <h1>Lista de Tarefas</h1>
+            <form id="tarefa-form">
+                <input type="text" id="tarefa-desc" placeholder="Descrição" required>
+                <input type="text" id="tarefa-autor" placeholder="Autor" required>
+                <input type="text" id="tarefa-dep" placeholder="Departamento" required>
+                <input type="number" id="tarefa-import" placeholder="Importância" required>
+                <button type="submit">Adicionar</button>
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Autor</th>
+                        <th>Departamento</th>
+                        <th>Importância</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tarefa-lista"></tbody>
+            </table>
+            <h2>Tarefas por Ordem de Importância</h2>
+            <ul id="tarefas-importancia"></ul>
+        </div>
+    </div>
+    <script src="js/java.js"></script>
+</body>
+
+</html>
