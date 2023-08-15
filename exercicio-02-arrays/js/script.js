@@ -161,8 +161,6 @@ function adicionarTarefa() {
     }
   });
 
-  document.querySelector(".importancia").
-
   if (!encontrouDescricao) {
     const tabela = document.querySelector("table");
     const novaLinha = tabela.insertRow();
@@ -200,3 +198,17 @@ function deletarTarefa(button) {
   const linha = button.parentNode.parentNode;
   table.removeChild(linha);
 }
+
+const organizar = document.querySelector("#organizarCasa");
+organizar.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  const tarefasOrdenadas = tarefas.slice().sort((a, b) => {
+    return a.importancia - b.importancia; //unico problema é string
+  });
+
+  const listaOrdenada = tarefasOrdenadas.map((tarefa) => tarefa.descricao);
+
+  const listaOrdenadaElement = document.getElementById("listaOrdenada");
+  listaOrdenadaElement.innerHTML = listaOrdenada.join("<br>");
+});
