@@ -193,3 +193,7 @@ console.log(salariosComAumento);
 // O MÉTODO FILTER PERCORRE CADA ITEM DO ARRAY E FILTRA APENAS OS SALÁRIOS ACIMA DE 2500
 let salariosSuperiores2500 = salariosComAumento.filter(salario => salario > 2500);
 console.log(salariosSuperiores2500);
+
+// O MÉTODO REDUCE PERCORRE CADA ITEM DO ARRAY E ACUMULA O VALOR DA SOMA COMEÇANDO COM 0
+let somaSalarios = salariosSuperiores2500.reduce((total, salario) => total + salario, 0);
+console.log(`Soma dos salários: ${somaSalarios}`);
