@@ -1,4 +1,4 @@
-* {
+*:not(dialog) {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -41,9 +41,14 @@ ul {
     padding: 0;
     margin-bottom: 40px;
 }
-li:not(.concluida) > button {
+li:not(.concluida) > .remove-button {
+    display: none;
+}
+.concluida > button:not(.remove-button) {
     display: none;
 }
 .hidden {
     display: none;
+}
+dialog {
 }

@@ -16,6 +16,7 @@
                     <input
                         name="txtTarefa"
                         id="txtTarefa"
+                        placeholder="Insira sua tarefa"
                         type="text"
                         required
                     />
@@ -25,16 +26,24 @@
                         name="txtDescricao"
                         id="txtDescricao"
                         cols="30"
+                        placeholder="Insira a descrição"
                         rows="3"
                         required
                         data-priority
                     ></textarea>
                     <label for="txtAutor">Autor: </label>
-                    <input name="txtAutor" id="txtAutor" type="text" required />
+                    <input
+                        name="txtAutor"
+                        id="txtAutor"
+                        type="text"
+                        required
+                        placeholder="Insira o Autor"
+                    />
                     <label for="txtDepartamento">Departamento: </label>
                     <input
                         name="txtDepartamento"
                         id="txtDepartamento"
+                        placeholder="Insira o departamento"
                         type="text"
                         required
                     />
@@ -46,14 +55,25 @@
                         name="txtImportancia"
                         id="txtImportancia"
                         type="number"
+                        placeholder="Insira o nível de importância"
                         required
                         data-priority
                     />
                     <label for="txtValor">Valor (R$): </label>
-                    <input name="txtValor" id="txtValor" type="number" />
+                    <input
+                        name="txtValor"
+                        id="txtValor"
+                        type="number"
+                        placeholder="Insira o valor"
+                    />
                     <label for="txtDuracao">Duração (Dias): </label>
                     <!-- cspell:ignore Duracao -->
-                    <input name="txtDuracao" id="txtDuracao" type="number" />
+                    <input
+                        name="txtDuracao"
+                        id="txtDuracao"
+                        type="number"
+                        placeholder="Insira a duração"
+                    />
                     <button type="submit" data-priority>Enviar</button>
                 </fieldset>
             </form>

@@ -5,7 +5,7 @@ const radioButtons = document.querySelectorAll('input[type=radio]')
 let formHtml = ''
 let tasks = []
 let priorityTasks = []
-let listaNormal = false
+let listaNormal = true
 
 // cspell:ignore duracao, importancia, descricao, concluida
 /*
@@ -19,7 +19,36 @@ Tasks Keys:
     concluida
     valor (opcional)
 */
-
+const createAddButton = (propertyName, task) => {
+    const valueButton = document.createElement('button')
+    valueButton.textContent = `Adicionar ${propertyName}`
+    const dialog = document.createElement('dialog')
+    const dialogForm = document.createElement('form')
+    const dialogInput = document.createElement('input')
+    dialogInput.type = 'number'
+    dialogInput.min = 0
+    const dialogButton = document.createElement('button')
+    dialogButton.textContent = 'Adicionar'
+    dialogButton.type = 'submit'
+    const dialogTitle = document.createElement('h2')
+    dialogTitle.textContent = `Adicionar ${propertyName}`
+    dialog.appendChild(dialogTitle)
+    dialogForm.appendChild(dialogInput)
+    dialogForm.appendChild(dialogButton)
+    dialog.appendChild(dialogForm)
+    valueButton.addEventListener('click', () => {
+        dialog.showModal()
+    })
+    document.body.appendChild(dialog)
+    dialogForm.addEventListener('submit', e => {
+        e.preventDefault()
+        task[propertyName] = dialogInput.value
+        dialog.close()
+        populateList(tasks)
+        document.body.removeChild(dialog)
+    })
+    return [valueButton, dialog]
+}
 const createTask = taskData => {
     const task = document.createElement('li')
     const taskString = `Autor: ${taskData.autor} - Tarefa: ${
@@ -30,7 +59,49 @@ const createTask = taskData => {
     ${taskData.duracao ? ` - ${taskData.duracao} Dias` : ''}${
         taskData.valor ? ` - ${taskData.valor}R$` : ''
     }`
-    task.textContent = taskString
+    const taskStringUsingTable = `
+    <table>
+        <tr>
+            <td>Autor:</td>
+            <td>${taskData.autor}</td>
+        </tr>
+        <tr>
+            <td>Tarefa:</td>
+            <td>${taskData.tarefa}</td>
+        </tr>
+        <tr>
+            <td>Importância:</td>
+            <td>Nível ${taskData.importancia}</td>
+        </tr>
+        <tr>
+            <td>Departamento:</td>
+            <td>${taskData.departamento}</td>
+        </tr>
+        <tr>
+            <td>Descrição:</td>
+            <td>${taskData.descricao}</td>
+        </tr>
+        ${
+            taskData.duracao
+                ? `
+        <tr>
+            <td>Duração:</td>
+            <td>${taskData.duracao} Dias</td>
+        </tr>`
+                : ''
+        }
+        ${
+            taskData.valor
+                ? `
+        <tr>
+            <td>Valor:</td>
+            <td>${taskData.valor}R$</td>
+        </tr>`
+                : ''
+        }
+    </table>
+    `
+    task.innerHTML = taskStringUsingTable
     task.addEventListener('dblclick', () => {
         task.classList.toggle('concluida')
     })
@@ -41,7 +112,25 @@ const createTask = taskData => {
         populateList(tasks)
     }
     removeButton.addEventListener('click', removeEvent)
+    removeButton.classList.add('remove-button')
     task.appendChild(removeButton)
+
+    if (!taskData.valor) {
+        const [valueButton, dialog] = createAddButton('valor', taskData)
+        removeButton.addEventListener('click', () => {
+            if (document.body.contains(dialog))
+                document.body.removeChild(dialog)
+        })
+        task.appendChild(valueButton)
+    }
+    if (!taskData.duracao) {
+        const [durationButton, dialog] = createAddButton('duracao', taskData)
+        removeButton.addEventListener('click', () => {
+            if (document.body.contains(dialog))
+                document.body.removeChild(dialog)
+        })
+        task.appendChild(durationButton)
+    }
     return task
 }
 const createPriorityTask = taskData => {
@@ -59,6 +148,7 @@ const createPriorityTask = taskData => {
     }
     removeButton.addEventListener('click', removeEvent)
     task.appendChild(removeButton)
+
     return task
 }
 const populateList = tasks => {
