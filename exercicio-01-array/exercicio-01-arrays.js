@@ -34,23 +34,13 @@ function atualizarListaTarefas() {
   removerUltimoBotao.addEventListener("click", () => removerUltimoTarefa());
 
   listaTarefas.prepend(removerPrimeiroBotao);
-  listaTarefas.appendChild(removerUltimoBotao);
+  
 }
-
 function removerTarefa(index) {
   tarefas.splice(index, 1);
   atualizarListaTarefas();
 }
 
-function removerPrimeiroTarefa() {
-  tarefas.shift();
-  atualizarListaTarefas();
-}
-
-function removerUltimoTarefa() {
-  tarefas.pop();
-  atualizarListaTarefas();
-}
 
 function verificarTecla(event) {
     if (event.key === "Enter") {
