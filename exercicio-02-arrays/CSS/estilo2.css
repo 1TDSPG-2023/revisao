@@ -1,0 +1,37 @@
+table {
+  width: 700px;
+  margin: auto;
+  text-align: center;
+  table-layout: fixed;
+}
+
+table,
+td,
+tr {
+  padding: 12px;
+  color: wheat;
+  background: indigo;
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-size: 20px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+th {
+  font-size: 15px;
+  color: white;
+  border: 6px solid black;
+  border-collapse: collapse;
+  background: cadetblue;
+}
+
+td:hover {
+  background: orangered;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+}
