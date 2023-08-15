@@ -32,6 +32,9 @@ function criarLinhaTabela(tarefa, index) {
             <td>${tarefa.departamento}</td>
             <td>${tarefa.importancia}</td>
             <td>
+                <input type="text" id="valor" name="valor" required>
+            </td>
+            <td>
                 <button class="excluir" data-index="${index}">Excluir</button>
             </td>
         </tr>
@@ -69,11 +72,10 @@ function criarListaPorImportancia() {
         const li = document.createElement("li");
         li.textContent = obj.descricao;
         listaPorImportancia.appendChild(li);
-        console.log(tarefasPorImportancia, "pedro")
-        console.log(descricao, "descricao")
     });
 }
-console.log(listaTarefas)
+
+
 
 
 const btnListarPorImportancia = document.getElementById("btnListaPorImportancia");
