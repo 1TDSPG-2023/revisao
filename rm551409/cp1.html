@@ -35,6 +35,14 @@
                     <input type="number" name="importancia" id="idImportancia" placeholder="De 1 a 3">
                 </div>
                 <div>
+                    <label for="">Valor</label>
+                    <input type="number" name="valor" id="idValor" placeholder="Valor (Opcional)">
+                </div>
+                <div>
+                    <label for="">Duração</label>
+                    <input type="text" name="duracao" id="idDuracao" placeholder="Duração (Opcional)">
+                </div>
+                <div>
                     <button type="submit" id="btnAddTarefa">Adicionar</button>
                 </div>
             </fieldset>
@@ -49,11 +57,13 @@
                 <th>Autor</th>
                 <th>Departamento</th>
                 <th>Importância</th>
+                <th>Valor</th>
+                <th>Duração</th>
                 <th>Excluir</th>
             </tr>
-            <tr id="tabela-tarefas">
-                
-            </tr>
+            <tbody id="tabela-tarefas">
+
+            </tbody>
         </table>
     </div>
 

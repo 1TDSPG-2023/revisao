@@ -45,36 +45,52 @@ botaoAddtarefa.addEventListener("click", (evento)=>{
     const inputAutor = document.getElementById("idAutor").value;
     const inputDepartamento = document.getElementById("idDepartamento").value;
     const inputImportancia = document.getElementById("idImportancia").value;
+    const inputValor = document.getElementById("idValor").value;
+    const inputDuracao = document.getElementById("idDuracao").value;
+    
 
-    const tarefa = {
-        inputTarefa,
-        inputDescricao,
-        inputAutor,
-        inputDepartamento,
-        inputImportancia
-    };
-
-    listaTarefas.push(tarefa);
-
-    const tabelaTarefas = document.getElementById("tabela-tarefas");
-    let td = document.createElement("td");
-    td.textContent = inputTarefa;
-    tabelaTarefas.appendChild(td);
-   
-    let botaoExcluir = document.createElement("button");
-    botaoExcluir.textContent = " x ";
-    td.appendChild(botaoExcluir);
-
-    botaoExcluir.addEventListener("click",(evt)=>{
-
-        let conteudoTd = evt.target.parentNode.textContent.split(" ");
-        let index = listaTarefas.indexOf(conteudoTd[0]);
-        listaTarefas.splice(index,1);
-        evt.target.parentNode.remove();
+    if (inputTarefa == "" || inputDescricao == "" || inputAutor == "" || inputDepartamento == "" || inputImportancia == ""){
+        alert("Preencha todos os campos obrigatorios para o envio de uma nova tarefa!")
+    } else {
+        const tarefa = {
+            tarefa: inputTarefa,
+            descricao: inputDescricao,
+            autor: inputAutor,
+            departamento: inputDepartamento,
+            importancia: inputImportancia,
+            valor: inputValor,
+            duracao: inputDuracao
+        };
+        
+        listaTarefas.push(tarefa);
+    
+        let tabelaTarefas = document.getElementById("tabela-tarefas");
+    
+        let valoresTarefa = [`${tarefa.tarefa}`,`${tarefa.descricao}`,`${tarefa.autor}`,`${tarefa.departamento}`,`${tarefa.importancia}`,`${tarefa.valor}`,`${tarefa.duracao}`];
+    
+        let novaTarefa = document.createElement("tr");
+        tabelaTarefas.appendChild(novaTarefa);
+    
+        valoresTarefa.forEach(valor => {
+            let novaColuna = document.createElement("td");
+            novaColuna.textContent = valor;
+            novaTarefa.appendChild(novaColuna);
+        });
+       
+        let botaoExcluir = document.createElement("button");
+        botaoExcluir.textContent = " x ";
+        novaTarefa.appendChild(botaoExcluir);
+    
+        botaoExcluir.addEventListener("click",(evt)=>{
+    
+            let conteudoTd = evt.target.parentNode.textContent.split(" ");
+            let index = listaTarefas.indexOf(conteudoTd[0]);
+            listaTarefas.splice(index,1);
+            evt.target.parentNode.remove();
+            console.log(listaTarefas);
+    
+        })
+    
+        inputTarefa.value = "";
         console.log(listaTarefas);
-
-    })
-
-    inputTarefa.value = "";
-    console.log(listaTarefas);
-});
+    }});
