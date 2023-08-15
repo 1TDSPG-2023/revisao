@@ -187,3 +187,9 @@ let salariosComAumento = salarios.map(salario => {
     return salario * 1.10;
     }
 });
+
+console.log(salariosComAumento);
+
+// O MÉTODO FILTER PERCORRE CADA ITEM DO ARRAY E FILTRA APENAS OS SALÁRIOS ACIMA DE 2500
+let salariosSuperiores2500 = salariosComAumento.filter(salario => salario > 2500);
+console.log(salariosSuperiores2500);
