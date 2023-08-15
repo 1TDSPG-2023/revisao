@@ -12,24 +12,28 @@
             <fieldset>
                 <legend>Cadastro de Tarefas</legend>
                 <div>
-                    <label for="">Tarefa</label>
-                    <input type="text" name="tarefa" id="idTarefa" placeholder="Tarefa">
-                </div>
-                <div>
-                    <label for="">Descrição</label>
+                    <label for="">Descrição*</label>
                     <input type="text" name="descricao" id="idDescricao" placeholder="Descrição">
                 </div>
                 <div>
-                    <label for="">Autor</label>
+                    <label for="">Autor*</label>
                     <input type="text" name="autor" id="idAutor" placeholder="Digite o nome do autor">
                 </div>
                 <div>
-                    <label for="">Departamento</label>
+                    <label for="">Departamento*</label>
                     <input type="text" name="departamento" id="idDepartamento" placeholder="Digite o nome do departamento">
                 </div>
                 <div>
-                    <label for="">Importância</label>
+                    <label for="">Importância*</label>
                     <input type="text" name="importancia" id="idImportancia" placeholder="Digite a importancia de 1 a 5">
+                </div>
+                <div>
+                    <label for="">Valo adicional</label>
+                    <input type="text" name="valorAdicional" id="idValorAdicional" placeholder="Valor adicional(opcional)">
+                </div>
+                <div>
+                    <label for="">Duração</label>
+                    <input type="text" name="duracao" id="idDuracao" placeholder="Duração(opcional)">
                 </div>
                 <div>
                     <button type="submit" id="btnAddTarefa">Adicionar</button>
@@ -39,14 +43,16 @@
     </div>
     <table>
         <tr>
-            <th>Tarefa</th>
             <th>Descrição</th>
             <th>Autor</th>
             <th>Departamento</th>
             <th>Importancia</th>
+            <th>Valor adicional</th>
+            <th>Duração</th>
+            <th>Excluir</th>
         </tr>
-        <tr id="tabela">
-        </tr>
+        <tbody id="tabela">
+        </tbody>
     </table>
 </body>
 </html>
