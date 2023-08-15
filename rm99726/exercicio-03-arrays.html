@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..//rm99726/css/exercicio-03-arrays.css">
+    <script src="..//rm99726/js/exercicio-03-arrays.js" defer></script>
+    <title>Pedro Paterno - rm99726</title>
+</head>
+<body>
+    <h1>Página de Tarefas Pessoais - Exercicio 3</h1>
+
+    <form id="formularioTarefas">
+        <label for="descricao">Descrição:</label>
+        <input type="text" id="descricao" name="descricao" required>
+
+        <label for="autor">Autor:</label>
+        <input type="text" id="autor" name="autor" required>
+        
+        <label for="departamento">Departamento:</label>
+        <input type="text" id="departamento" name="departamento" required>
+        
+        <label for="importancia">Importância:</label>
+        <select id="importancia" name="importancia" required>
+            <option value="Baixa">Baixa</option>
+            <option value="Média">Média</option>
+            <option value="Alta">Alta</option>
+        </select>
+
+        <button type="submit" id="btnAdicionarTarefa">Adicionar Tarefa</button>
+    </form>
+    <div>
+        <button id="btnListaPorImportancia">Listar por Importância</button>
+        <ul id="listaPorImportancia"></ul>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Autor</th>
+                <th>Departamento</th>
+                <th>Importância</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="listaTarefas">
+        </tbody>
+    </table>
+</body>
+</html>
