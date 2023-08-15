@@ -12,8 +12,12 @@
             <fieldset>
                 <legend>Cadastro de Tarefas</legend>
                 <div>
+                    <label for="">Tarefa</label>
+                    <input type="text" name="tarefa" id="idTarefa" placeholder="Tarefa">
+                </div>
+                <div>
                     <label for="">Descrição</label>
-                    <input type="text" name="tarefa" id="idTarefa" placeholder="Resumo tarefa">
+                    <input type="text" name="descricao" id="idDescricao" placeholder="Descrição">
                 </div>
                 <div>
                     <label for="">Autor</label>
@@ -33,10 +37,16 @@
             </fieldset>
         </form>
     </div>
-    <div>
-        <ul id="lista-tarefas">
-
-        </ul>
-    </div>
+    <table>
+        <tr>
+            <th>Tarefa</th>
+            <th>Descrição</th>
+            <th>Autor</th>
+            <th>Departamento</th>
+            <th>Importancia</th>
+        </tr>
+        <tr id="tabela">
+        </tr>
+    </table>
 </body>
 </html>
