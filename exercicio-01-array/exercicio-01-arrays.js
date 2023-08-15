@@ -17,14 +17,15 @@ function atualizarListaTarefas() {
     item.textContent = tarefa;
 
     const removerBotao = document.createElement("button");
-    removerBotao.textContent = "Remover";
-    removerBotao.classList.add("remover");
+    removerBotao.textContent = "X";
+    removerBotao.classList.add("X");
     removerBotao.addEventListener("click", () => removerTarefa(i));
 
     item.appendChild(removerBotao);
     listaTarefas.appendChild(item);
   }
 
+<<<<<<< HEAD
   const removerPrimeiroBotao = document.createElement("button");
   removerPrimeiroBotao.textContent = "Remover Primeira";
   removerPrimeiroBotao.addEventListener("click", () => removerPrimeiroTarefa());
@@ -35,12 +36,19 @@ function atualizarListaTarefas() {
 
   listaTarefas.prepend(removerPrimeiroBotao);
   
+=======
+>>>>>>> 4599548d47a01d94a6d67494a3d9c256684aa6d7
 }
 function removerTarefa(index) {
   tarefas.splice(index, 1);
   atualizarListaTarefas();
+<<<<<<< HEAD
 }
 
+=======
+  console.log(tarefas);
+}
+>>>>>>> 4599548d47a01d94a6d67494a3d9c256684aa6d7
 
 function verificarTecla(event) {
     if (event.key === "Enter") {
@@ -51,3 +59,4 @@ function verificarTecla(event) {
   
   document.getElementById("tarefaInput").addEventListener("keydown", verificarTecla);
 
+  console.log(tarefas);
