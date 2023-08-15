@@ -1,5 +1,6 @@
-let listaTarefas = {
-    constructor(descricao, autor, departamento, importancia) {
+listaTarefas = [];
+class Tarefa {
+    constructor(nomeTarefa,descricao, autor, departamento, importancia) {
         this.nomeTarefa = nomeTarefa
         this.descricao = descricao;
         this.autor = autor;
@@ -16,17 +17,10 @@ const inputDescricaoTarefa = document.getElementById("textareaTarefa");
 const inputAutorTarefa = document.getElementById("inputAutorTarefa");
 const inputDepartamento = document.getElementById("inputDepartamento");
 const inputImportancia = document.getElementById("inputImportancia");
+const listaImpressa = document.getElementById("listaDeTarefas");
 
 // Adicionando um evento ao botão "Adicionar"
 botaoAdicionar.addEventListener("click",adicionarTarefa);
-
-// function imprimirTarefa() { 
-//     var novaTarefa = document.createElement("li");
-//     novaTarefa.textContent = `${inputDeTarefa.value}`;
-//     console.log(novaTarefa.textContent);
-//     listaImpressa.appendChild(novaTarefa);
-// }
-
 
 function adicionarTarefa() {
     // Lendo os valores dos campos do formulário
@@ -37,28 +31,55 @@ function adicionarTarefa() {
     let importancia = inputImportancia.value;
 
     //Cria um objeto tarefa com os valores passados
-    let tarefa = new tarefa(nomeTarefa,descricao,autor,departamento,importancia);
+    let tarefa = new Tarefa(nomeTarefa,descricao,autor,departamento,importancia);
+    // Adicionar a nova tarefa na listaTarefas
     listaTarefas.push(tarefa);
-    console.log(listaTarefas)
+
+    console.log(listaTarefas);
+    
+    //chama function para limpar os campos
+    limparInputs();
+    //chama função para atualizar a lista
+    atualizarLista();
 }
 
-// function atualizarLista() {
-//     let listaImpressa = document.getElementById("listaDeTarefas");
-//     listaImpressa.innerHTML = "";
-//     listaTarefas.forEach((tarefaAdicionada, index) => {
-//         let novaTarefa = document.createElement("li");
-//         novaTarefa.textContent = `${tarefaAdicionada}`;
-//         listaImpressa.appendChild(novaTarefa);
+function limparInputs(){
+    inputDeTarefa.value = "";
+    inputDescricaoTarefa.value = "";
+    inputAutorTarefa.value = "";
+    inputDepartamento.value = "";
+    inputImportancia.value = "";
+};
 
-//         let botaoExcluir = document.createElement("button");
-//         botaoExcluir.textContent = "Excluir";
-//         botaoExcluir.addEventListener("click", function() {
-//             listaTarefas.splice(index, 1);
-//             atualizarLista();
-//         });
-//         novaTarefa.appendChild(botaoExcluir);
-//     })
+// function imprimirTarefa() { 
+//     var novaTarefa = document.createElement("li");
+//     novaTarefa.textContent = `${inputDeTarefa.value}`;
+//     console.log(novaTarefa.textContent);
+//     listaImpressa.appendChild(novaTarefa);
 // }
+
+function atualizarLista() {
+    listaImpressa.innerHTML = "";
+
+    listaTarefas.forEach((tarefaAdicionada, index) => {
+        let novaTarefa = document.createElement("li");
+        novaTarefa.textContent = `Nome da Tarefa: ${tarefaAdicionada.nomeTarefa}\n` +
+                                 `Descrição: ${tarefaAdicionada.descricao}\n` +
+                                 `Autor: ${tarefaAdicionada.autor}\n` +
+                                 `Departamento: ${tarefaAdicionada.departamento}\n` +
+                                 `Importância: ${tarefaAdicionada.importancia}`;
+
+        let botaoExcluir = document.createElement("button");
+        botaoExcluir.textContent = "Excluir";
+        botaoExcluir.addEventListener("click", function() {
+            listaTarefas.splice(index, 1);
+            atualizarLista();
+        });
+
+        novaTarefa.appendChild(botaoExcluir); // Adicione o botão "Excluir" à tarefa
+        listaImpressa.appendChild(novaTarefa); // Adicione a tarefa à lista
+    });
+}
 
 // let listaSalarios = [
 //     {funcionario:"Funcionario1", salario:2978},
