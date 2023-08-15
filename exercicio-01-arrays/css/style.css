@@ -1,4 +1,14 @@
+#div-pai{
+    display: flex;
+    /* flex-direction: row-reverse; */
+    justify-content: space-evenly;
+    /* align-items: center; */
+}
+
 .exercicio1{
+    display: flex;
+}
+.exercicio2{
     display: flex;
 }
 
