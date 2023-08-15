@@ -1,18 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;1,400&family=Konkhmer+Sleokchher&family=Lalezar&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif:wght@700&family=Poppins:ital,wght@0,300;0,500;0,600;1,400;1,700;1,800&family=Roboto+Slab:wght@200;700&family=Vazirmatn:wght@600&display=swap');
 
-*{
+:root {
+    --fontepadrao: 'Poppins', sans-serif;
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 
-body{
+body {
     background: linear-gradient(to right, #806bdd 65%, #4742ac);
 }
 
 
-.corpo_principal{
+input {
+    text-align: center;
+    align-items: center;
+    font-family: var(--fontepadrao);
+}
+
+::placeholder {
+    font-family: var(--fontepadrao);
+    text-align: center;
+    align-items: center;
+}
+
+
+.corpo_principal {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -22,7 +39,8 @@ body{
 
 
 }
-.Titulo_principal{
+
+.Titulo_principal {
     display: flex;
     color: aliceblue;
     position: relative;
@@ -32,7 +50,7 @@ body{
 }
 
 
-.Forms_lista{
+.Forms_lista {
     display: flex;
     flex-direction: column;
 
@@ -41,35 +59,36 @@ body{
 
 
 
-#FormsPrincipal{
+.FormsPrincipal {
     display: flex;
     flex-direction: row;
     justify-content: center;
     text-align: center;
     top: 6rem;
     position: relative;
-    background-color:#ffffff;
+    background-color: #ffffff;
     padding: 5rem;
     border-radius: 50px;
-    gap: 1rem
-    ;
+    gap: 1rem;
+    align-items: center;
 }
 
 
-#texto_barraTarefas{
-    font-family: 'Poppins', sans-serif;
+#texto_barraTarefas {
+    font-family: var(--fontepadrao);
     position: relative;
     bottom: 35px;
 }
 
-.Titulo_listaDeTarefas{
+.Titulo_listaDeTarefas {
     display: flex;
     position: relative;
     top: 10rem;
+    width: 67rem;
 }
 
 
-#botao_adicioar{
+#botao_adicioar {
     border-radius: 5px;
     padding: 5px 20px;
     width: 80%;
@@ -79,17 +98,27 @@ body{
     color: aliceblue;
     right: 50rem;
     border: 1px solid #4742ac;
-    
-    
+    width: 120px;
+    height: 40px;
+
+
 }
 
-
-#barra_tarefas{
+#descriInput {
     border-radius: 5px;
-    border: 1px solid #4742ac ;
+    border: 1px solid #4742ac;
+
 }
 
-.Titulo_listaDeTarefas{
+
+.barra_tarefas {
+    border-radius: 5px;
+    border: 1px solid #4742ac;
+    width: 120px;
+    height: 40px;
+}
+
+.Titulo_listaDeTarefas {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -98,19 +127,21 @@ body{
     border-radius: 20px;
 }
 
-#lista_tarefas{
+#lista_tarefas {
     display: flex;
     flex-direction: column;
     gap: 6px;
 
 }
 
-#title{
+#title {
     font-family: 'Poppins', sans-serif;
     font-size: 25px;
+    position: relative;
+
 }
 
-li{
+li {
     list-style: none;
-        font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }

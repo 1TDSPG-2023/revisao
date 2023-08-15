@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,27 +8,45 @@
     <title>RM:552315</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
 
-    <div class="corpo_principal"> 
+    <div class="corpo_principal">
 
-        <div class="Titulo_principal"><h1>Lista de Tarefas</h1></div>
+        <div class="Titulo_principal">
+            <h1>Lista de Tarefas</h1>
+        </div>
 
 
         <div class="Forms_lista">
 
-            <form action="FormsTarefa" id="FormsPrincipal">
-                <input type="text" id="barra_tarefas">
+            <form action="FormsTarefa" class="FormsPrincipal">
+                <input type="text" id="barra_tarefas" class="barra_tarefas" placeholder="Nova Tarefa">
+                <input type="text" id="autorInput" class="barra_tarefas" placeholder="Autor">
+                <input type="text" id="deptInput" class="barra_tarefas" placeholder="Departamento">
+                <select id="importanciaSelect" class="barra_tarefas">
+                    <option value="alta">Alta</option>
+                    <option value="media">Média</option>
+                    <option value="baixa">Baixa</option>
+                </select>
+                <input type="text" id="" class="barra_tarefas" placeholder="Valor">
+                <textarea class="" name="descricao" id="descriInput" cols="30" rows="5"
+                    placeholder="Descrição"></textarea>
                 <button type="button" id="botao_adicioar" onclick="addTarefa()">Adicionar</button>
+
+
+
             </form>
+
 
         </div>
         <div class="Titulo_listaDeTarefas">
-            <h2  id="title">Suas Tarefas</h2>
-                <ul id="lista_tarefas"></ul>
+            <h2 id="title">Suas Tarefas</h2>
+            <ul id="lista_tarefas"></ul>
         </div>
 
     </div>
 
 </body>
+
 </html>
