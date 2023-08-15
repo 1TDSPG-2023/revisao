@@ -14,48 +14,67 @@ Nossa lista de tarefas deverá ter os seguintes controles:
 descrição. */
 
 // Obtendo Id's e adcionado-as a variaveis
-let btnAddTarefa = document.getElementById('btnAdcionarTarefa');
-let formTarefas = document.getElementById('formularioTarefas');
-let listaTarefas = document.getElementById('listaTarefas');
+const btnAddTarefa = document.getElementById('btnAdcionarTarefa');
+const formTarefas = document.getElementById('formularioTarefas');
+const listaTarefas = document.getElementById('listaTarefas');
 
 // Obtendo os Id's dos inputs e adcionando-os a variaveis
-let novaTarefaDesc = document.getElementById('idDescricao');
-let novaTarefaAutor = document.getElementById('idAutor');
-let novaTarefaDep = document.getElementById('idDepartamento');
-let novaTarefaValor = document.getElementById('idValor');
-let novaTarefaDuracao = document.getElementById('idDuracao');
+let tarefaDesc = document.getElementById('idDescricao');
+let tarefaAutor = document.getElementById('idAutor');
+let tarefaDep = document.getElementById('idDepartamento');
+let tarefaImp = document.getElementById('idImportancia');
+let tarefaValor = document.getElementById('idValor');
+let tarefaDuracao = document.getElementById('idDuracao');
+
+const ordemDeImportancia = {
+    'alta': 3,
+    'media': 2,
+    'baixa': 1
+};
 
 // Criação da variavel que armazena-ra tarefas
 const tarefas = [];
 
 function adcionarTarefa() {
-    // Obtendo o input do usuario
-    let descricao = novaTarefaDesc.value;
-    let autor = novaTarefaAutor.value;
-    let departamento = novaTarefaDep.value;
-    let valor = novaTarefaValor.value;
-    let duracao = novaTarefaDuracao.value;
+    // Obtendo os inputs do usuario
+    const descricao = tarefaDesc.value;
+    const autor = tarefaAutor.value;
+    const departamento = tarefaDep.value;
+    const importancia = tarefaImp.value.toLowerCase();
 
-    console.log(`Nova Tarefa Adcionada!
-    Decrição: ${descricao} | 
-    Autor: ${autor} | 
-    Departamento: ${departamento} | 
-    Valor: R$${valor} | 
-    Duração: ${duracao}`);
+    const isImportanciaValida = importancia in ordemDeImportancia;
 
-    const novaTarefa = {
-        novaTarefaDesc,
-        novaTarefaAutor,
-        novaTarefaDep,
-        novaTarefaValor,
-        novaTarefaDuracao
+    console.log(`Importância Válida: ${isImportanciaValida}`);
+
+    if (descricao && autor && departamento && isImportanciaValida) {
+        const novaTarefa = {
+            descricao,
+            autor,
+            departamento,
+            importancia
+        };
+
+        if (tarefaValor.value) {
+            novaTarefa.valor = tarefaValor.value;
+        } if (tarefaDuracao.value) {
+            novaTarefa.duracao = tarefaDuracao.value;
+        }
+
+        /*
+        console.log(`NOVA TAREFA ADCIONADA:
+        Descrição: ${descricao} | 
+        Autor: ${autor} | 
+        Departamento: ${departamento} | 
+        Valor: R$${tarefaValor.value} | 
+        Duração: ${tarefaDuracao.value}`);
+        */
+        
+        // Adcionando tarefa inserida na lista de tarefas
+        tarefas.push(novaTarefa);
+
+        // Atualizando a lista de tarefas
+        atualizarListaTarefas();
     }
-
-    // Adcionando tarefa inserida na lista de tarefas
-    tarefas.push(novaTarefa.value);
-
-    // Atualizando a lista de tarefas
-    // atualizarListaTarefas();
 }
 
 function removerTarefa(index) {
@@ -67,26 +86,45 @@ function removerTarefa(index) {
 }
 
 function atualizarListaTarefas() {
-    // Resetando o input do usuario
-    tarefaInput.value = '';
-    console.log(tarefas);
-    
-    // Excluir itens da lista de tarefas visual
     listaTarefas.innerHTML = '';
-
-    // Para cada tarefa em lista de tarefas, adcionar ela como um item html visual da lista
     for (let i = 0; i < tarefas.length; i++) {
-        // Obtendo a tarefa atual a ser adcionada
         const tarefa = tarefas[i];
-
-        // Criando o armazenamento para o item (list item)
         const item = document.createElement('li');
-
-        // Adcionando as informações da tarefa atual para o item
-        item.innerHTML = `Tarefa: ${tarefa}
-            <button id="btn-remover" onclick="removerTarefa(${i})"><strong>x</strong></button>`;
-
-        // Readcionando o item a lista de tarefas
+        item.innerHTML = `
+            Descrição: ${tarefa.descricao} | Autor: ${tarefa.autor} | Departamento: ${tarefa.departamento} | Importância: ${tarefa.importancia}
+            ${tarefa.valor ? '| Valor: ' + tarefa.valor : ''} ${tarefa.duracao ? '| Duração: ' + tarefa.duracao : ''}
+            <button id="btn-remover" onclick="removerTarefa(${i})"><strong>x</strong></button>
+        `;
         listaTarefas.appendChild(item);
     }
 }
+
+function filtrarTarefas() {
+    // Botão filtrar, filtrara as tarefas na ordem de mais importante a menos importante (3-1)
+    // Será exibido somente os detalhes da descrição e importância
+    // Será mudado somente visualmente, não afetando o array original do código
+    // Após pressionar o botão filtrar pela segunda vez, a ordem será invertida
+    // Será exibido as tarefas na ordem de menos importante para mais importante (1-3)
+    // Após pressionar o botão filtrar pela terceira vez, a ordem voltará para o original
+    // A quarta vez fará a mesma que a primeira, e assim por diante para a seguintes
+
+    for(i=0;i<tarefas.length;i++){
+        let valorImportancia = ordemDeImportancia[tarefas[i]['importancia']];
+        console.log(valorImportancia);
+    }
+};
+
+    // let tarefasOrdas = tarefas.slice().sort((a, b) => {
+    //     const indexA = ordemDeImportancia.indexOf(a.importancia);
+    //     const indexB = ordemDeImportancia.indexOf(b.importancia);
+    //     return indexA - indexB;
+    // });
+    
+    // const descricaoTarefasOrdenadas = tarefasOrdenadas.map(tarefa => tarefa.descricao);
+    
+    // listaTarefas.innerHTML = '';
+    // for (let i = 0; i < descricaoTarefasOrdenadas.length; i++) {
+    //     const item = document.createElement('li');
+    //     item.textContent = descricaoTarefasOrdenadas[i];
+    //     listaTarefas.appendChild(item);
+    // }
