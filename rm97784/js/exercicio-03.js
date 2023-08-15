@@ -1,3 +1,4 @@
+let conteudoPrincipal = document.getElementById("conteudoPrincipal");
 let listaTarefas = [];
 let listaImpressa = document.getElementById("listaDeTarefas");
 let corpoListaImpressa = document.getElementById("corpoListaDeTarefas");
@@ -6,13 +7,14 @@ const autorDaTarefa = document.getElementById("inputAutorTarefa");
 const departamentoDaTarefa = document.getElementById("inputDepartamentoTarefa");
 const importanciaDaTarefa = document.getElementById("inputImportanciaTarefa");
 const botaoAdicionar = document.getElementById("botaoAdicionarTarefa");
-const formularioTarefas = document.getElementById("formularioTarefas");
+const botaoCriarListaImportancia = document.getElementById("botaoCriarListaPorImportancia")
 
 botaoAdicionar.addEventListener("click",adicionarTarefa);
+botaoCriarListaImportancia.addEventListener("click",criarListaPorImportancia);
 
 function adicionarTarefa() {
+    if (descricaoDaTarefa.value != "" && autorDaTarefa.value != "" && departamentoDaTarefa.value != "" && importanciaDaTarefa.value != "") {
     // Adicionar tarefa à lista do backend    
-    if (descricaoDaTarefa.value != "") {
         let tarefa = {
             descricao: `${descricaoDaTarefa.value}`,
             autor: `${autorDaTarefa.value}`,
@@ -22,7 +24,6 @@ function adicionarTarefa() {
         console.log(tarefa);
         listaTarefas.push(tarefa);
         console.log(listaTarefas);
-        // atualizarLista();
 
     // Adicionar tarefa à lista impressa na tela
         let valoresAAdicionar = [`${tarefa.descricao}`,`${tarefa.autor}`,`${tarefa.departamento}`,`${tarefa.importancia}`];
@@ -48,11 +49,10 @@ function adicionarTarefa() {
             campo.value = "";
         }
         
-
-        // entradaDeTarefa.value = "";
-        // entradaDeTarefa.focus();
+    // Foco no campo de input inicial
+        campos[0].focus();
     } else {
-        alert("Por favor, insira uma tarefa para ser adicionada")
+        alert("Por favor, preencha todos os campos obrigatórios para adicionar a tarefa.")
     }
 }
 
@@ -69,39 +69,25 @@ function excluirTarefa(evt) {
     tarefa.remove();
 }
 
+function criarListaPorImportancia() {
+    function compararPorImportancia(tarefa1, tarefa2) {
+        return tarefa1.importancia - tarefa2.importancia;
+    }
+    
+    listaTarefasPorImportancia = listaTarefas.map(tarefa => tarefa);
+
+    listaTarefasPorImportancia.sort(compararPorImportancia);
+
+    // vvv Imprimir uma div que recebe uma table que recebe uma caption ("Lista de Tarefas por Importância" e thead + tbody) NÃO ESQUECER DE COLOCAR NESSA TABELA APENAS DESCRICAO E IMPORTANCIA (VER SE COLOCO SÓ NO FRONT OU NO BACK TBM) vvv
+
+    // let teste = document.createElement("p");
+    // teste.textContent = "teste";
+    // conteudoPrincipal.appendChild(teste);
+}
+
+
 
 // formularioTarefas.addEventListener("submit", prevenirComportamentoPadrao);
-// botaoAdicionar.addEventListener("click",adicionarTarefa);
-
 // function prevenirComportamentoPadrao(evt) {
 //     evt.preventDefault();
 // }
-
-//-Descrição,-Autor,-Departamento,-Importância.
-
-// function imprimirTarefa() {
-//     var novaTarefa = document.createElement("li");
-//     novaTarefa.textContent = `${entradaDeTarefa.value}`;
-//     console.log(novaTarefa.textContent);
-//     listaImpressa.appendChild(novaTarefa);
-// }
-
-
-function atualizarLista() {
-    
-    // listaImpressa.innerHTML = "";
-    // listaTarefas.forEach((tarefa, i) => {
-    //     let novaTarefa = document.createElement("li");
-    //     novaTarefa.textContent = `${tarefa}`;
-    //     listaImpressa.appendChild(novaTarefa);
-
-    //     let botaoExcluir = document.createElement("button");
-    //     botaoExcluir.textContent = "Excluir";
-    //     botaoExcluir.addEventListener("click", function() {
-    //         listaTarefas.splice(i, 1);
-    //         atualizarLista();
-    //     });
-    //     novaTarefa.appendChild(botaoExcluir);
-    // })
-    console.log(listaTarefas);
-}
