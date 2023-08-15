@@ -9,7 +9,7 @@
 </head>
 <body> 
     <header>
-        <h2>Lista de Tarefas</h2>
+        
     </header>
     
     <div class="pai" id="div-pai">
@@ -17,6 +17,7 @@
             <form id="formularioTarefa" action="">
                 <fieldset>
                     <div id="form_exercicio1">
+                        <h2>Lista de Tarefas</h2>
                         <label for="inputTarefa">Insira uma tarefa</label>
                         <input type="text" id="inputTarefa" placeholder="Digite a tarefa...">
                         <label for="textareaTarefa">Descrição</label>
@@ -32,27 +33,27 @@
                     
                 </fieldset>
             </form>
-            <ul id="listaDeTarefas">
-
-            </ul>
+            
+                <table id="tabelaDeTarefas">
+                    <!-- Aqui você pode ter linhas e células da tabela preenchidas por JavaScript -->
+                </table>
+            
         </div><!-- exercicio1 -->
 
         <div class="exercicio2">
+            <form action="" class="salarios" id="salarios">
+                <fieldset>
+                    <h2>Salarios</h2>
+                    <input style="display: none;" type="text" id="inputSalario">
+                    <label for="inputSalario"></label>
+                    <button style="display:none;" id="adicionarSalario">Adicionar</button>
+                    <button style="margin-top:5px;" type="button"  id="reajustar">Reajustar salarios</button>
+                </fieldset>
+            </form>
             
-                <form action="" class="salarios" id="salarios">
-                    <fieldset>
-                        <h2>Salarios</h2>
-                        <input style="display: none;" type="text" id="inputSalario">
-                        <label for="inputSalario"></label>
-                        <button style="display:none;" id="adicionarSalario">Adicionar</button>
-                        <button style="margin-top:5px;" type="button"  id="reajustar">Reajustar salarios</button>
-                    </fieldset>
-                </form>
+            <ul id="listaDeSalarios">
                 
-                <ul id="listaDeSalarios">
-                    
-                </ul>
-            
+            </ul>
         </div>
         
     </div><!--pai-->
