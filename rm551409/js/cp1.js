@@ -37,7 +37,7 @@ let listaTarefas = [];
 
 const botaoAddtarefa = document.getElementById("btnAddTarefa");
 
-botaoAddtarefa.addEventListener("click", (evento)=>{
+botaoAddtarefa.addEventListener("click", (evento) => {
 
     evento.preventDefault();
     const inputTarefa = document.getElementById("idTarefa").value;
@@ -81,15 +81,15 @@ botaoAddtarefa.addEventListener("click", (evento)=>{
         botaoExcluir.textContent = " x ";
         novaTarefa.appendChild(botaoExcluir);
     
-        botaoExcluir.addEventListener("click",(evt)=>{
+        botaoExcluir.addEventListener("click",(evento)=>{
     
-            let conteudoTd = evt.target.parentNode.textContent.split(" ");
+            let conteudoTd = evento.target.parentNode.textContent.split(" ");
             let index = listaTarefas.indexOf(conteudoTd[0]);
             listaTarefas.splice(index,1);
-            evt.target.parentNode.remove();
+            evento.target.parentNode.remove();
             console.log(listaTarefas);
     
-        })
+        });
     
         inputTarefa.value = "";
         console.log(listaTarefas);

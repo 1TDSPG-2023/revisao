@@ -1,0 +1,13 @@
+
+.tabela, th, td{
+    padding: 10px;
+    text-align: center;
+}
+
+th{
+    background-color: lightgray;
+}
+
+button {
+    margin: 10px auto;
+}
