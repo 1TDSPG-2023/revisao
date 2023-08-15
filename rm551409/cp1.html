@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <h1>MINHAS TAREFAS</h1>
+    <h1>TAREFAS</h1>
 
     <div>
         <form action="#" method="get">
@@ -20,7 +20,7 @@
                 </div>
                 <div>
                     <label for="">Descrição</label>
-                    <input type="text" name="descricaoTarefa" id="idDescricaoTarefa" placeholder="Descrição da tarefa">
+                    <input type="text" name="descricaoTarefa" id="idDescricao" placeholder="Descrição da tarefa">
                 </div>
                 <div>
                     <label for="">Autor</label>
@@ -42,9 +42,19 @@
     </div>
 
     <div>
-        <ul id="lista-tarefas">
-
-        </ul>
+        <table>
+            <tr>
+                <th>Tarefa</th>
+                <th>Descrição</th>
+                <th>Autor</th>
+                <th>Departamento</th>
+                <th>Importância</th>
+                <th>Excluir</th>
+            </tr>
+            <tr id="tabela-tarefas">
+                
+            </tr>
+        </table>
     </div>
 
 </body>
