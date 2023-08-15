@@ -176,3 +176,14 @@ document.getElementById("tarefaInput").addEventListener("keydown", verificarTecl
 // console.log("\n");
 
 // // ======================================================================================================
+
+let salarios = [1500, 2200, 1800, 2500, 1900, 2800, 2100, 1700, 2300, 2000];
+
+// O MÉTODO MAP PERCORRE CADA ITEM DO ARRAY E APLICA A LÓGICA DE AUMENTO PERCENTUAL NO SALÁRIO
+let salariosComAumento = salarios.map(salario => {
+    if (salario <= 2000) {
+        return salario * 1.15;
+    } else {
+    return salario * 1.10;
+    }
+});
