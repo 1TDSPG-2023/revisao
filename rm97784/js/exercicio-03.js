@@ -36,6 +36,12 @@ function adicionarTarefa() {
             novaTarefa.appendChild(novaCelula);
         });
 
+    // Adicionar botão para excluir tarefa
+        let botaoExcluir = document.createElement("button");
+        botaoExcluir.textContent = "Excluir";
+        botaoExcluir.addEventListener("click", excluirTarefa);
+        novaTarefa.appendChild(botaoExcluir);
+
     // Limpar conteúdo dos campos
         const campos = [descricaoDaTarefa, autorDaTarefa, departamentoDaTarefa, importanciaDaTarefa]
         for (let campo of campos) {
@@ -48,6 +54,19 @@ function adicionarTarefa() {
     } else {
         alert("Por favor, insira uma tarefa para ser adicionada")
     }
+}
+
+function excluirTarefa(evt) {
+    // Capturar a tarefa que deve ser excluída e o botão correspondente a ela
+    const botaoExcluir = evt.target;
+    const tarefa = botaoExcluir.parentNode;
+
+    //Excluir tarefa da lista do backend
+    const index = Array.from(corpoListaImpressa.children).indexOf(tarefa);
+    listaTarefas.splice(index, 1);
+
+    //Excluir tarefa da lista impressa na tela
+    tarefa.remove();
 }
 
 
