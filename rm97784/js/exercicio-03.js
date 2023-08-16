@@ -28,9 +28,7 @@ function adicionarTarefa() {
 			departamento: `${departamentoDaTarefa.value}`,
 			importancia: `${importanciaDaTarefa.value}`,
 		};
-		console.log(tarefa);
 		listaTarefas.push(tarefa);
-		console.log(listaTarefas);
 
 		// Adicionar tarefa à lista impressa na tela
 		const valoresAAdicionar = [
@@ -103,12 +101,13 @@ function excluirTarefa(evt) {
 }
 
 function criarListaPorImportancia() {
-    function compararPorImportancia(tarefa1, tarefa2) {
+    // Algoritmo de comparação por número
+	function compararPorImportancia(tarefa1, tarefa2) {
         return tarefa1.importancia - tarefa2.importancia;
 	}
     
+	// Formação do novo array
 	listaTarefasPorImportancia = listaTarefas.map((tarefa) => tarefa);
-    
 	listaTarefasPorImportancia.sort(compararPorImportancia).reverse();
     
 	conteudoPrincipal.innerHTML += 
@@ -146,7 +145,6 @@ function adicionarValor(evt){
     const tarefa = botaoAdicionarValor.parentNode;
     
     const index = Array.from(corpoListaImpressa.children).indexOf(tarefa);
-    console.log(index);
     
     const valor = prompt("Digite o valor para a tarefa: ");
     
