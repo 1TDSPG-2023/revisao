@@ -53,3 +53,19 @@ botaoAddtarefa.addEventListener("click",(evt)=>{
     }
 }); 
 
+const organizar = document.getElementById('ordenar');
+organizar.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  const tarefasOrdenadas = tarefas.slice().sort((a, b) => {
+    return a.importancia - b.importancia;
+  });
+
+  const listaOrdenada = tarefasOrdenadas.map((tarefa) => tarefa.descricao);
+
+  const listaOrdenando = document.getElementById('lista');
+  const li = document.createElement('li');
+  li.textContent = listaOrdenada
+  
+  listaOrdenando.innerHTML = listaOrdenada.join('>');
+});
