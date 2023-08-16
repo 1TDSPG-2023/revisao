@@ -28,11 +28,7 @@ let tarefaImp = document.getElementById('idImportancia');
 let tarefaValor = document.getElementById('idValor');
 let tarefaDuracao = document.getElementById('idDuracao');
 
-const ordemDeImportancia = [
-    "alta",
-    "media",
-    "baixa"
-];
+const ordemDeImportancia = { 'alta': 0, 'media': 1, 'baixa': 2 };
 
 // Criação da variavel que armazena-ra tarefas
 const tarefas = [];
@@ -43,7 +39,7 @@ btnAddTarefa.addEventListener('click', ()=> {
     const autor = tarefaAutor.value;
     const departamento = tarefaDep.value;
     const importancia = tarefaImp.value.toLowerCase();
-    const isImportanciaValida = ordemDeImportancia.includes(importancia);
+    const isImportanciaValida = importancia in ordemDeImportancia;
 
     console.log(`Importância Válida: ${isImportanciaValida}`);
 
@@ -116,31 +112,51 @@ function atualizarListaTarefas() {
 
 btnFiltro.addEventListener('click', ()=> {
     const tarefasOrdenadas = tarefas.slice().sort((a, b) => {
-        const indexA = ordemDeImportancia.indexOf(a.importancia);
-        const indexB = ordemDeImportancia.indexOf(b.importancia);
-        return indexA - indexB;
-    });
-    
-    listaTarefas.innerHTML = ''; // Limpar a lista de tarefas antes de atualizar
+        return ordemDeImportancia[a.importancia] - ordemDeImportancia[b.importancia];
+    })
 
-    for (let i = 0; i < tarefasOrdenadas.length; i++) {
+    listaTarefas.innerHTML = '';
+
+    for(let i = 0; i < tarefasOrdenadas.length; i++) {
         const tarefa = tarefasOrdenadas[i];
 
         const tarefaDiv = document.createElement('div');
         tarefaDiv.className = 'tarefa';
-        
+
         const tarefaTopoDiv = document.createElement('div');
         tarefaTopoDiv.className = 'tarefaTopo';
-        
-        tarefaDiv.textContent = `${tarefa.descricao} - Importância: ${tarefa.importancia}`;
-        
+
+        tarefaTopoDiv.textContent = `${tarefa.descricao} - Importância: ${tarefa.importancia}`;
+
         const btnRemover = document.createElement('img');
         btnRemover.className = 'btnRemover';
         btnRemover.src = '../imgs/removeIcon.svg';
-        btnRemover.addEventListener('click', () => removerTarefa(i)); // Corrigido o evento de clique
-        
+        btnRemover.addEventListener('click', () => removerTarefa(i));
+
         tarefaTopoDiv.appendChild(btnRemover);
         tarefaDiv.appendChild(tarefaTopoDiv);
         listaTarefas.appendChild(tarefaDiv);
     }
+
+
+    // for (let i = 0; i < tarefasOrdenadas.length; i++) {
+    //     const tarefa = tarefasOrdenadas[i];
+
+    //     const tarefaDiv = document.createElement('div');
+    //     tarefaDiv.className = 'tarefa';
+        
+    //     const tarefaTopoDiv = document.createElement('div');
+    //     tarefaTopoDiv.className = 'tarefaTopo';
+        
+    //     tarefaDiv.textContent = `${tarefa.descricao} - Importância: ${tarefa.importancia}`;
+        
+    //     const btnRemover = document.createElement('img');
+    //     btnRemover.className = 'btnRemover';
+    //     btnRemover.src = '../imgs/removeIcon.svg';
+    //     btnRemover.addEventListener('click', () => removerTarefa(i)); // Corrigido o evento de clique
+        
+    //     tarefaTopoDiv.appendChild(btnRemover);
+    //     tarefaDiv.appendChild(tarefaTopoDiv);
+    //     listaTarefas.appendChild(tarefaDiv);
+    // }
 });
