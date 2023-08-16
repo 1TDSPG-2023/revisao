@@ -17,6 +17,9 @@ form.addEventListener("submit", function (event) {
         autor: autor,
         departamento: departamento,
         importancia: importancia,
+        valor: '',
+        duracao: ''
+
     };
 
     listaTarefas.push(novaTarefa);
@@ -25,22 +28,31 @@ form.addEventListener("submit", function (event) {
 });
 
 function criarLinhaTabela(tarefa, index) {
-    return `
+
+    return` 
         <tr>
             <td>${tarefa.descricao}</td>
             <td>${tarefa.autor}</td>
             <td>${tarefa.departamento}</td>
             <td>${tarefa.importancia}</td>
-            <td>
-                <input type="text" id="valor" name="valor" required>
-            </td>
+            <td contenteditable="true" onkeyup="atualizarValor(event, ${index})">${tarefa.valor}</td>  
+            <td contenteditable="true" onkeyup="atualizarDuracao(event, ${index})">${tarefa.duracao}</td>  
             <td>
                 <button class="excluir" data-index="${index}">Excluir</button>
             </td>
-        </tr>
-    `;
+        </tr>`
+    ;
 }
 
+function atualizarValor(event, index){
+    const tarefa = listaTarefas[index]
+    tarefa['valor'] = event.target.innerHTML
+}
+
+function atualizarDuracao(event, index){
+    const tarefa = listaTarefas[index]
+    tarefa['duracao'] = event.target.innerHTML
+}
 function atualizarTabela() {
     tabela.innerHTML = '';
 
