@@ -33,6 +33,12 @@ function adicionarTarefa() {
     limparCampos();
 }
 
+// Utilizando splice para remover uma tarefa do array pelo índice
+function removerTarefa(index) {
+    tarefas.splice(index, 1);
+    exibirTarefas();
+}
+
 function exibirTarefas() {
     const tabela = document.getElementById("tabelaTarefas");
     tabela.innerHTML = "";
@@ -96,12 +102,6 @@ document.getElementById("formulario").addEventListener("submit", function(event)
     adicionarTarefa();
 });
 
-// Utilizando splice para remover uma tarefa do array pelo índice
-function removerTarefa(index) {
-    tarefas.splice(index, 1);
-    exibirTarefas();
-}
-
 // Utilizando sort para exibir a lista de tarefas ordenadas por importância da maior para a menor
 function exibirListaImportancia() {
     tarefas.sort((a, b) => b.importancia - a.importancia);
@@ -121,6 +121,7 @@ document.getElementById("ordenarBtn").addEventListener("click", function() {
 
 exibirTarefas();
 console.log(tarefas);
+
 
 
 // // ======================================================================================================
