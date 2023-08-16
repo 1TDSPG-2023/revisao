@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Tarefa</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <h1>Lista de tarefas</h1>
+    <form id="form">
+        Descrição: <input type="text" id="descricaoInput" placeholder="Obrigatório" required>
+        Autor: <input type="text" id="autorInput" placeholder="Obrigatório" required>
+        Departamento: <input type="text" id="departamentoInput" placeholder="Obrigatório" required>
+        Importância (de 0 a 10): <input type="number" id="importanciaInput" placeholder="Obrigatório" required>
+        Valor: <input type="number" id="valorInput" placeholder="Opcional">
+        Duração: <input type="text" id="duracaoInput" placeholder="Opcional">
+        <button type="button" onclick="adicionarTarefa()">Adicionar</button>
+    </form>
+    <button onclick="ordenarPorImportancia()">Ordenar por Importância</button>
+    <table id="tabelaTarefas">
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Autor</th>
+                <th>Departamento</th>
+                <th>Importância</th>
+                <th>Valor</th>
+                <th>Duração</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="corpoTabela">
+        
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>
