@@ -137,26 +137,4 @@ btnFiltro.addEventListener('click', ()=> {
         tarefaDiv.appendChild(tarefaTopoDiv);
         listaTarefas.appendChild(tarefaDiv);
     }
-
-
-    // for (let i = 0; i < tarefasOrdenadas.length; i++) {
-    //     const tarefa = tarefasOrdenadas[i];
-
-    //     const tarefaDiv = document.createElement('div');
-    //     tarefaDiv.className = 'tarefa';
-        
-    //     const tarefaTopoDiv = document.createElement('div');
-    //     tarefaTopoDiv.className = 'tarefaTopo';
-        
-    //     tarefaDiv.textContent = `${tarefa.descricao} - Importância: ${tarefa.importancia}`;
-        
-    //     const btnRemover = document.createElement('img');
-    //     btnRemover.className = 'btnRemover';
-    //     btnRemover.src = '../imgs/removeIcon.svg';
-    //     btnRemover.addEventListener('click', () => removerTarefa(i)); // Corrigido o evento de clique
-        
-    //     tarefaTopoDiv.appendChild(btnRemover);
-    //     tarefaDiv.appendChild(tarefaTopoDiv);
-    //     listaTarefas.appendChild(tarefaDiv);
-    // }
 });
