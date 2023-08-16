@@ -37,3 +37,24 @@ taskForm.addEventListener('submit', function(event) {
 });
 
 renderTasks();
+
+const salaries = [1500, 2200, 1800, 2500, 1900, 2800, 2100, 3200, 2300, 2600];
+
+const increasedSalaries = salaries.map(salary => {
+    if (salary <= 2000) {
+        return salary * 1.15;
+    } else {
+        return salary * 1.10;
+    }
+});
+
+console.log('Salários com aumento:', increasedSalaries);
+
+const highSalaries = increasedSalaries.filter(salary => salary > 2500);
+
+console.log('Salários superiores a 2500:', highSalaries);
+
+const totalSalary = highSalaries.reduce((total, salary) => total + salary, 0);
+
+console.log('Total dos salários:', totalSalary);
+
