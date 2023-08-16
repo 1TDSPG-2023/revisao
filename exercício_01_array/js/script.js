@@ -20,8 +20,8 @@ function ColocarTarefaLista(){
     task.forEach(function(item, index){
         const pegarItem= document.createElement('li');
         pegarItem.textContent = `Tarefa: ${item.tarefa}, Autor: ${item.Autor}, Dept: ${item.Dept}
-        Importância: ${item.importancia}, Descrição: ${item.Descricao}`;
-
+        Importância: ${item.importancia}, Descrição: ${item.Descricao}, Valor: ${item.valor}`;
+    
 
 
     const deletarBotao = document.createElement("button");
@@ -37,11 +37,19 @@ function ColocarTarefaLista(){
     });
 
 
+    const valorprompt = document.createElement('button');
+    valorprompt.textContent = 'mudar valor';
+    valorprompt.addEventListener('click', function(){
+        const descricao = item.Descricao
+        valorInput(descricao)
+    });
+
 
 
 
     pegarItem.appendChild(deletarBotao);
-    listaTarefas.appendChild(pegarItem)
+    listaTarefas.appendChild(pegarItem);
+    pegarItem.appendChild(valorprompt);
 
 
     });
@@ -52,7 +60,22 @@ function ColocarTarefaLista(){
     }
 
 
+
 }
+
+function valorInput(descricao) {
+    const index = task.findIndex(item => item.Descricao === descricao);
+    if (index !== -1) {
+        const novoValor = prompt("Digite o novo valor:");
+        task[index].valor = novoValor;
+        ColocarTarefaLista();
+    } else {
+        console.log("Tarefa não encontrada");
+    }
+
+
+}
+
 
 function listarDescricoes() {
     const listaDescricoes = document.getElementById("lista_descricoes");
@@ -64,11 +87,7 @@ function listarDescricoes() {
         itemDescricao.textContent = descricao;
         listaDescricoes.appendChild(itemDescricao);
     });
-    
 }
-
-
-
 
 
 
