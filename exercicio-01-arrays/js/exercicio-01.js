@@ -6,6 +6,7 @@ class Tarefa {
         this.autor = autor;
         this.departamento = departamento;
         this.importancia = importancia;
+        
     }
 }
 
@@ -37,9 +38,9 @@ function adicionarTarefa() {
 
     console.log(listaTarefas);
     
-    //chama function para limpar os campos
+    //Chama funçaõ para limpar os campos
     limparInputs();
-    //chama função para atualizar a lista
+    //Chama função para atualizar a lista
     atualizarLista();
 }
 
@@ -51,24 +52,18 @@ function limparInputs(){
     inputImportancia.value = "";
 };
 
-// function imprimirTarefa() { 
-//     var novaTarefa = document.createElement("li");
-//     novaTarefa.textContent = `${inputDeTarefa.value}`;
-//     console.log(novaTarefa.textContent);
-//     listaImpressa.appendChild(novaTarefa);
-// }
-
 function atualizarLista() {
+    let listaImpressa = document.getElementById("listaDeTarefas");
     listaImpressa.innerHTML = "";
+    
 
     listaTarefas.forEach((tarefaAdicionada, index) => {
         let novaTarefa = document.createElement("li");
-        novaTarefa.textContent = `Nome da Tarefa: ${tarefaAdicionada.nomeTarefa}\n` +
-                                 `Descrição: ${tarefaAdicionada.descricao}\n` +
-                                 `Autor: ${tarefaAdicionada.autor}\n` +
-                                 `Departamento: ${tarefaAdicionada.departamento}\n` +
+        novaTarefa.innerHTML = `Tarefa: ${tarefaAdicionada.nomeTarefa}<br>` +
+                                 `Descrição: ${tarefaAdicionada.descricao}<br>` +
+                                 `Autor: ${tarefaAdicionada.autor}<br>` +
+                                 `Departamento: ${tarefaAdicionada.departamento}<br>` +
                                  `Importância: ${tarefaAdicionada.importancia}`;
-
         let botaoExcluir = document.createElement("button");
         botaoExcluir.textContent = "Excluir";
         botaoExcluir.addEventListener("click", function() {
@@ -81,7 +76,13 @@ function atualizarLista() {
     });
 }
 
-
+function criarListaImportancia() {
+    let listaImportancia = listaTarefas.slice();
+    listaImportancia.sort((a, b) => a.importancia.localeCompare(b.importancia));
+    
+    let listaDescricao = listaImportancia.map(tarefa => tarefa.descricao);
+    console.log("Lista de Tarefas por Importância:", listaDescricao);
+}
 
 
 

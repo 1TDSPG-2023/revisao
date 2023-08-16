@@ -1,8 +1,6 @@
 #div-pai{
     display: flex;
-    /* flex-direction: row-reverse; */
     justify-content: space-evenly;
-    /* align-items: center; */
 }
 
 .exercicio1{
@@ -16,4 +14,16 @@
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
+}
+
+#listaDeTarefas{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#listaDeSalarios>table{
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
 }
