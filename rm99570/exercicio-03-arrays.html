@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabrina - RM99570</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/exercicio-03.css">
+    <script src="./js/exercicio-03-arrays.js" defer></script>
+</head>
+<body>
+    <h1>Lista de Tarefas</h1>
+    <div class="form-div">
+        <form id="formTarefas" action="">
+            <div class="first-div">
+                <label for="nome">Descrição:</label>
+                <input type="text" id="txtDesc"> 
+
+                <label for="nome">Autor:</label>
+                <input type="text" id="txtAutor">
+            </div>
+            
+            <div class="second-div">
+                <label for="nome">Departamento:</label>
+                <input type="text" id="txtDepto">
+
+                <label for="nome">Importância:</label>
+                <input type="text" id="txtImport">
+            </div>
+            
+
+            <button type="button" id="btnAdicionar">Adicionar tarefa</button>
+        </form>
+    </div>
+    <table id="listaTarefas">
+        <caption>Lista de Tarefas</caption>
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Autor</th>
+                <th>Departamento</th>
+                <th>Importância</th>
+            </tr>
+        </thead>
+        <tbody id="conteudoListaTarefas">
+        </tbody>
+    </table>
+</body>
+</html>
