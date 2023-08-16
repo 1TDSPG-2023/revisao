@@ -1,42 +1,49 @@
+const taskForm = document.getElementById('task-form');
+const taskList = document.getElementById('task-list');
 
-const tasks = [];
+taskForm.addEventListener('submit', addTask);
 
-function addTask(description, author, department, importance) {
-  const task = {
-    description: description,
-    author: author,
-    department: department,
-    importance: importance,
-    payment: null,
-    duration: null,
-  };
-  tasks.push(task);
+function addTask(event) {
+    event.preventDefault();
+
+    const description = document.getElementById('description').value;
+    const author = document.getElementById('author').value;
+    const department = document.getElementById('department').value;
+    const importance = document.getElementById('importance').value;
+
+    const task = {
+        description,
+        author,
+        department,
+        importance,
+    };
+
+    displayTask(task);
+    clearForm();
 }
 
-function renderTable() {
-  const tableBody = document.querySelector('tbody');
-  tableBody.innerHTML = '';
-  tasks.forEach(task => {
+function displayTask(task) {
     const row = document.createElement('tr');
     row.innerHTML = `
-      <td>${task.description}</td>
-      <td>${task.author}</td>
-      <td>${task.department}</td>
-      <td>${task.importance}</td>
-      <td>${task.payment || '-'}</td>
-      <td>${task.duration || '-'}</td>
-      <td><button onclick="deleteTask('${task.description}')">Excluir</button></td>
+        <td>${task.description}</td>
+        <td>${task.author}</td>
+        <td>${task.department}</td>
+        <td>${task.importance}</td>
+        <td class="actions">
+            <button onclick="removeTask(this)">Excluir</button>
+        </td>
     `;
-    tableBody.appendChild(row);
-  });
+    taskList.appendChild(row);
 }
 
-function deleteTask(description) {
-  const index = tasks.findIndex(task => task.description === description);
-  if (index !== -1) {
-    tasks.splice(index, 1);
-    renderTable();
-  }
+function clearForm() {
+    document.getElementById('description').value = '';
+    document.getElementById('author').value = '';
+    document.getElementById('department').value = '';
+    document.getElementById('importance').value = '';
 }
 
-renderTable();
+function removeTask(button) {
+    const row = button.closest('tr');
+    taskList.removeChild(row);
+}
