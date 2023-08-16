@@ -33,5 +33,4 @@ function atualizarTabelas() {
     somaSalariosP.textContent = `Soma dos Salários: ${somaSalarios.toFixed(2)}`;
 }
 
-// Atualiza as tabelas inicialmente
 atualizarTabelas();
