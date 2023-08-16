@@ -3,6 +3,7 @@ let listaTarefasArray = [];
 
 // Criando botão de adicionar tarefa
 const botaoAddtarefa = document.getElementById("btnAddTarefa");
+const botaoFiltro = document.getElementById("btnFiltro")
 
 // Adicionando evento ao clicar no botão
 botaoAddtarefa.addEventListener("click", (evento)=>{
@@ -15,6 +16,8 @@ botaoAddtarefa.addEventListener("click", (evento)=>{
     const autorTarefa = document.getElementById("autorTarefa");
     const deptTarefa = document.getElementById("deptTarefa");
     const impTarefa = document.getElementById("impTarefa");
+    const valorTarefa = document.getElementById("valorTarefa");
+    const duracaoTarefa = document.getElementById("duracaoTarefa");
 
     // Adicionando os inputs ao array de tarefas
     listaTarefasArray.push({
@@ -22,7 +25,9 @@ botaoAddtarefa.addEventListener("click", (evento)=>{
         'desc':descTarefa.value,
         'autor':autorTarefa.value,
         'dept':deptTarefa.value,
-        'imp':impTarefa.value
+        'imp':impTarefa.value,
+        'valor':valorTarefa.value,
+        'duracao':duracaoTarefa.value,
     });
 
     // Adicionando e criando a li com os inputs das tarefas
@@ -33,7 +38,9 @@ botaoAddtarefa.addEventListener("click", (evento)=>{
         "Descrição: " + descTarefa.value + "<br>" +
         "Autor: " + autorTarefa.value + "<br>" +
         "Departamento: " + deptTarefa.value + "<br>" +
-        "Importância: " + impTarefa.value + "<br>"
+        "Importância: " + impTarefa.value + "<br>" +
+        "Preço: " + valorTarefa.value + "<br>" +
+        "Duração: " + duracaoTarefa.value
     ;
     listaTarefasUL.appendChild(li);
 
@@ -64,6 +71,17 @@ botaoAddtarefa.addEventListener("click", (evento)=>{
     autorTarefa.value = "";
     deptTarefa.value = "";
     impTarefa.value = "";
+
+    botaoFiltro.addEventListener("click", (evt)=>{
+        listaTarefasArray.sort((a, b)=> {
+            return a.imp - b.imp;
+        });
+
+        const listaPorImp = listaTarefasArray.map(desc => listaTarefasArray.desc);
     
-    console.log(listaTarefasArray);
+        listaPorImp.forEach((desc) => {
+            li.textContent = `Descrição: ${desc}`
+        })
+        li.appendChild(botaoExcluir);
+    })
 });
