@@ -67,8 +67,10 @@ function atualizarListaTarefas() {
         const item = document.createElement('li');
 
         // Adcionando as informações da tarefa atual para o item
-        item.innerHTML = `Tarefa: ${tarefa}
-            <button id="btn-remover" onclick="removerTarefa(${i})"><strong>x</strong></button>`;
+        item.innerHTML = `<div class="tarefa">
+        Tarefa: ${tarefa}
+        <img class="btnRemover" src="../imgs/removeIcon.svg" onclick="removerTarefa(${i})"
+        </div>`;
 
         // Readcionando o item a lista de tarefas
         listaTarefas.appendChild(item);

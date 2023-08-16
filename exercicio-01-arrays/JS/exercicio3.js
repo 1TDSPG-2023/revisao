@@ -98,7 +98,7 @@ function atualizarListaTarefas() {
         item.innerHTML = `
         <div class="tarefa">
             <div class="tarefaTopo">
-                ${tarefa.descricao}
+                ${tarefa.descricao} - Importancia: ${tarefa.importancia}
                 <img class="btnRemover" src="../imgs/removeIcon.svg" onclick="removerTarefa(${i})">
             </div>
             <div class="tarefaInferior">
@@ -120,12 +120,27 @@ function filtrarTarefas() {
         return indexA - indexB;
     });
     
-    const descricaoTarefasOrdenadas = tarefasOrdenadas.map(tarefa => `Descrição: ${tarefa.descricao} | Importância: ${tarefa.importancia}`);
-    
-    listaTarefas.innerHTML = '';
-    for (let i = 0; i < descricaoTarefasOrdenadas.length; i++) {
-        const item = document.createElement('li');
-        item.textContent = `${descricaoTarefasOrdenadas[i]}`;
-        listaTarefas.appendChild(item);
+    listaTarefas.innerHTML = ''; // Limpar a lista de tarefas antes de atualizar
+
+    for (let i = 0; i < tarefasOrdenadas.length; i++) {
+        const tarefa = tarefasOrdenadas[i];
+
+        const tarefaDiv = document.createElement('div');
+        tarefaDiv.className = 'tarefa';
+        
+        const tarefaTopoDiv = document.createElement('div');
+        tarefaTopoDiv.className = 'tarefaTopo';
+        
+        tarefaDiv.textContent = `${tarefa.descricao} - Importância: ${tarefa.importancia}`;
+        
+        const btnRemover = document.createElement('img');
+        btnRemover.className = 'btnRemover';
+        btnRemover.src = '../imgs/removeIcon.svg';
+        btnRemover.addEventListener('click', () => removerTarefa(i)); // Corrigido o evento de clique
+        
+        tarefaTopoDiv.appendChild(btnRemover);
+        tarefaDiv.appendChild(tarefaTopoDiv);
+
+        listaTarefas.appendChild(tarefaDiv);
     }
 };
