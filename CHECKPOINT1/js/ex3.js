@@ -24,6 +24,7 @@ adicionarButton.addEventListener('click', function(){
     ordenarPorImportancia(); 
     updateTable();
     clearInputs();
+    console.log(listaTarefa)
 });
 
 function updateTable() {
@@ -47,6 +48,7 @@ function apagar(i){
     listaTarefa.splice(i, 1);
     ordenarPorImportancia(); 
     updateTable();
+    console.log(listaTarefa)
 }
 
 function clearInputs() {
