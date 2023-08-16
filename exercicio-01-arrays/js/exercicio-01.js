@@ -19,6 +19,8 @@ const inputAutorTarefa = document.getElementById("inputAutorTarefa");
 const inputDepartamento = document.getElementById("inputDepartamento");
 const inputImportancia = document.getElementById("inputImportancia");
 const listaImpressa = document.getElementById("listaDeTarefas");
+const botaoOrdenar = document.getElementById("exercicio1");
+
 
 // Adicionando um evento ao botão "Adicionar"
 botaoAdicionar.addEventListener("click",adicionarTarefa);
@@ -74,11 +76,12 @@ function atualizarLista() {
         novaTarefa.appendChild(botaoExcluir); // Adicione o botão "Excluir" à tarefa
         listaImpressa.appendChild(novaTarefa); // Adicione a tarefa à lista
 
-        let botao = document.createElement("button");
-        botao.textContent = "Ordenar"
-        listaDeTarefas.appendChild(botao)
-        criarListaImportancia();
+        
     });
+    let botao = document.createElement("button");
+        botao.textContent = "Ordenar"
+        botaoOrdenar.appendChild(botao)
+        criarListaImportancia();
 }
 
 function criarListaImportancia() {
