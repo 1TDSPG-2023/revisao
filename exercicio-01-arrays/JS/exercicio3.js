@@ -26,11 +26,11 @@ let tarefaImp = document.getElementById('idImportancia');
 let tarefaValor = document.getElementById('idValor');
 let tarefaDuracao = document.getElementById('idDuracao');
 
-const ordemDeImportancia = {
-    'alta': 3,
-    'media': 2,
-    'baixa': 1
-};
+const ordemDeImportancia = [
+    "alta",
+    "media",
+    "baixa"
+];
 
 // Criação da variavel que armazena-ra tarefas
 const tarefas = [];
@@ -41,8 +41,7 @@ function adcionarTarefa() {
     const autor = tarefaAutor.value;
     const departamento = tarefaDep.value;
     const importancia = tarefaImp.value.toLowerCase();
-
-    const isImportanciaValida = importancia in ordemDeImportancia;
+    const isImportanciaValida = ordemDeImportancia.includes(importancia);
 
     console.log(`Importância Válida: ${isImportanciaValida}`);
 
@@ -56,8 +55,14 @@ function adcionarTarefa() {
 
         if (tarefaValor.value) {
             novaTarefa.valor = tarefaValor.value;
-        } if (tarefaDuracao.value) {
+        } else {
+            novaTarefa.valor = 'N/a';
+        }
+        
+        if (tarefaDuracao.value) {
             novaTarefa.duracao = tarefaDuracao.value;
+        } else {
+            novaTarefa.duracao = 'N/a';
         }
 
         /*
@@ -91,40 +96,36 @@ function atualizarListaTarefas() {
         const tarefa = tarefas[i];
         const item = document.createElement('li');
         item.innerHTML = `
-            Descrição: ${tarefa.descricao} | Autor: ${tarefa.autor} | Departamento: ${tarefa.departamento} | Importância: ${tarefa.importancia}
-            ${tarefa.valor ? '| Valor: ' + tarefa.valor : ''} ${tarefa.duracao ? '| Duração: ' + tarefa.duracao : ''}
-            <button id="btn-remover" onclick="removerTarefa(${i})"><strong>x</strong></button>
+        <div class="tarefa">
+            <div class="tarefaTopo">
+                ${tarefa.descricao}
+                <img class="btnRemover" src="../imgs/removeIcon.svg" onclick="removerTarefa(${i})">
+            </div>
+            <div class="tarefaInferior">
+                ${tarefa.autor} - ${tarefa.departamento} 
+            </div>
+            <div class="tarefaDireita">
+                Valor: R$${tarefa.valor} - Duração: ${tarefa.duracao} meses
+            </div>
+        </div>
         `;
         listaTarefas.appendChild(item);
     }
 }
 
 function filtrarTarefas() {
-    // Botão filtrar, filtrara as tarefas na ordem de mais importante a menos importante (3-1)
-    // Será exibido somente os detalhes da descrição e importância
-    // Será mudado somente visualmente, não afetando o array original do código
-    // Após pressionar o botão filtrar pela segunda vez, a ordem será invertida
-    // Será exibido as tarefas na ordem de menos importante para mais importante (1-3)
-    // Após pressionar o botão filtrar pela terceira vez, a ordem voltará para o original
-    // A quarta vez fará a mesma que a primeira, e assim por diante para a seguintes
-
-    for(i=0;i<tarefas.length;i++){
-        let valorImportancia = ordemDeImportancia[tarefas[i]['importancia']];
-        console.log(valorImportancia);
+    const tarefasOrdenadas = tarefas.slice().sort((a, b) => {
+        const indexA = ordemDeImportancia.indexOf(a.importancia);
+        const indexB = ordemDeImportancia.indexOf(b.importancia);
+        return indexA - indexB;
+    });
+    
+    const descricaoTarefasOrdenadas = tarefasOrdenadas.map(tarefa => `Descrição: ${tarefa.descricao} | Importância: ${tarefa.importancia}`);
+    
+    listaTarefas.innerHTML = '';
+    for (let i = 0; i < descricaoTarefasOrdenadas.length; i++) {
+        const item = document.createElement('li');
+        item.textContent = `${descricaoTarefasOrdenadas[i]}`;
+        listaTarefas.appendChild(item);
     }
 };
-
-    // let tarefasOrdas = tarefas.slice().sort((a, b) => {
-    //     const indexA = ordemDeImportancia.indexOf(a.importancia);
-    //     const indexB = ordemDeImportancia.indexOf(b.importancia);
-    //     return indexA - indexB;
-    // });
-    
-    // const descricaoTarefasOrdenadas = tarefasOrdenadas.map(tarefa => tarefa.descricao);
-    
-    // listaTarefas.innerHTML = '';
-    // for (let i = 0; i < descricaoTarefasOrdenadas.length; i++) {
-    //     const item = document.createElement('li');
-    //     item.textContent = descricaoTarefasOrdenadas[i];
-    //     listaTarefas.appendChild(item);
-    // }

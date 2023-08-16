@@ -3,3 +3,46 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+li {
+    list-style: none;
+}
+
+.tarefa {
+    font-size: 10px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 1rem;
+    width: 350px;
+    border-radius: 5px;
+    background-color: #172031;
+    color: #ffffff;
+    padding: 15px;
+    box-shadow: rgba(23, 32, 49, 0.356) 2px 2px 2px;
+    margin: 25px;
+}
+
+#titTarefas {
+    margin: 25px;
+}
+
+.tarefaTopo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.tarefaInferior {
+    display: flex;
+    align-items: center;
+}
+
+.tarefaDireita {
+    display: flex;
+    align-items: center;
+}
+
+.btnRemover {
+    display: flex;
+    cursor: pointer;
+    margin-left: auto;
+}
