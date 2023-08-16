@@ -9,16 +9,36 @@
 </head>
 
 <body>
-    <h1>Lista de Tarefas</h1>
+    <div class="container">
+        <h1>Minha Lista de Tarefas</h1>
 
-    <form id="formTarefa">
-        <input type="text" id="tarefaInput" placeholder="Digite a nova tarefa">
-        <button type="button" onclick="adicionarTarefa()">Adicionar</button>
-    </form>
+        <form id="formulario">
+            <label for="descricaoInput">Descrição*:</label>
+            <input type="text" id="descricaoInput" required>
+            <label for="autorInput">Autor*:</label>
+            <input type="text" id="autorInput" required>
+            <label for="departamentoInput">Departamento*:</label>
+            <input type="text" id="departamentoInput" required>
+            <label for="importanciaInput">Importância*:</label>
+            <input type="number" id="importanciaInput" required>
+            <label for="valorInput">Valor:</label>
+            <input type="number" id="valorInput">
+            <label for="duracaoInput">Duração:</label>
+            <input type="number" id="duracaoInput">
 
-    <ul id="listaTarefas">
+            <button type="submit">Adicionar Tarefa</button>
+        </form>
 
-    </ul>
+        <table id="tabelaTarefas">
 
+        </table>
+
+        <button class="ordenar" id="ordenarBtn">Ordenar por Importância</button>
+
+        <h2>Tarefas ordenadas por importância:</h2>
+        <ul id="listaImportancia">
+
+        </ul>
+    </div>
 </body>
 </html>
