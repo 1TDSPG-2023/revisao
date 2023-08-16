@@ -1,6 +1,6 @@
-const salarios = [1000,1500,2000,2500,3000,3500,4000,4500,5000,5500]
+const pagamento = [2500,1500,2000,2500,11000,3500,9000,4500,1200,5500]
 
-const salariosMultiplicados = salarios.map(salario => {
+const salariosMultiplicados = pagamento.map(salario => {
 
     if (salario <= 2000) {
         return salario * 1.15;
