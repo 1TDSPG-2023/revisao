@@ -17,12 +17,12 @@ console.log(`Aumento: ${novoSalario}`)
 //superior a 2500
 
 let salarioSuperior = salario.filter( sal => sal > 2500)
-console.log(salarioSuperior)
+console.log(`Salario Superior: ${salarioSuperior}`)
 
 // somando os valores
 
 let somandoSalario = salario.reduce((acumular, salario) => acumular + salario)
-console.log(somandoSalario)
+console.log(`Soma: ${somandoSalario}`)
 
 
 
