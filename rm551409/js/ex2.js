@@ -13,7 +13,6 @@ let salarios = [
 
 ];
 
-
 let aumentoSalario = salarios.map((salario => {
     if (salario.salario <= 2000) {
         return salario.salario * 1.15;
