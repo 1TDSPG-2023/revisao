@@ -73,6 +73,11 @@ function atualizarLista() {
 
         novaTarefa.appendChild(botaoExcluir); // Adicione o botão "Excluir" à tarefa
         listaImpressa.appendChild(novaTarefa); // Adicione a tarefa à lista
+
+        let botao = document.createElement("button");
+        botao.textContent = "Ordenar"
+        listaDeTarefas.appendChild(botao)
+        criarListaImportancia();
     });
 }
 
