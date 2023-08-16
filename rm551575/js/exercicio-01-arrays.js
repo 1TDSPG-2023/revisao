@@ -33,67 +33,95 @@ function adicionarTarefa() {
     limparCampos();
 }
 
-function atualizarListaTarefas() {
-    const listaTarefas = document.getElementById("listaTarefas");
-    listaTarefas.innerHTML = "";
+function exibirTarefas() {
+    const tabela = document.getElementById("tabelaTarefas");
+    tabela.innerHTML = "";
 
-    for (let i = 0; i < tarefas.length; i++) {
-        const tarefa = tarefas[i];
-        const item = document.createElement("li");
-        item.textContent = tarefa;
+    // Criando cabeçalho da tabela
+    const cabecalho = tabela.createTHead();
+    const rowCabecalho = cabecalho.insertRow();
+    const colunas = ["Descrição", "Autor", "Departamento", "Importância", "Valor", "Duração", "Ações"];
 
+    // Adicionando as colunas ao cabeçalho
+    colunas.forEach((coluna) => {
+        const th = document.createElement("th");
+        th.textContent = coluna;
+        rowCabecalho.appendChild(th);
+    });
+
+    // Criando corpo da tabela
+    const tbody = tabela.createTBody();
+
+    tarefas.forEach((tarefa, i) => {
+        const row = tbody.insertRow();
+
+        const descricaoCell = row.insertCell();
+        descricaoCell.textContent = tarefa.descricao;
+
+        const autorCell = row.insertCell();
+        autorCell.textContent = tarefa.autor;
+
+        const departamentoCell = row.insertCell();
+        departamentoCell.textContent = tarefa.departamento;
+
+        const importanciaCell = row.insertCell();
+        importanciaCell.textContent = tarefa.importancia || "-";
+
+        const valorCell = row.insertCell();
+        valorCell.textContent = tarefa.valor || "-";
+
+        const duracaoCell = row.insertCell();
+        duracaoCell.textContent = tarefa.duracao || "-";
+
+        const removerCell = row.insertCell();
         const removerBotao = document.createElement("button");
         removerBotao.textContent = "Remover";
         removerBotao.classList.add("remover");
         removerBotao.addEventListener("click", () => removerTarefa(i));
-
-        item.appendChild(removerBotao);
-        listaTarefas.appendChild(item);
-    }
-
-    const removerPrimeiroBotao = document.createElement("button");
-    removerPrimeiroBotao.textContent = "Remover Primeira";
-    removerPrimeiroBotao.addEventListener("click", () => removerPrimeiraTarefa());
-
-    const removerUltimoBotao = document.createElement("button");
-    removerUltimoBotao.textContent = "Remover Última";
-    removerUltimoBotao.addEventListener("click", () => removerUltimaTarefa());
-
-    listaTarefas.prepend(removerPrimeiroBotao);
-    listaTarefas.appendChild(removerUltimoBotao);
-
-    if (tarefas.length === 0) {
-        removerPrimeiroBotao.style.display = "none";
-        removerUltimoBotao.style.display = "none";
-    } else {
-        removerPrimeiroBotao.style.display = "block";
-        removerUltimoBotao.style.display = "block";
-    }
+        removerCell.appendChild(removerBotao);
+    });
 }
 
+function limparCampos() {
+    document.getElementById("descricaoInput").value = "";
+    document.getElementById("autorInput").value = "";
+    document.getElementById("departamentoInput").value = "";
+    document.getElementById("importanciaInput").value = "";
+    document.getElementById("valorInput").value = "";
+    document.getElementById("duracaoInput").value = "";
+}
+
+document.getElementById("formulario").addEventListener("submit", function(event) {
+    event.preventDefault();
+    adicionarTarefa();
+});
+
+// Utilizando splice para remover uma tarefa do array pelo índice
 function removerTarefa(index) {
     tarefas.splice(index, 1);
-    atualizarListaTarefas();
+    exibirTarefas();
 }
 
-function removerPrimeiraTarefa() {
-    tarefas.shift();
-    atualizarListaTarefas();
+// Utilizando sort para exibir a lista de tarefas ordenadas por importância da maior para a menor
+function exibirListaImportancia() {
+    tarefas.sort((a, b) => b.importancia - a.importancia);
+    const listaImportancia = document.getElementById("listaImportancia");
+    listaImportancia.innerHTML = "";
+
+    tarefas.forEach((tarefa) => {
+        const descricaoItem = document.createElement("li");
+        descricaoItem.textContent = tarefa.descricao;
+        listaImportancia.appendChild(descricaoItem);
+    });
 }
 
-function removerUltimaTarefa() {
-    tarefas.pop();
-    atualizarListaTarefas();
-}
+document.getElementById("ordenarBtn").addEventListener("click", function() {
+    exibirListaImportancia();
+});
 
-function verificarTecla(event) {
-    if (event.key === "Enter") {
-        adicionarTarefa();
-        event.preventDefault();
-    }
-}
+exibirTarefas();
+console.log(tarefas);
 
-document.getElementById("tarefaInput").addEventListener("keydown", verificarTecla);
 
 // // ======================================================================================================
 
