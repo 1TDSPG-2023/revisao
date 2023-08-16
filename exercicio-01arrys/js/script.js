@@ -1,7 +1,7 @@
 
 const tarefas = [];
 
- 
+console.log(tarefas)
 
 function adicionarTarefa() {
 
@@ -122,3 +122,4 @@ function verificarTecla(event) {
  
 
   document.getElementById("tarefaInput").addEventListener("keydown", verificarTecla);
+

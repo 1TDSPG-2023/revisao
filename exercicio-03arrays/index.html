@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Tarefas</title>
+    <script src="js/script.js" defer></script>
+    <link rel="icon" href="data:,">
+
+</head>
+<body>
+    <h1>Lista de Tarefas</h1>
+    <div class="task-container">
+        <input type="text" id="description" placeholder="Descrição">
+        <input type="text" id="author" placeholder="Autor">
+        <input type="text" id="department" placeholder="Departamento">
+        <select id="importance">
+            <option value="Alta">Alta</option>
+            <option value="Média">Média</option>
+            <option value="Baixa">Baixa</option>
+        </select>
+        <button onclick="addTask()">Adicionar</button>
+    </div>
+    <table id="taskTable">
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                    
+                <th>Autor</th>
+                     
+                <th>Departamento</th>
+                    
+                <th>Importância</th>
+                    
+                <th>Paga à Parte</th>
+                    
+                <th>Duração à Parte</th>
+                    
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="taskList"></tbody>
+    </table>
+    
+</body>
+</html>
