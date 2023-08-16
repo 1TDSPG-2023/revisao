@@ -94,3 +94,21 @@ botaoAddtarefa.addEventListener("click", (evento) => {
         inputTarefa.value = "";
         console.log(listaTarefas);
     }});
+
+const botaoListaImportancia = document.getElementById("btnListaImportancia");
+botaoListaImportancia.addEventListener("click", (event) => {
+    event.preventDefault();
+    
+    const organizarTarefa = listaTarefas.slice().sort((a, b) => {
+    return b.importancia - a.importancia;
+    });
+    
+    const listaOrganizada = organizarTarefa.map((tarefa) => {
+        return `<li>Descrição: ${tarefa.descricao} - Importancia: ${tarefa.importancia}</li>`
+    });
+    
+    const listaImportancia = document.getElementById("lista-importancia");
+    listaImportancia.innerHTML = `<ul>${listaOrganizada.join("")}</ul>`;
+
+
+});
