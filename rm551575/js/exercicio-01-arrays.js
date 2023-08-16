@@ -27,35 +27,37 @@ function adicionarTarefa() {
         duracao
     };
 
-    // Utilizando push para adicionar a nova tarefa ao array de tarefas
+    // UTILIZANDO PUSH PARA ADICIONAR UMA NOVA TAREFA AO ARRAY DE TAREFAS
     tarefas.push(novaTarefa);
     exibirTarefas();
     limparCampos();
+    console.log("Tarefas:",tarefas);
 }
 
-// Utilizando splice para remover uma tarefa do array pelo índice
+// UTILIZANDO SPLICE PARA REMOVER UMA TAREFA DO ARRAY PELO ÍNDICE
 function removerTarefa(index) {
     tarefas.splice(index, 1);
     exibirTarefas();
+    console.log("Tarefas:",tarefas);
 }
 
 function exibirTarefas() {
     const tabela = document.getElementById("tabelaTarefas");
     tabela.innerHTML = "";
 
-    // Criando cabeçalho da tabela
+    // CRIANDO CABEÇALHO DA TABELA
     const cabecalho = tabela.createTHead();
     const rowCabecalho = cabecalho.insertRow();
     const colunas = ["Descrição", "Autor", "Departamento", "Importância", "Valor", "Duração", "Ações"];
 
-    // Adicionando as colunas ao cabeçalho
+    // ADICIONANDO AS COLUNAS AO CABEÇALHO
     colunas.forEach((coluna) => {
         const th = document.createElement("th");
         th.textContent = coluna;
         rowCabecalho.appendChild(th);
     });
 
-    // Criando corpo da tabela
+    // CRIANDO CORPO DA TABELA
     const tbody = tabela.createTBody();
 
     tarefas.forEach((tarefa, i) => {
@@ -102,7 +104,7 @@ document.getElementById("formulario").addEventListener("submit", function(event)
     adicionarTarefa();
 });
 
-// Utilizando sort para exibir a lista de tarefas ordenadas por importância da maior para a menor
+// UTILIZANDO SORT PARA EXIBIR A LISTA DE TAREFAS ORDENADAS POR IMPORTÂNCIA DA MAIOR PARA A MENOR
 function exibirListaImportancia() {
     tarefas.sort((a, b) => b.importancia - a.importancia);
     const listaImportancia = document.getElementById("listaImportancia");
@@ -120,7 +122,6 @@ document.getElementById("ordenarBtn").addEventListener("click", function() {
 });
 
 exibirTarefas();
-console.log(tarefas);
 
 
 
@@ -251,15 +252,15 @@ let salariosComAumento = salarios.map(salario => {
     }
 });
 
-console.log(salariosComAumento);
+console.log("Salários com aumento:",salariosComAumento);
 
 // O MÉTODO FILTER PERCORRE CADA ITEM DO ARRAY E FILTRA APENAS OS SALÁRIOS ACIMA DE 2500
 let salariosSuperiores2500 = salariosComAumento.filter(salario => salario > 2500);
-console.log(salariosSuperiores2500);
+console.log("Salários superiores a 2500:",salariosSuperiores2500);
 
 // O MÉTODO REDUCE PERCORRE CADA ITEM DO ARRAY E ACUMULA O VALOR DA SOMA COMEÇANDO COM 0
 let somaSalarios = salariosSuperiores2500.reduce((total, salario) => total + salario, 0);
-console.log(`Soma dos salários: ${somaSalarios}`);
+console.log("Soma dos salários:",somaSalarios);
 
 
 // // ======================================================================================================
