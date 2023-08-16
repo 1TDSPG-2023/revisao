@@ -1,11 +1,36 @@
 const tarefas = [];
 
 function adicionarTarefa() {
-    const novaTarefa = document.getElementById("tarefaInput").value;
+    const descricao = document.getElementById("descricaoInput").value;
+    const autor = document.getElementById("autorInput").value;
+    const departamento = document.getElementById("departamentoInput").value;
+    const importancia = parseInt(document.getElementById("importanciaInput").value);
+    const valor = document.getElementById("valorInput").value ? parseInt(document.getElementById("valorInput").value) : null;
+    const duracao = document.getElementById("duracaoInput").value ? parseInt(document.getElementById("duracaoInput").value) : null;
+
+    if (!descricao || !autor || !departamento || !importancia) {
+        alert("Por favor, preencha todos os campos obrigatórios antes de adicionar uma tarefa.");
+        return;
+    }
+
+    if (importancia < 0 || importancia > 10 || isNaN(importancia)) {
+        alert("A importância deve ser um número entre 0 e 10.");
+        return;
+    }
+
+    const novaTarefa = {
+        descricao,
+        autor,
+        departamento,
+        importancia,
+        valor,
+        duracao
+    };
+
+    // Utilizando push para adicionar a nova tarefa ao array de tarefas
     tarefas.push(novaTarefa);
-    atualizarListaTarefas();
-    document.getElementById("tarefaInput").value = "";
-    console.log(tarefas);
+    exibirTarefas();
+    limparCampos();
 }
 
 function atualizarListaTarefas() {
