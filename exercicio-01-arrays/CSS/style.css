@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+#titForm {
+    color: #fff;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
 #formularioTarefas {
     margin: 0 auto;
     width: 250px;

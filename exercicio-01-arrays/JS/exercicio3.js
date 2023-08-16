@@ -15,6 +15,8 @@ descrição. */
 
 // Obtendo Id's e adcionado-as a variaveis
 const btnAddTarefa = document.getElementById('btnAdcionarTarefa');
+const btnFiltro = document.getElementById('btnFiltrarTarefas');
+const btnRemovTarefa = document.getElementsByClassName('btnRemover');
 const formTarefas = document.getElementById('formularioTarefas');
 const listaTarefas = document.getElementById('listaTarefas');
 
@@ -35,7 +37,7 @@ const ordemDeImportancia = [
 // Criação da variavel que armazena-ra tarefas
 const tarefas = [];
 
-function adcionarTarefa() {
+btnAddTarefa.addEventListener('click', ()=> {
     // Obtendo os inputs do usuario
     const descricao = tarefaDesc.value;
     const autor = tarefaAutor.value;
@@ -65,14 +67,12 @@ function adcionarTarefa() {
             novaTarefa.duracao = 'N/a';
         }
 
-        /*
         console.log(`NOVA TAREFA ADCIONADA:
         Descrição: ${descricao} | 
         Autor: ${autor} | 
         Departamento: ${departamento} | 
         Valor: R$${tarefaValor.value} | 
         Duração: ${tarefaDuracao.value}`);
-        */
         
         // Adcionando tarefa inserida na lista de tarefas
         tarefas.push(novaTarefa);
@@ -80,14 +80,15 @@ function adcionarTarefa() {
         // Atualizando a lista de tarefas
         atualizarListaTarefas();
     }
-}
+})
 
 function removerTarefa(index) {
     // Removendo o indice da lista de tarefas
     tarefas.splice(index, 1);
-
+    
     // Atualizando a lista de tarefas
     atualizarListaTarefas();
+
 }
 
 function atualizarListaTarefas() {
@@ -113,7 +114,7 @@ function atualizarListaTarefas() {
     }
 }
 
-function filtrarTarefas() {
+btnFiltro.addEventListener('click', ()=> {
     const tarefasOrdenadas = tarefas.slice().sort((a, b) => {
         const indexA = ordemDeImportancia.indexOf(a.importancia);
         const indexB = ordemDeImportancia.indexOf(b.importancia);
@@ -140,7 +141,6 @@ function filtrarTarefas() {
         
         tarefaTopoDiv.appendChild(btnRemover);
         tarefaDiv.appendChild(tarefaTopoDiv);
-
         listaTarefas.appendChild(tarefaDiv);
     }
-};
+});
