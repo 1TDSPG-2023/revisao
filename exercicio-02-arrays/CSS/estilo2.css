@@ -19,9 +19,9 @@ tr {
 }
 
 th {
-  font-size: 15px;
+  font-size: 11px;
   color: white;
-  border: 6px solid black;
+  border: 2px solid black;
   border-collapse: collapse;
   background: cadetblue;
 }

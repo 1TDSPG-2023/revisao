@@ -185,18 +185,30 @@ function adicionarTarefa() {
       valor,
     });
   }
-}
 
+}
+///limpar inputs
 let adicionar = document.querySelector("#enviarTarefa");
 adicionar.addEventListener("click", (event) => {
   event.preventDefault();
   adicionarTarefa();
+  document.getElementById("descricao").value = "";
+  document.getElementById("autor").value = "";
+  document.getElementById("departamento").value = "";
+  document.getElementById("importancia").value = "";
+  document.getElementById("duracao").value = "";
+  document.getElementById("valor").value = "";
+  
 });
 
 function deletarTarefa(button) {
   const table = button.parentNode.parentNode.parentNode;
   const linha = button.parentNode.parentNode;
   table.removeChild(linha);
+  //FALTOU IMPLEMENTAR DELETAR DO ARRAY 
+  //const descricao1 = linha.document.querySelector(".descricao")
+  //const valor1 = tarefas.indexOf(descricao1);
+  //tarefas.slice(valor1, 1);
 }
 
 const organizar = document.querySelector("#organizarCasa");
@@ -213,4 +225,4 @@ organizar.addEventListener("click", (event) => {
 
   const listaOrdenadaElement = document.getElementById("listaOrdenada");
   listaOrdenadaElement.innerHTML = `<ul>${listaOrdenada.join("")}</ul>`;
-}); ///todos os li vão ser adicionados, join percorre o array de lista ordenada
+}); ///todos os li vão ser adicionados, join concatena o parametro ao elemento do array
