@@ -61,11 +61,10 @@ organizar.addEventListener("click", (event) => {
     return a.importancia - b.importancia;
   });
 
-  const listaOrdenada = tarefasOrdenadas.map((tarefa) => tarefa.descricao);
+  const listaOrdenada = tarefasOrdenadas.map((tarefa) => {
+    return `<li>${tarefa.descricao}</li>`;
+  });
 
   const listaOrdenando = document.getElementById('lista');
-  const li = document.createElement('li');
-  li.textContent = listaOrdenada
-  
-  listaOrdenando.innerHTML = listaOrdenada.join('>');
+  listaOrdenando.innerHTML = `<ul>${listaOrdenada.join("")}</ul>`;
 });
