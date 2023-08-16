@@ -22,7 +22,7 @@ function adicionarTarefa() {
 		importanciaDaTarefa.value != ""
 	) {
 		// Adicionar tarefa à lista do backend
-		let tarefa = {
+		const tarefa = {
 			descricao: `${descricaoDaTarefa.value}`,
 			autor: `${autorDaTarefa.value}`,
 			departamento: `${departamentoDaTarefa.value}`,
@@ -33,27 +33,41 @@ function adicionarTarefa() {
 		console.log(listaTarefas);
 
 		// Adicionar tarefa à lista impressa na tela
-		let valoresAAdicionar = [
+		const valoresAAdicionar = [
 			`${tarefa.descricao}`,
 			`${tarefa.autor}`,
 			`${tarefa.departamento}`,
 			`${tarefa.importancia}`,
+            "",
+            ""
 		];
 
-		let novaTarefa = document.createElement("tr");
+		const novaTarefa = document.createElement("tr");
 		corpoListaImpressa.appendChild(novaTarefa);
 
 		valoresAAdicionar.forEach((valor) => {
-			let novaCelula = document.createElement("td");
+			const novaCelula = document.createElement("td");
 			novaCelula.textContent = valor;
 			novaTarefa.appendChild(novaCelula);
 		});
 
 		// Adicionar botão para excluir tarefa
-		let botaoExcluir = document.createElement("button");
+		const botaoExcluir = document.createElement("button");
 		botaoExcluir.textContent = "Excluir";
 		botaoExcluir.addEventListener("click", excluirTarefa);
 		novaTarefa.appendChild(botaoExcluir);
+
+        // Adicionar botão para adicionar campo valor
+        const botaoAdicionarValor = document.createElement("button");
+        botaoAdicionarValor.textContent = "Adicionar valor";
+        botaoAdicionarValor.addEventListener("click", adicionarValor);
+        novaTarefa.appendChild(botaoAdicionarValor);
+
+        // Adicionar botão para adicionar campo duração
+        const botaoAdicionarDuracao = document.createElement("button");
+        botaoAdicionarDuracao.textContent = "Adicionar duração";
+        botaoAdicionarDuracao.addEventListener("click", adicionarValor);
+        novaTarefa.appendChild(botaoAdicionarDuracao);
 
 		// Limpar conteúdo dos campos
 		const campos = [
@@ -83,40 +97,40 @@ function excluirTarefa(evt) {
 	//Excluir tarefa da lista do backend
 	const index = Array.from(corpoListaImpressa.children).indexOf(tarefa);
 	listaTarefas.splice(index, 1);
-
+    
 	//Excluir tarefa da lista impressa na tela
 	tarefa.remove();
 }
 
 function criarListaPorImportancia() {
-	function compararPorImportancia(tarefa1, tarefa2) {
-		return tarefa1.importancia - tarefa2.importancia;
+    function compararPorImportancia(tarefa1, tarefa2) {
+        return tarefa1.importancia - tarefa2.importancia;
 	}
-
+    
 	listaTarefasPorImportancia = listaTarefas.map((tarefa) => tarefa);
-
+    
 	listaTarefasPorImportancia.sort(compararPorImportancia).reverse();
-
+    
 	conteudoPrincipal.innerHTML += 
     `<table>
-        <caption>Lista de Tarefas por Importância</caption>
-        <thead>
-        <th>Descrição</th>
-        </thead>
-        <tbody id="corpoListaDeTarefasPorImportancia">
-
-        </tbody>
+    <caption>Lista de Tarefas por Importância</caption>
+    <thead>
+    <th>Descrição</th>
+    </thead>
+    <tbody id="corpoListaDeTarefasPorImportancia">
+    
+    </tbody>
     </table>`;
-
+    
     const corpoListaImpressaPorImportancia = document.getElementById("corpoListaDeTarefasPorImportancia");
     let listaDeDescricoes = [];
-
+    
     listaTarefasPorImportancia.forEach(tarefa => {
         listaDeDescricoes.push(tarefa.descricao);        
     });
-
+    
     console.log(listaDeDescricoes);
-
+    
     listaDeDescricoes.forEach(descricao => {
         let novaTarefa = document.createElement("tr");
         corpoListaImpressaPorImportancia.appendChild(novaTarefa);
@@ -125,15 +139,23 @@ function criarListaPorImportancia() {
         novaCelula.textContent = descricao;
         novaTarefa.appendChild(novaCelula);
     })
-    
-
-	// vvv Imprimir uma div que recebe uma table que recebe uma caption ("Lista de Tarefas por Importância" e thead + tbody) NÃO ESQUECER DE COLOCAR NESSA TABELA APENAS DESCRICAO E IMPORTANCIA (VER SE COLOCO SÓ NO FRONT OU NO BACK TBM) vvv
-
-	// let teste = document.createElement("p");
-	// teste.textContent = "teste";
-	// conteudoPrincipal.appendChild(teste);
 }
 
-function adicionarValor(){
+function adicionarValor(evt){
+    const botaoAdicionarValor = evt.target;
+    const tarefa = botaoAdicionarValor.parentNode;
     
+    const index = Array.from(corpoListaImpressa.children).indexOf(tarefa);
+    console.log(index);
+    
+    const valor = prompt("Digite o valor para a tarefa: ");
+    
+    listaTarefas[index].valor = valor;
+
+    const novaCelula = document.createElement("td");
+    novaCelula.textContent = valor;
+
+    const linha = document.querySelector(`tr:nth-child(${index + 1})`);
+    const primeiroBotao = linha.querySelector("button:first-child");
+    linha.insertBefore(novaCelula, primeiroBotao);
 }
