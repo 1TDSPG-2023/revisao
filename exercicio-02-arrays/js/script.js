@@ -204,11 +204,13 @@ organizar.addEventListener("click", (event) => {
   event.preventDefault();
 
   const tarefasOrdenadas = tarefas.slice().sort((a, b) => {
-    return a.importancia - b.importancia; //unico problema é string
+    return a.importancia - b.importancia; // não pode vir uma string :c
   });
 
-  const listaOrdenada = tarefasOrdenadas.map((tarefa) => tarefa.descricao);
+  const listaOrdenada = tarefasOrdenadas.map((tarefa) => {
+    return `<li>${tarefa.descricao}</li>`;
+  }); ///gerar uma lista para cada elemento percorrido
 
   const listaOrdenadaElement = document.getElementById("listaOrdenada");
-  listaOrdenadaElement.innerHTML = listaOrdenada.join("<br>");
-});
+  listaOrdenadaElement.innerHTML = `<ul>${listaOrdenada.join("")}</ul>`;
+}); ///todos os li vão ser adicionados, join percorre o array de lista ordenada
