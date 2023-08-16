@@ -1,39 +1,24 @@
-const taskForm = document.getElementById('taskForm');
-const taskInput = document.getElementById('taskInput');
-const taskList = document.getElementById('taskList');
+const form = document.getElementById('form');
+const inputTarefa = document.getElementById('tarefa');
+const listaTarefas = document.getElementById('lista');
 
-const tasks = [];
+form.addEventListener('submit', function (event) {
+  event.preventDefault();
 
-function renderTasks() {
-    taskList.innerHTML = '';
-    
-    for (let i = 0; i < tasks.length; i++) {
-        const taskItem = document.createElement('li');
-        taskItem.innerHTML = `
-            ${tasks[i]}
-            <button onclick="removeTask(${i})">Remover</button>
-        `;
-        taskList.appendChild(taskItem);
-    }
-}
+  const tarefa = inputTarefa.value.trim();
+  if (tarefa !== '') {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <span>${tarefa}</span>
+      <button class="excluir">Excluir</button>
+    `;
+    listaTarefas.appendChild(li);
+    inputTarefa.value = '';
 
-function addTask(task) {
-    tasks.push(task);
-    renderTasks();
-}
-
-function removeTask(index) {
-    tasks.splice(index, 1);
-    renderTasks();
-}
-
-taskForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const task = taskInput.value.trim();
-    if (task !== '') {
-        addTask(task);
-        taskInput.value = '';
-    }
+    const btnExcluir = li.querySelector('.excluir');
+    btnExcluir.addEventListener('click', function () {
+      listaTarefas.removeChild(li);
+    });
+  }
 });
 
-renderTasks();
