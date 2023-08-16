@@ -1,60 +1,37 @@
-const taskForm = document.getElementById('taskForm');
-const taskInput = document.getElementById('taskInput');
-const taskList = document.getElementById('taskList');
+const adicionarSalarioBtn = document.getElementById("adicionarSalario");
+const salariosOriginaisUl = document.getElementById("salariosOriginais");
+const salariosAumentadosUl = document.getElementById("salariosAumentados");
+const salariosSuperiores2500Ul = document.getElementById("salariosSuperiores2500");
+const somaSalariosP = document.getElementById("somaSalarios");
 
-const tasks = [];
+let salarios = [1500, 2200, 1800, 2500, 1900, 2800, 2100, 3000, 2300, 2600];
 
-function renderTasks() {
-    taskList.innerHTML = '';
+adicionarSalarioBtn.addEventListener("click", () => {
+    const novoSalario = parseInt(prompt("Digite o novo salário:"));
+    if (!isNaN(novoSalario)) {
+        salarios.push(novoSalario);
+        atualizarTabelas();
+    }
+});
+
+function atualizarTabelas() {
+    salariosOriginaisUl.innerHTML = salarios.map(salario => `<li>${salario}</li>`).join("");
     
-    for (let i = 0; i < tasks.length; i++) {
-        const taskItem = document.createElement('li');
-        taskItem.innerHTML = `
-            ${tasks[i]}
-            <button onclick="removeTask(${i})">Remover</button>
-        `;
-        taskList.appendChild(taskItem);
-    }
+    const salariosAumentados = salarios.map(salario => {
+        if (salario <= 2000) {
+            return salario * 1.15;
+        } else {
+            return salario * 1.1;
+        }
+    });
+    salariosAumentadosUl.innerHTML = salariosAumentados.map(salario => `<li>${salario.toFixed(2)}</li>`).join("");
+    
+    const salariosSuperiores2500 = salariosAumentados.filter(salario => salario > 2500);
+    salariosSuperiores2500Ul.innerHTML = salariosSuperiores2500.map(salario => `<li>${salario.toFixed(2)}</li>`).join("");
+    
+    const somaSalarios = salariosAumentados.reduce((acumulador, salario) => acumulador + salario, 0);
+    somaSalariosP.textContent = `Soma dos Salários: ${somaSalarios.toFixed(2)}`;
 }
 
-function addTask(task) {
-    tasks.push(task);
-    renderTasks();
-}
-
-function removeTask(index) {
-    tasks.splice(index, 1);
-    renderTasks();
-}
-
-taskForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const task = taskInput.value.trim();
-    if (task !== '') {
-        addTask(task);
-        taskInput.value = '';
-    }
-});
-
-renderTasks();
-
-const salaries = [1500, 2200, 1800, 2500, 1900, 2800, 2100, 3200, 2300, 2600];
-
-const increasedSalaries = salaries.map(salary => {
-    if (salary <= 2000) {
-        return salary * 1.15;
-    } else {
-        return salary * 1.10;
-    }
-});
-
-console.log('Salários com aumento:', increasedSalaries);
-
-const highSalaries = increasedSalaries.filter(salary => salary > 2500);
-
-console.log('Salários superiores a 2500:', highSalaries);
-
-const totalSalary = highSalaries.reduce((total, salary) => total + salary, 0);
-
-console.log('Total dos salários:', totalSalary);
-
+// Atualiza as tabelas inicialmente
+atualizarTabelas();
